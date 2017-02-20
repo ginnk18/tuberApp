@@ -1,0 +1,39 @@
+body {
+  overflow-y: hidden;
+}
+.search-result-layout {
+  height: 1500px; //for testing
+  padding-top: 64px; // for testing
+  
+  .filters {
+    border: 1px solid $line-color;
+    height: 50px;
+    width: 100%;
+
+    select {
+      border: none;
+      border-right: 1px solid $line-color;
+      height: 100%;
+    }
+  }
+
+  .map {
+    height: 100%;
+    overflow-y: hidden;
+  }
+
+  .results {
+    height: 100%;
+    overflow-y: scroll;
+    padding: $spacing-unit-half;
+    
+    .notices {
+      height: 100px;
+      padding: $spacing-unit1;
+      width: 100%;
+    }
+    .result {
+      padding: $spacing-unit1 $spacing-unit-half;
+    }
+  }
+}

@@ -1,0 +1,14 @@
+// This is the top-level scss file. Import all other files in here.
+@import 'variables';
+@import 'home';
+
+
+// Import Components styles here
+@import '../src/components/app_header/app_header';
+@import '../src/components/nav/nav';
+@import '../src/components/logo/logo';
+@import '../src/components/search_box/search_box';
+@import '../src/components/card/card';
+@import '../src/components/content/content';
+@import '../src/components/search_result_layout/search_result_layout';
+

@@ -1,0 +1,16 @@
+.main-nav {
+  height: 100%;
+  text-align: right;
+
+  ul {
+    align-items: center;
+    display: inline-flex;
+    height: 100%;
+    list-style: none;
+    padding: 0;
+
+    li {
+      margin-left: $spacing-unit1;
+    }
+  }
+}

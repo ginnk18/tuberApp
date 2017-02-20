@@ -1,0 +1,11 @@
+.content {
+  margin: 0 auto;
+  min-width: 600px;
+  padding-top: 200px;
+  width: 50%;
+
+  .row {
+    display: flex;
+    width: 100%;
+  }
+}

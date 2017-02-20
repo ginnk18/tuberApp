@@ -1,0 +1,91 @@
+.card {
+  min-width: 620px; // TO DO: Review a smaller design
+  img {
+    width: 50%;
+    height: 489px;
+    overflow: hidden;
+  }
+
+  figcaption {
+    width: 50%; // for testing
+
+    &:first-of-type {
+      border: 1px solid $line-color;
+      float: right;
+      height: 489px;
+      padding: $spacing-unit1;
+
+      .name {
+        font-size: 24px;
+      }
+
+      span {
+        line-height: 2;
+      }
+
+      .tutor-attr {
+        color: $accent-color;
+      }
+
+      p {
+        padding: 18px;
+        text-align: center;
+
+        & ~ footer {
+          text-align: right;
+        }
+      }
+
+      .next-prev {
+        left: -10px;
+        list-style: none;
+        padding: 0;
+        position: relative;
+        top: -123px;
+        width: 107%;
+
+        .prev {
+          float: left;
+        }
+        .next {
+          float: right;
+        }
+        a {
+          color: $less-dark;
+          font-size: 24px;
+          font-weight: 100;
+          padding: 10px;
+
+          &:hover {
+            color: $dark;
+          }
+        }
+      }
+    }
+  }
+  .card-btn {
+    display: flex;
+    font-size: 1.2rem;
+    line-height: 2.5;
+    padding-top: $spacing-unit1;
+
+    a {
+      background-color: $accent-color;
+      color: $light;
+      flex: 1;
+      opacity: 0.4;
+      text-align: center;
+
+      &:hover {
+        box-shadow: 0 0 6px $dark;
+        opacity: 1;
+      }
+
+      & + a {
+        color: $dark;
+        background-color: $light;
+        border-left: 1px solid $line-color;
+      }
+    }
+  }
+}
