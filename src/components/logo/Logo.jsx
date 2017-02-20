@@ -4,7 +4,7 @@ class Logo extends Component {
 
   render() {
     return <a href="/" className="logo">
-            <h1>tubers</h1>
+            <h1>tuber</h1>
           </a>
   }
 }
