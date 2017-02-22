@@ -1,10 +1,11 @@
 // COLORS
-$dark: #333333; // This is generally used for texts, shadows etc - avoid using for background color as possible
-$less-dark: #BDBDBD; // This is intended for light texts - of less contextual importance. Do not use in place of $white
-$line-color: #E0E0E0; // Intended for borders and faded lines
-$brand-color: #F44336; // Primary color
 $accent-color: #009688;
+$available: #11dd11;
+$brand-color: #F44336; // Primary color
+$dark: #454545; // This is generally used for texts, shadows etc - avoid using for background color as possible
+$less-dark: lighten($dark, 15%); // This is intended for light texts - of less contextual importance. Do not use in place of $white
 $light: #f4f4f4;
+$line-color: #E0E0E0; // Intended for borders and faded lines
 
 // SPACING
 $spacing-unit-half: 0.5rem;

@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import { classes } from '../utils';
 
 class Card extends Component {
 
   render() {
-    return <figure className="card one-fourth-with-gutter">
+    return <figure className={classes.call(this, "card")}>
             <img src="http://placehold.it/330x489" />
             <figcaption>
               <strong className="name">Maria Sharapova</strong><br/>
@@ -31,7 +32,7 @@ class Card extends Component {
             <figcaption>
               <div><strong>Physics</strong> $25/hr</div>
               <div>
-                <i style={{color:"#00ff00"}} className="fa fa-circle" aria-hidden="true"></i>
+                <i style={{color:"#11dd11"}} className="fa fa-circle" aria-hidden="true"></i>
                 &nbsp; available and online  ·  calgary, NW
               </div>
               <div>

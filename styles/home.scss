@@ -5,6 +5,7 @@
 html * {
   box-sizing: border-box;
   margin: 0;
+  padding: 0;
 }
 
 body {
@@ -103,7 +104,16 @@ body {
   }
 
   .two-fifth {
-    flex: 2
+    flex: 2;
+  }
+
+  .one-third {
+    flex: 1;
+  }
+
+  .two-third {
+    flex: 2;
+    overflow: hidden;
   }
 }
 

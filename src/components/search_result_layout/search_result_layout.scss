@@ -2,8 +2,7 @@ body {
   overflow-y: hidden;
 }
 .search-result-layout {
-  height: 1500px; //for testing
-  padding-top: 64px; // for testing
+  padding-top: 64px;
   
   .filters {
     border: 1px solid $line-color;
@@ -17,13 +16,22 @@ body {
     }
   }
 
+  .map, .results {
+    bottom: 0;
+    position: fixed;
+    top: 114px;
+  }
+  
   .map {
-    height: 100%;
-    overflow-y: hidden;
+    left: auto;
+    right: 0;
+    width: 40%;
   }
 
   .results {
-    height: 100%;
+    left: 0;
+    right: auto;
+    width: 60%;
     overflow-y: scroll;
     padding: $spacing-unit-half;
     

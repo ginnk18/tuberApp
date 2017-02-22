@@ -1,5 +1,5 @@
 .card {
-  min-width: 620px; // TO DO: Review a smaller design
+  width: 660px; // TO DO: Review a smaller design
   img {
     width: 50%;
     height: 489px;
@@ -87,5 +87,21 @@
         border-left: 1px solid $line-color;
       }
     }
+  }
+}
+
+.no-detail {
+  width: 330px; // TODO: responsiveness
+  
+  figcaption {
+    width: 100%;
+  }
+  
+  figcaption:first-of-type {
+    display: none;
+  }
+
+  img {
+    width: 100%;
   }
 }
