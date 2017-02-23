@@ -4,7 +4,6 @@ import { classes } from '../utils';
 class Card extends Component {
 
   availabilityColor() {
-    console.log(this.props)
     if (this.props.tutor.is_available) {
       return [["#11dd11", "available and online"], ["#dddd11", "available but offline"]][Math.floor(Math.random() * 2)];
     }

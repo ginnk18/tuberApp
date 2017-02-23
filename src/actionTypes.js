@@ -1,0 +1,13 @@
+const actionTypes = {
+  AJAX_ERROR: 'AJAX_ERROR',
+  LOAD_HOME: 'LOAD_HOME',
+  LOG_IN: 'LOG_IN',
+  LOG_OUT: 'LOG_OUT',
+  REGISTER_STUDENT: 'REGISTER_STUDENT',
+  REGISTER_TUTOR: 'REGISTER_TUTOR',
+  REVIEW: 'REVIEW',
+  SEARCH: 'SEARCH',
+  SHOW_HOME: 'SHOW_HOME'
+};
+
+export default actionTypes;

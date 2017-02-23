@@ -6,7 +6,6 @@ import Card from '../card/Card.jsx';
 class HomeLayout extends Component {
   constructor(props) {
     super(props);
-    console.log(this.props)
     this.showTopFour = this.showTopFour.bind(this);
   }
 

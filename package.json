@@ -4,7 +4,7 @@
   "description": "Websocket chatting app using React",
   "scripts": {
     "lint": "eslint src",
-    "start": "nodemon -L server.js",
+    "start": "node server.js",
     "build": "webpack --progress --colors"
   },
   "repository": {
@@ -48,6 +48,8 @@
   "dependencies": {
     "axios": "^0.15.3",
     "react": "15.2.1",
-    "react-dom": "15.2.1"
+    "react-dom": "15.2.1",
+    "react-redux": "^5.0.2",
+    "redux": "^3.6.0"
   }
 }
