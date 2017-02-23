@@ -10,7 +10,7 @@ class ProfileLayout extends Component {
     return (
       <div className="profile-layout row">
         <AppHeader className="z-index3"/>
-        
+
         <section className="main-content">
           <section className="row">
             <aside className="profile-summaries one-third">
@@ -26,8 +26,8 @@ class ProfileLayout extends Component {
                 Report tutor
               </a>
               <blockquote className="quirky">
-                Sed blandit sollicitudin dapibus. Sed justo ligula, congue a accumsan ut, 
-                dignissim at metus. Nullam consectetur tempus velit quis tincidunt. 
+                Sed blandit sollicitudin dapibus. Sed justo ligula, congue a accumsan ut,
+                dignissim at metus. Nullam consectetur tempus velit quis tincidunt.
                 Vestibulum fringilla arcu eu felis
               </blockquote>
             </div>
@@ -42,7 +42,7 @@ class ProfileLayout extends Component {
                   <dd>Email: <span>mightytutor@tubers.ca</span></dd>
                   <dd>Phone: <span>403-5862-1452</span></dd>
                   <dd>Address: <span>119 14th Avenue, Calgary NW, AB, Canada</span></dd>
-                  
+
                   <dt>Qualification</dt>
                   <dd>Some dodgy Phd in philosophy from UofC..in ur phase:P</dd>
 
@@ -65,7 +65,7 @@ class ProfileLayout extends Component {
                     <figcaption className="reviewer-name" >James</figcaption>
                   </figure>
                   <blockquote className="review-text" >
-                    <p>Lorem Ipsum is ting industry. Lorem type and scrambled it to make a 
+                    <p>Lorem Ipsum is ting industry. Lorem type and scrambled it to make a
                     type specimen book.</p>
                     <footer>Calgary, Canada · February 2017</footer>
                   </blockquote>
@@ -76,7 +76,7 @@ class ProfileLayout extends Component {
                     <figcaption className="reviewer-name" >James</figcaption>
                   </figure>
                   <blockquote className="review-text" >
-                    <p>Lorem Ipsum is ting industry. Lorem type and scrambled it to make a 
+                    <p>Lorem Ipsum is ting industry. Lorem type and scrambled it to make a
                     type specimen book.</p>
                     <footer>Calgary, Canada · February 2017</footer>
                   </blockquote>
@@ -87,7 +87,7 @@ class ProfileLayout extends Component {
                     <figcaption className="reviewer-name" >James</figcaption>
                   </figure>
                   <blockquote className="review-text" >
-                    <p>Lorem Ipsum is ting industry. Lorem type and scrambled it to make a 
+                    <p>Lorem Ipsum is ting industry. Lorem type and scrambled it to make a
                     type specimen book.</p>
                     <footer>Calgary, Canada · February 2017</footer>
                   </blockquote>
@@ -98,7 +98,7 @@ class ProfileLayout extends Component {
                     <figcaption className="reviewer-name" >James</figcaption>
                   </figure>
                   <blockquote className="review-text" >
-                    <p>Lorem Ipsum is ting industry. Lorem type and scrambled it to make a 
+                    <p>Lorem Ipsum is ting industry. Lorem type and scrambled it to make a
                     type specimen book.</p>
                     <footer>Calgary, Canada · February 2017</footer>
                   </blockquote>
@@ -109,7 +109,7 @@ class ProfileLayout extends Component {
                     <figcaption className="reviewer-name" >James</figcaption>
                   </figure>
                   <blockquote className="review-text" >
-                    <p>Lorem Ipsum is ting industry. Lorem type and scrambled it to make a 
+                    <p>Lorem Ipsum is ting industry. Lorem type and scrambled it to make a
                     type specimen book.</p>
                     <footer>Calgary, Canada · February 2017</footer>
                   </blockquote>
@@ -120,7 +120,7 @@ class ProfileLayout extends Component {
                     <figcaption className="reviewer-name" >James</figcaption>
                   </figure>
                   <blockquote className="review-text" >
-                    <p>Lorem Ipsum is ting industry. Lorem type and scrambled it to make a 
+                    <p>Lorem Ipsum is ting industry. Lorem type and scrambled it to make a
                     type specimen book.</p>
                     <footer>Calgary, Canada · February 2017</footer>
                   </blockquote>
@@ -131,7 +131,7 @@ class ProfileLayout extends Component {
               </section>
               <section id="messages">
 
-              </section>         
+              </section>
             </div>
           </section>
         </section>

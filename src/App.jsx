@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import HomeLayout from './components/home_layout/HomeLayout.jsx';
 import ProfileLayout from './components/profile_layout/ProfileLayout.jsx';
 import SearchResultLayout from './components/search_result_layout/SearchResultLayout.jsx';
-
+import TutorRegistrationLayout from './components/registration/tutor_registration.jsx';
 
 class App extends Component {
   constructor(props) {
@@ -11,18 +11,18 @@ class App extends Component {
     this.pages = {
       "home": <HomeLayout tutors={this.props.appState.tutors}/>,
       "profile": <ProfileLayout />,
-      "register_tutor": 'Scott to fill in',
+      "register_tutor": <TutorRegistrationLayout />,
       "search_result": <SearchResultLayout />
     };
   }
 
   render() {
-    if (this.props.appState.tutors.length > 0) {
+      console.log(TutorRegistrationLayout);
       return (<div>
                 {this.pages[this.props.appState.page]}
               </div>
       );
-    }
+
     return null;
   }
 }
