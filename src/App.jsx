@@ -8,7 +8,11 @@ import TutorRegistrationLayout from './components/registration/tutor_registratio
 class App extends Component {
   constructor(props) {
     super(props);
-    this.pages = {
+    this.pages = this.pages.bind(this)
+  }
+
+  pages() {
+    return {
       "home": <HomeLayout tutors={this.props.appState.tutors}/>,
       "profile": <ProfileLayout />,
       "register_tutor": <TutorRegistrationLayout />,
@@ -17,13 +21,12 @@ class App extends Component {
   }
 
   render() {
-      console.log(TutorRegistrationLayout);
+    if (this.props.appState.tutors.length > 0) {
       return (<div>
-                {this.pages[this.props.appState.page]}
+                {this.pages()[this.props.appState.page]}
               </div>
       );
-
-    return null;
+    } return null;
   }
 }
 export default App;

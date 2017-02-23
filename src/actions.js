@@ -10,6 +10,16 @@ const ajaxError = (error) => {
 }
 
 const loadHome = () => {
+  axios.post("http://localhost:3000/tutors", {
+    firstName: 'Jeff',
+    lastName: 'Scott'
+  })
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
   axios.get("http://localhost:3000")
   .then(res => {
     store.dispatch(showHome(res.data));
@@ -21,20 +31,6 @@ const loadHome = () => {
   return {
     type: Types.LOAD_HOME,
     payload: undefined
-  }
-}
-
-const showRegisterTutorForm = () => {
-  return {
-    type: Types.REGISTER_TUTOR,
-    payload: { page: "register_tutor" }
-  }
-}
-
-const showHome = (tutors) => {
-  return {
-    type: Types.SHOW_HOME,
-    payload: { tutors }
   }
 }
 
@@ -56,6 +52,8 @@ const logout = (session_token) => {
 }
 
 const registerStudent = (serializedData) => {
+
+
   return {
     type: Types.REGISTER_STUDENT,
     payload: serializedData
@@ -76,6 +74,20 @@ const search = (searchData) => {
       searchTerm: searchData.searchTerm,
       filters: searchData.filters
     }
+  }
+}
+
+const showHome = (tutors) => {
+  return {
+    type: Types.SHOW_HOME,
+    payload: { tutors }
+  }
+}
+
+const showRegisterTutorForm = () => {
+  return {
+    type: Types.REGISTER_TUTOR,
+    payload: { page: "register_tutor" }
   }
 }
 
