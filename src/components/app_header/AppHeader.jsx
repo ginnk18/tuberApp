@@ -18,6 +18,7 @@ class AppHeader extends Component {
   render() {
 
     return <header className={classes.call(this, "main-header")} >
+           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
             <Logo />
             {this.decideSearchOrNot()}
             <Nav />

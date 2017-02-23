@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import HomeLayout from './components/home_layout/HomeLayout.jsx';
 import ProfileLayout from './components/profile_layout/ProfileLayout.jsx';
 import SearchResultLayout from './components/search_result_layout/SearchResultLayout.jsx';
-import TutorRegistrationLayout from './components/registration/tutor_registration.jsx';
+import TutorRegistrationLayout from './components/registration/TutorRegistration.jsx';
 
 class App extends Component {
   constructor(props) {

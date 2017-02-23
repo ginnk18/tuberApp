@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import AppHeader from '../app_header/AppHeader.jsx';
 import Card from '../card/Card.jsx';
 
-class tutorRegistrationLayout extends Component {
+class StudentRegistrationLayout extends Component {
 
   render() {
     return (
@@ -22,4 +22,4 @@ class tutorRegistrationLayout extends Component {
   }
 }
 
-export default SearchResultLayout;
+export default StudentRegistrationLayout;
