@@ -8,7 +8,7 @@ class SearchResultLayout extends Component {
     return (
       <div className="search-result-layout row">
         <AppHeader /> 
-        <section className="filters">
+        <section className="filters z-index3">
           <select name="Country" defaultValue="canada">
             <option value="">Country</option>
             <option value="canada" >Canada</option>

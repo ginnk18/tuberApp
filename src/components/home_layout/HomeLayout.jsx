@@ -4,6 +4,19 @@ import SearchBox from '../search_box/SearchBox.jsx';
 import Card from '../card/Card.jsx';
 
 class HomeLayout extends Component {
+  constructor(props) {
+    super(props);
+    console.log(this.props)
+    this.showTopFour = this.showTopFour.bind(this);
+  }
+
+  showTopFour(tutors) {
+    let topFour = [];
+    for(let i = 0; i < 4; i++) {
+      topFour.concat(<li className="show-item"><Card className="no-detail" tutor={tutors[i]} key={i} /></li>);
+    }
+    return topFour.join();
+  }
 
   render() {
     return (
@@ -29,10 +42,10 @@ class HomeLayout extends Component {
             <article className="show">
               <h2 className="show-title">Most popular subjects</h2>
               <ul className="row show-items">
-                <li className="show-item"><Card className="no-detail"/></li>
-                <li className="show-item"><Card className="no-detail"/></li>
-                <li className="show-item"><Card className="no-detail"/></li>
-                <li className="show-item"><Card className="no-detail"/></li>
+                <li className="show-item"><Card className="no-detail" tutor={this.props.tutors[0]} key={0} /></li>
+                <li className="show-item"><Card className="no-detail" tutor={this.props.tutors[1]} key={1} /></li>
+                <li className="show-item"><Card className="no-detail" tutor={this.props.tutors[2]} key={2} /></li>
+                <li className="show-item"><Card className="no-detail" tutor={this.props.tutors[3]} key={3} /></li>
               </ul>
             </article>
             <article className="show">
