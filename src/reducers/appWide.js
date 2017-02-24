@@ -1,6 +1,6 @@
-import actions from './actions';
+import actions from '../actions';
 
-export const initialState = {
+const initialState = {
   user: undefined,
   page: 'home',
   tutors: []
@@ -8,15 +8,22 @@ export const initialState = {
 
 const tuberApp = (state = initialState, action) => {
   switch (action.type) {
-    case 'AJAX_ERROR':
-      console.log(action.payload.error);
+    case 'LOAD_HOME_REJECTED':
+      console.log(action.payload);
       return state;
 
-    case 'LOAD_HOME':
+    case 'LOAD_HOME_PENDING':
       return Object.assign({}, state, {
         tutors: [],
         status: 'FETCHING..'
       });
+
+    case 'LOAD_HOME_FULFILLED':
+      return {
+        ...state,
+        tutors: action.payload.data,
+        status: 'FETCHED'
+      };
 
     case 'REGISTER_TUTOR':
       return Object.assign({}, state, {

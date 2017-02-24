@@ -1,26 +1,11 @@
-import Types from './actionTypes';
+import Types from '../actionTypes';
 import axios from 'axios';
-import store from './tutorStore';
-
-const ajaxError = (error) => {
-  return {
-    type: Types.AJAX_ERROR,
-    payload: { error }
-  }
-}
+import store from '../tuberStore';
 
 const loadHome = () => {
-  axios.get("http://localhost:3000")
-  .then(res => {
-    store.dispatch(showHome(res.data));
-  })
-  .catch(err => {
-    store.dispatch(ajaxError(err))
-  });
-
   return {
     type: Types.LOAD_HOME,
-    payload: undefined
+    payload: axios.get("http://localhost:3000/")
   }
 }
 
@@ -50,18 +35,7 @@ const registerStudent = (serializedData) => {
   }
 }
 
-const registerTutor = (e) => {
-  console.log(e.target.refs)
-  axios.post("http://localhost:3000/users", {
-    firstName: 'Jeff',
-    lastName: 'Scott'
-  })
-  .then(function (response) {
-    console.log(response);
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
+const registerTutor = () => {
   return {
     type: Types.REGISTER_TUTOR,
     payload: false

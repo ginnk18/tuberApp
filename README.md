@@ -1,7 +1,7 @@
-tuberReact
+tuberApp
 =====================
 
-This is React repo for tuber app.
+This is frontend repo for tuber app.
 
 ## Note: This project is in progress
 

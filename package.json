@@ -1,5 +1,5 @@
 {
-  "name": "chattyApp",
+  "name": "tuberApp",
   "version": "1.0.0",
   "description": "Websocket chatting app using React",
   "scripts": {
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/hafbau/chattyApp.git"
+    "url": "https://github.com/hafbau/tuberApp.git"
   },
   "keywords": [
     "react",
@@ -23,9 +23,9 @@
   "author": "Hafiz Suara",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/hafbau/chattyApp.git"
+    "url": "https://github.com/hafbau/tuberApp.git"
   },
-  "homepage": "https://github.com/hafbau/chattyApp.git",
+  "homepage": "https://github.com/hafbau/tuberApp.git",
   "engines": {
     "node": ">=6.0.0"
   },
@@ -51,6 +51,7 @@
     "react-dom": "15.2.1",
     "react-redux": "^5.0.2",
     "redux": "^3.6.0",
+    "redux-logger": "^2.8.1",
     "redux-promise-middleware": "^4.2.0"
   }
 }

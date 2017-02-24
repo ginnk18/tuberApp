@@ -7,20 +7,14 @@ require("../styles/application.scss");
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App.jsx';
-import store from './tutorStore';
-import actions from './actions';
+import store from './tuberStore';
+import { tutorActions } from './actions';
 
 
-// Log the initial state
-console.log(store.getState())
-
-// Every time the state changes, log it
 // Note that subscribe() returns a function for unregistering the listener
-let unsubscribe = store.subscribe(() => {
-  let currState = store.getState();
-  console.log(currState)
-  ReactDOM.render(<App appState={currState}/>, document.getElementById('react-root'));
+const unsubscribe = store.subscribe(() => {
+  ReactDOM.render(<App appState={store.getState()}/>, document.getElementById('react-root'));
 });
 
-// Dispatch some actions
-store.dispatch(actions.loadHome());
+// Dispatch default action
+store.dispatch(tutorActions.loadHome());

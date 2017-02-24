@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import AppHeader from '../app_header/AppHeader.jsx';
 import Card from '../card/Card.jsx';
-import store from '../../tutorStore';
+import store from '../../tuberStore';
 import actions from '../../actions';
 
 class TutorRegistrationLayout extends Component {
