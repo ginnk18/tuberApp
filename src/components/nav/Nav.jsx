@@ -21,7 +21,7 @@ class Nav extends Component {
       <nav className="navbar navbar-default main-nav">
         <div className="container-fluid">
           <div className="navbar-header">
-            <a className="navbar-brand" id="logo" href="/">Tuber</a>
+            <a className="navbar-brand" id="logo" href="/">tuber</a>
           </div>
 
           <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

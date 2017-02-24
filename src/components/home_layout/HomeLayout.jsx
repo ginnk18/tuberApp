@@ -23,7 +23,7 @@ class HomeLayout extends Component {
         <AppHeader type="home" className="z-index3"/>
         <section className="main-content">
           <section className="tagline">
-            <h1><span className="brand">Tuber&nbsp;</span>
+            <h1><span className="brand">tuber&nbsp;</span>
               <span className="tagline-text">connects students with
               tutors painlessly. No more email lags folks!</span>
             </h1>
