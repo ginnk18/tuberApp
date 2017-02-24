@@ -1,3 +1,6 @@
+// // Load up the application styles
+// require("./tutor_registration.scss");
+
 import React, { Component } from 'react';
 import AppHeader from '../app_header/AppHeader.jsx';
 import Card from '../card/Card.jsx';
@@ -16,7 +19,7 @@ class TutorRegistrationLayout extends Component {
     return (
       <div className="tutor-registration-layout row">
         <AppHeader className="z-index3"/>
-
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
       <form onSubmit={this.formSubmit} className="tutor-registration-form">
         <div className="form-group">
           <label for="exampleInputEmail1">Email address</label>
