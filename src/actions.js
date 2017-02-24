@@ -10,16 +10,6 @@ const ajaxError = (error) => {
 }
 
 const loadHome = () => {
-  axios.post("http://localhost:3000/tutors", {
-    firstName: 'Jeff',
-    lastName: 'Scott'
-  })
-  .then(function (response) {
-    console.log(response);
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
   axios.get("http://localhost:3000")
   .then(res => {
     store.dispatch(showHome(res.data));
@@ -60,10 +50,21 @@ const registerStudent = (serializedData) => {
   }
 }
 
-const registerTutor = (serializedData) => {
+const registerTutor = (e) => {
+  console.log(e.target.refs)
+  axios.post("http://localhost:3000/users", {
+    firstName: 'Jeff',
+    lastName: 'Scott'
+  })
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
   return {
     type: Types.REGISTER_TUTOR,
-    payload: serializedData
+    payload: false
   }
 }
 

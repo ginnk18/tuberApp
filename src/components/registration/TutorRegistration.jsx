@@ -1,15 +1,23 @@
 import React, { Component } from 'react';
 import AppHeader from '../app_header/AppHeader.jsx';
 import Card from '../card/Card.jsx';
+import store from '../../tutorStore';
+import actions from '../../actions';
 
 class TutorRegistrationLayout extends Component {
+
+  formSubmit(e) {
+    e.preventDefault;
+    console.log(e);
+    store.dispatch(actions.registerTutor(e));
+  }
 
   render() {
     return (
       <div className="tutor-registration-layout row">
         <AppHeader className="z-index3"/>
 
-      <form className="tutor-registration-form">
+      <form onSubmit={this.formSubmit} className="tutor-registration-form">
         <div className="form-group">
           <label for="exampleInputEmail1">Email address</label>
           <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"/>
