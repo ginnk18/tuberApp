@@ -2,16 +2,17 @@
   background-color: #ffffff;
   height: 100%;
   text-align: right;
-
-  ul {
-    align-items: center;
-    display: inline-flex;
-    height: 100%;
-    list-style: none;
-    padding: 0;
-
-    li {
-      margin-left: $spacing-unit1;
-    }
-  }
+  width: 100%;
 }
+
+#tuber-search-form {
+  margin-top: 0.3em;
+}
+
+#logo {
+  color: #F44336;
+  text-decoration: none;
+  margin-left: 0.5em;
+  font-size: 1.5em;
+}
+
