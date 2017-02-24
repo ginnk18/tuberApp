@@ -6,10 +6,30 @@ import actions from '../../actions';
 
 class TutorRegistrationLayout extends Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {value: ''};
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
   formSubmit(e) {
     e.preventDefault;
     console.log(e);
     store.dispatch(actions.registerTutor(e));
+
+    fetch('http://0.0.0.0:3000/tutors', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        firstParam: 'yourValue',
+        secondParam: 'yourOtherValue',
+      })
+    })
   }
 
   render() {
@@ -19,37 +39,37 @@ class TutorRegistrationLayout extends Component {
 
       <form onSubmit={this.formSubmit} className="tutor-registration-form">
         <div className="form-group">
-          <label for="exampleInputEmail1">Email address</label>
-          <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"/>
+          <label htmlFor="tutorRegEmail">Email address</label>
+          <input type="email" className="form-control" id="tutorRegEmail" aria-describedby="emailHelp" placeholder="Enter email"/>
         </div>
         <div className="form-group">
-          <label for="exampleInputPassword1">Password</label>
-          <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password"/>
+          <label htmlFor="tutorRegPassword">Password</label>
+          <input type="password" className="form-control" id="tutorRegPassword" placeholder="Password"/>
         </div>
         <div className="form-group">
-          <label for="Education">Summary of your education</label>
+          <label htmlFor="education">Summary of your education</label>
           <textarea className="form-control" id="exampleTextarea" rows="1"></textarea>
         </div>
         <div className="form-group">
-          <label for="exampleTextarea">Tell students about your tutoring or teaching experience</label>
+          <label htmlFor="experience">Tell students about your tutoring or teaching experience</label>
           <textarea className="form-control" id="exampleTextarea" rows="3"></textarea>
         </div>
         <div className="form-group">
-          <label for="example-tel-input" className="col-form-label">Telephone</label>
+          <label htmlFor="phone" className="col-form-label">Telephone</label>
           <div className="">
-            <input className="form-control" type="tel" value="1-(555)-555-5555" id="example-tel-input"/>
+            <input className="form-control" type="tel" id="example-tel-input"/>
           </div>
         </div>
         <div className="form-group">
-          <label for="Hours">Hours of availability</label>
+          <label htmlFor="Hours">Hours of availability</label>
           <textarea className="form-control" id="hours" rows="1"></textarea>
         </div>
         <div className="form-group">
-          <label for="Hours">Rate</label>
+          <label htmlFor="Hours">Rate</label>
           <textarea className="form-control" id="rate" rows="1"></textarea>
         </div>
         <div className="form-group">
-          <label for="exampleSelect2">Subjects taught (hold down ctrl or cmd to select multiple)</label>
+          <label htmlFor="exampleSelect2">Subjects taught (hold down ctrl or cmd to select multiple)</label>
           <select multiple className="form-control" id="exampleSelect2">
             <option>Visual Arts</option>
             <option>Geography</option>
@@ -73,15 +93,15 @@ class TutorRegistrationLayout extends Component {
           </select>
         </div>
         <div className="form-group">
-          <label for="exampleTextarea">Example textarea</label>
+          <label htmlFor="exampleTextarea">Example textarea</label>
           <textarea className="form-control" id="exampleTextarea" rows="3"></textarea>
         </div>
         <div className="form-group">
-          <label for="exampleInputFile">Profile Picture</label>
+          <label htmlFor="exampleInputFile">Profile Picture</label>
           <input type="file" className="form-control-file" id="exampleInputFile" aria-describedby="fileHelp"/>
           <small id="fileHelp" className="form-text text-muted">Upload an image for students to view</small>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" className="btn btn-primary">Submit</button>
       </form>
       </div>
     )

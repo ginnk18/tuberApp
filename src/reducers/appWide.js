@@ -36,6 +36,11 @@ const tuberApp = (state = initialState, action) => {
         status: 'FETCHED'
       });
 
+    case 'REGISTER_STUDENT':
+      return Object.assign({}, state, {
+        page: 'register_student'
+      });
+
     default:
       return state;
   }
