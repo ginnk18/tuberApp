@@ -25,7 +25,7 @@ class App extends Component {
   render() {
     if (this.props.appState.tutors.length > 0) {
       return (<div>
-                {this.pages()["profile"]}
+                {this.pages()[this.props.appState.page]}
               </div>
       );
     } return null;
