@@ -19,7 +19,7 @@ class HomeLayout extends Component {
 
   render() {
     return (
-      <div className="home-layout row">
+      <div className="home-layout row" id="Navfix">
         <AppHeader type="home" className="z-index3"/>
         <section className="main-content">
           <section className="tagline">
