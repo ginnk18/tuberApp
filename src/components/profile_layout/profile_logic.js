@@ -42,8 +42,9 @@ const transformToProfileState = (obj) => {
     phone: formatPhoneNum(obj.phone),
     rate: currencify(obj["rate_cents"]),
     reviews: undefined,
-    status: stringifyISAvailable(obj["is_available"]),
+    status: parseISAvailable(obj["is_available"]),
     subjects: obj.subjects_taught,
+    summary: obj.summary
     user_id: obj.user_id
   }
 }
@@ -74,10 +75,10 @@ const gpsify = (location) => {
   return { long, lat };
 };
 
-const stringifyISAvailable = (int) => [
-                                "available and online",
-                                "available but offline",
-                                "unavailable"
+const parseISAvailable = (int) => [
+                                { text: "available and online", color: "#11dd11" },
+                                { text: "available but offline", color: "#dddd11" },
+                                { text: "unavailable", color: "#dddddd" }
                               ][Number(int) - 1];
 
 export { transformToProfileState };

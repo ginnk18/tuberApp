@@ -13,17 +13,17 @@ class App extends Component {
 
   pages() {
     return {
-      "home": <HomeLayout tutors={this.props.appState.tutors}/>,
-      "profile": <ProfileLayout />,
+      "home": <HomeLayout tutors={this.props.appState.tutors} />,
+      "profile": <ProfileLayout profile={this.props.appState.profile} />,
       "register_tutor": <TutorRegistrationLayout />,
       "search_result": <SearchResultLayout />
     };
   }
 
   render() {
-    if (this.props.appState.tutors.length > 0) {
+    if (this.props.appState) {
       return (<div>
-                {this.pages()["profile"]}
+                {this.pages()[this.props.appState.page]}
               </div>
       );
     } return null;

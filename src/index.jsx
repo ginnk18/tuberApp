@@ -8,7 +8,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App.jsx';
 import store from './tuberStore';
-import { tutorActions } from './actions';
+import actions, { profileActions } from './actions';
 
 
 // Note that subscribe() returns a function for unregistering the listener
@@ -17,4 +17,4 @@ const unsubscribe = store.subscribe(() => {
 });
 
 // Dispatch default action
-store.dispatch(tutorActions.loadHome());
+store.dispatch(profileActions.loadProfile());

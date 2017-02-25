@@ -8,15 +8,21 @@ export default class About extends Component {
         <h2>About Me</h2>
         <dl className="profile-summary">
           <dt>Contact</dt>
-          <dd>Email: <span>mightytutor@tubers.ca</span></dd>
-          <dd>Phone: <span>403-5862-1452</span></dd>
-          <dd>Address: <span>119 14th Avenue, Calgary NW, AB, Canada</span></dd>
+          <dd>Email: <span>{this.props.profile.email}</span></dd>
+          <dd>Phone: <span>{this.props.profile.phone}</span></dd>
+          <dd>Address: <span>{this.props.profile.address} {this.props.profile.city}, {this.props.profile.country}</span></dd>
 
           <dt>Qualification</dt>
-          <dd>Some dodgy Phd in philosophy from UofC..in ur phase:P</dd>
+          <dd>{this.props.profile.education}</dd>
 
           <dt>Experience</dt>
-          <dd>40 years experience lazing around and playing PES</dd>
+          <dd>{this.props.profile.experience}</dd>
+
+          <dt>Subjects Expertise</dt>
+          <dd>{this.props.profile.subjects.map(s => <span key={s}>{s} · </span>)}</dd>
+
+          <dt>Rate</dt>
+          <dd>{this.props.profile.rate}</dd>
         </dl>
       </section>
     )

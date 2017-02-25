@@ -37,7 +37,7 @@ test("transforming tutor data from the api to profile state object", () => {
     education: "BA Sociology",
     rate: "$30/hr",
     reviews: undefined,
-    status: "available but offline",
+    status: { text: "available but offline", color: "#dddd11" },
     subjects: [3, 7],
     user_id: null
   });
