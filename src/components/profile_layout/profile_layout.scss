@@ -125,26 +125,17 @@ body {
         }
       }
 
-      .tabs-buttons-wrapper {
-        display: flex;
-
-        a {
-          background-color: $line-color;
-          margin-right: $spacing-unit1;
-          padding: $spacing-unit1 $spacing-unit3;
-
-          &:not(.active):hover {
-            background-color: lighten($brand-color, 20%);
-          }
-        }
-
-        .active {
-          background-color: $brand-color;
-          color: $light;
-          font-weight: bold;
-        }
+      .react-tabs [role=tab][aria-selected=false]:hover {
+        background-color: lighten($brand-color, 20%);
+        border-radius: 5px 5px 0 0;
       }
 
+      .react-tabs [role=tab][aria-selected=true] {
+        background: $brand-color;
+        border: none;
+        color: #f4f4f4;
+        // font-weight: bold;
+      }
     }
     
     .row {

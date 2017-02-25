@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import AppHeader from "../app_header/AppHeader.jsx";
 import Intro from "./Intro.jsx"
 import About from "./About.jsx"
@@ -29,14 +30,27 @@ class ProfileLayout extends Component {
               <About profile={this.props.profile}/>
             </aside>
             <div className="profile-details two-third tab-area" >
-              <div className="tabs-buttons-wrapper">
+              {/*<div className="tabs-buttons-wrapper">
                 <a className="active" href="#0" data-id="reviews">Reviews</a>
                 <a href="#0" data-id="availability">Availability</a>
                 <a href="#0" data-id="messages">Messages</a>
-              </div>
-              <Reviews reviews={this.props.profile.reviews}/>
-              <Availability availability={this.props.profile.availability}/>
-              <Messages conversations={this.props.profile.conversations}/>
+              </div>*/}
+              <Tabs>
+                <TabList>
+                  <Tab>Reviews</Tab>
+                  <Tab>Availability</Tab>
+                  <Tab>Messages</Tab>
+                </TabList>
+                <TabPanel>
+                  <Reviews reviews={this.props.profile.reviews}/>
+                </TabPanel>
+                <TabPanel>
+                  <Availability availability={this.props.profile.availability}/>
+                </TabPanel>
+                <TabPanel>
+                  <Messages conversations={this.props.profile.conversations}/>
+                </TabPanel>
+              </Tabs>
             </div>
           </section>
         </section>
