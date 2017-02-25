@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "Websocket chatting app using React",
   "scripts": {
+    "build": "webpack --progress --colors",
     "lint": "eslint src",
     "start": "node server.js",
-    "build": "webpack --progress --colors"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -37,10 +38,12 @@
     "babel-preset-react": "^6.11.1",
     "babel-preset-stage-0": "6.5.0",
     "css-loader": "0.23.1",
+    "enzyme": "^2.7.1",
     "eslint": "2.7.0",
     "eslint-plugin-react": "5.2.2",
     "jest": "^19.0.2",
     "node-sass": "3.8.0",
+    "react-addons-test-utils": "^15.4.2",
     "react-test-renderer": "^15.4.2",
     "sass-loader": "4.0.0",
     "sockjs-client": "^1.1.1",

@@ -1,8 +1,6 @@
-import React, { Component } from 'react';
-import '../../../styles/variables.scss';
-import AppHeader from '../app_header/AppHeader.jsx';
-import SearchBox from '../search_box/SearchBox.jsx';
-import Card from '../card/Card.jsx';
+import React, { Component } from "react";
+import AppHeader from "../app_header/AppHeader.jsx";
+import Intro from "./Intro.jsx"
 
 class ProfileLayout extends Component {
 
@@ -17,19 +15,7 @@ class ProfileLayout extends Component {
               <img src="http://placehold.it/1580" />
             </aside>
             <div className="intro profile-details two-third">
-              <h1>Hey, I'm Jovanna</h1>
-              <h3>
-                <i style={{color:"#11dd11"}} className="fa fa-circle" aria-hidden="true"></i>
-                &nbsp; available and online · City, Country · Tubering since February 2017
-              </h3>
-              <a href="#0" className="report"><i className="fa fa-flag" aria-hidden></i>
-                Report tutor
-              </a>
-              <blockquote className="quirky">
-                Sed blandit sollicitudin dapibus. Sed justo ligula, congue a accumsan ut,
-                dignissim at metus. Nullam consectetur tempus velit quis tincidunt.
-                Vestibulum fringilla arcu eu felis
-              </blockquote>
+              <Intro />
             </div>
           </section>
 
