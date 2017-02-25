@@ -24,11 +24,11 @@ class HomeLayout extends Component {
         <section className="main-content">
           <section className="tagline">
             <h1><span className="brand">Tuber&nbsp;</span>
-              <span className="tagline-text">connects students with 
+              <span className="tagline-text">connects students with
               tutors painlessly. No more email lags folks!</span>
             </h1>
           </section>
-          
+
           <section className="main-search-wrapper z-index2">
             <h4 className="label">What subject do you need help with?</h4>
             <div className="search-group">

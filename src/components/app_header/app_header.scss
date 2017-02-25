@@ -1,16 +1,8 @@
 .main-header {
-  align-items: center;
   background-color: #ffffff;
-  display: flex;
-  height: 64px;
   position: fixed;
-  text-align: right;
   top: 0;
   width: 100%;
-
-  a {
-    padding: $spacing-unit1;
-  }
 
   .spacer {
     background-color: #ffffff;

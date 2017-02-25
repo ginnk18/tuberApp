@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import AppHeader from "../app_header/AppHeader.jsx";
 import Intro from "./Intro.jsx"
+import About from "./About.jsx"
+import Reviews from "./Reviews.jsx"
+import Availability from "./Availability.jsx"
+import Messages from "./Messages.jsx"
 
 class ProfileLayout extends Component {
 
@@ -21,21 +25,7 @@ class ProfileLayout extends Component {
 
           <section className="row">
             <aside className="profile-summaries one-third">
-              <section className="about">
-                <h2>About Me</h2>
-                <dl className="profile-summary">
-                  <dt>Contact</dt>
-                  <dd>Email: <span>mightytutor@tubers.ca</span></dd>
-                  <dd>Phone: <span>403-5862-1452</span></dd>
-                  <dd>Address: <span>119 14th Avenue, Calgary NW, AB, Canada</span></dd>
-
-                  <dt>Qualification</dt>
-                  <dd>Some dodgy Phd in philosophy from UofC..in ur phase:P</dd>
-
-                  <dt>Experience</dt>
-                  <dd>40 years experience lazing around and playing PES</dd>
-                </dl>
-              </section>
+              <About />
             </aside>
             <div className="profile-details two-third tab-area" >
               <div className="tabs-buttons-wrapper">
@@ -43,81 +33,9 @@ class ProfileLayout extends Component {
                 <a href="#0" data-id="availability">Availability</a>
                 <a href="#0" data-id="messages">Messages</a>
               </div>
-              <section id="reviews">
-                <h2 className="review-summary">4/5 in 39 reviews</h2>
-                <article className="review row" >
-                  <figure className="reviewer" >
-                    <img className="avatar" src="https://placehold.it/100" />
-                    <figcaption className="reviewer-name" >James</figcaption>
-                  </figure>
-                  <blockquote className="review-text" >
-                    <p>Lorem Ipsum is ting industry. Lorem type and scrambled it to make a
-                    type specimen book.</p>
-                    <footer>Calgary, Canada · February 2017</footer>
-                  </blockquote>
-                </article>
-                <article className="review row" >
-                  <figure className="reviewer" >
-                    <img className="avatar" src="https://placehold.it/100" />
-                    <figcaption className="reviewer-name" >James</figcaption>
-                  </figure>
-                  <blockquote className="review-text" >
-                    <p>Lorem Ipsum is ting industry. Lorem type and scrambled it to make a
-                    type specimen book.</p>
-                    <footer>Calgary, Canada · February 2017</footer>
-                  </blockquote>
-                </article>
-                <article className="review row" >
-                  <figure className="reviewer" >
-                    <img className="avatar" src="https://placehold.it/100" />
-                    <figcaption className="reviewer-name" >James</figcaption>
-                  </figure>
-                  <blockquote className="review-text" >
-                    <p>Lorem Ipsum is ting industry. Lorem type and scrambled it to make a
-                    type specimen book.</p>
-                    <footer>Calgary, Canada · February 2017</footer>
-                  </blockquote>
-                </article>
-                <article className="review row" >
-                  <figure className="reviewer" >
-                    <img className="avatar" src="https://placehold.it/100" />
-                    <figcaption className="reviewer-name" >James</figcaption>
-                  </figure>
-                  <blockquote className="review-text" >
-                    <p>Lorem Ipsum is ting industry. Lorem type and scrambled it to make a
-                    type specimen book.</p>
-                    <footer>Calgary, Canada · February 2017</footer>
-                  </blockquote>
-                </article>
-                <article className="review row" >
-                  <figure className="reviewer" >
-                    <img className="avatar" src="https://placehold.it/100" />
-                    <figcaption className="reviewer-name" >James</figcaption>
-                  </figure>
-                  <blockquote className="review-text" >
-                    <p>Lorem Ipsum is ting industry. Lorem type and scrambled it to make a
-                    type specimen book.</p>
-                    <footer>Calgary, Canada · February 2017</footer>
-                  </blockquote>
-                </article>
-                <article className="review row" >
-                  <figure className="reviewer" >
-                    <img className="avatar" src="https://placehold.it/100" />
-                    <figcaption className="reviewer-name" >James</figcaption>
-                  </figure>
-                  <blockquote className="review-text" >
-                    <p>Lorem Ipsum is ting industry. Lorem type and scrambled it to make a
-                    type specimen book.</p>
-                    <footer>Calgary, Canada · February 2017</footer>
-                  </blockquote>
-                </article>
-              </section>
-              <section id="availability">
-
-              </section>
-              <section id="messages">
-
-              </section>
+              <Reviews />
+              <Availability />
+              <Messages />
             </div>
           </section>
         </section>
