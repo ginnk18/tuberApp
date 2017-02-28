@@ -37,7 +37,8 @@ const errorHandler = function(dispatch, error, type) {
 class StudentRegistrationLayout extends Component {
   constructor(props) {
     super(props);
-    this.state = {student_or_tutor: "student"};
+    this.state = {student_or_tutor: "student",
+                  email: ' '};
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.studFormSubmit = this.studFormSubmit.bind(this);

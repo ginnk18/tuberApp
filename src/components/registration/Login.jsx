@@ -12,7 +12,8 @@ import types from '../../actionTypes';
 class LoginLayout extends Component {
   constructor(props) {
     super(props);
-    this.state = {student_or_tutor: "student"};
+    this.state = {student_or_tutor: "student",
+                  email: ''};
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.loginFormSubmit = this.loginFormSubmit.bind(this);
