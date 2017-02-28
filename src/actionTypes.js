@@ -7,7 +7,10 @@ const actionTypes = {
   REGISTER_TUTOR: 'REGISTER_TUTOR',
   REVIEW: 'REVIEW',
   SEARCH: 'SEARCH',
-  SHOW_HOME: 'SHOW_HOME'
+  SHOW_HOME: 'SHOW_HOME',
+  AUTH_USER: 'AUTH_USER',
+  UNAUTH_USER: 'UNAUTH_USER',
+  AUTH_ERROR: 'AUTH_ERROR',
 };
 
 export default actionTypes;

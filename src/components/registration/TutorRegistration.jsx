@@ -1,8 +1,38 @@
 import React, { Component } from 'react';
 import AppHeader from '../app_header/AppHeader.jsx';
 import Card from '../card/Card.jsx';
-import store from '../../tuberStore';
 import actions from '../../actions';
+import cookie from 'react-cookie';
+import axios from 'axios';
+import { registerUser } from '../../actions/userActions.js';
+import { createStore } from 'redux';
+import store from '../../tuberStore';
+import types from '../../actionTypes';
+
+const errorHandler = function(dispatch, error, type) {
+  let errorMessage = '';
+
+  if(error.data.error) {
+    errorMessage = error.data.error;
+  } else if(error.data) {
+    errorMessage = error.data;
+  } else {
+    errorMessage = error;
+  }
+
+  if(error.status === 401) {
+    dispatch({
+      type: type,
+      payload: 'You are not authorized to do this. Please login and try again.'
+    });
+    logoutUser();
+  } else {
+    dispatch({
+      type: type,
+      payload: errorMessage
+    });
+  }
+}
 
 class TutorRegistrationLayout extends Component {
 
@@ -42,18 +72,20 @@ class TutorRegistrationLayout extends Component {
     }
   }
 
-  tutFormSubmit(e) {
-    e.preventDefault;
-    // store.dispatch(actions.registerTutor(e));
-
-    fetch('http://0.0.0.0:3000/users', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(this.state)
-    })
+  tutFormSubmit (e) {
+    e.preventDefault();
+    axios({method: 'post',
+           url: 'http://localhost:3000/users',
+           data: this.state})
+      .then(response => {
+        console.log('response', response);
+        cookie.save('token', response.data.user.token, { path: '/' });
+        store.dispatch({ type: types.AUTH_USER });
+        window.location.href = home;
+      })
+      .catch((error) => {
+        // errorHandler(store.dispatch, error.response, types.AUTH_ERROR)
+      });
   }
 
   render() {

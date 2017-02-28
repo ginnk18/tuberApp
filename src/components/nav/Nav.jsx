@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import store from '../../tuberStore';
 import { tutorActions } from '../../actions';
 import { studentActions } from '../../actions';
+import { userActions } from '../../actions';
 import Logo from '../logo/Logo.jsx';
 import SearchBox from '../search_box/SearchBox.jsx';
 
@@ -19,6 +20,7 @@ class Nav extends Component {
   render() {
     const renderTutorReg = ()=> store.dispatch(tutorActions.showRegisterTutorForm())
     const renderStudentReg = () => store.dispatch(studentActions.showStudRegForm())
+    const renderLogin = () => store.dispatch(userActions.showLoginForm())
     return (
       <nav className="navbar navbar-default main-nav">
         <div className="container-fluid">
@@ -35,8 +37,8 @@ class Nav extends Component {
             </form>
             <ul className="nav navbar-nav navbar-right">
                 <li><a onClick={ renderTutorReg } href= "#0">Become a tutor</a></li>
-                <li><a onClick={ renderStudentReg } href="#0">Register as a Student</a></li>
-                <li><a href="#0">Log in</a></li>
+                <li><a onClick={ renderStudentReg } href="#0">Sign up</a></li>
+                <li><a onClick={ renderLogin } href="#0">Log in</a></li>
             </ul>
           </div>
         </div>

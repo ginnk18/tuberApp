@@ -9,38 +9,13 @@ import { createStore } from 'redux';
 import store from '../../tuberStore';
 import types from '../../actionTypes';
 
-const errorHandler = function(dispatch, error, type) {
-  let errorMessage = '';
-
-  if(error.data.error) {
-    errorMessage = error.data.error;
-  } else if(error.data) {
-    errorMessage = error.data;
-  } else {
-    errorMessage = error;
-  }
-
-  if(error.status === 401) {
-    dispatch({
-      type: type,
-      payload: 'You are not authorized to do this. Please login and try again.'
-    });
-    logoutUser();
-  } else {
-    dispatch({
-      type: type,
-      payload: errorMessage
-    });
-  }
-}
-
-class StudentRegistrationLayout extends Component {
+class LoginLayout extends Component {
   constructor(props) {
     super(props);
     this.state = {student_or_tutor: "student"};
 
     this.handleInputChange = this.handleInputChange.bind(this);
-    this.studFormSubmit = this.studFormSubmit.bind(this);
+    this.loginFormSubmit = this.loginFormSubmit.bind(this);
   }
 
   handleInputChange(event) {
@@ -52,10 +27,10 @@ class StudentRegistrationLayout extends Component {
     });
   }
 
-  studFormSubmit (e) {
+  loginFormSubmit (e) {
     e.preventDefault();
     axios({method: 'post',
-           url: 'http://localhost:3000/users',
+           url: 'http://localhost:3000/sessions',
            data: this.state})
       .then(response => {
         console.log('response', response);
@@ -68,20 +43,10 @@ class StudentRegistrationLayout extends Component {
       });
     }
 
-  renderAlert() {
-    if(this.props.errorMessage) {
-      return (
-        <div>
-          <span><strong>Error!</strong> {this.props.errorMessage}</span>
-        </div>
-      );
-    }
-  }
-
   render() {
-    return (<div className="student-registration-layout row">
+    return (<div className="login-layout row">
               <AppHeader className="z-index3"/>
-              <form onSubmit={this.studFormSubmit} className="student-registration-form">
+              <form onSubmit={this.loginFormSubmit} className="login-form">
                 <div className="form-group">
                   <label htmlFor="email">Email address</label>
                   <input name="email"  value={this.state.email} onChange={this.handleInputChange} type="email" className="form-control" aria-describedby="emailHelp" placeholder="Enter email"/>
@@ -97,4 +62,4 @@ class StudentRegistrationLayout extends Component {
   }
 }
 
-export default StudentRegistrationLayout;
+export default LoginLayout;
