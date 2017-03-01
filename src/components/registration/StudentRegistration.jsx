@@ -38,7 +38,8 @@ class StudentRegistrationLayout extends Component {
   constructor(props) {
     super(props);
     this.state = {student_or_tutor: "student",
-                  email: ' '};
+                  email: ' ',
+                  password: ''};
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.studFormSubmit = this.studFormSubmit.bind(this);
@@ -61,6 +62,7 @@ class StudentRegistrationLayout extends Component {
       .then(response => {
         console.log('response', response);
         cookie.save('token', response.data.user.token, { path: '/' });
+        cookie.save('email', response.data.user.email, { path: '/' });
         store.dispatch({ type: types.AUTH_USER });
         window.location.href = home;
       })
@@ -70,10 +72,10 @@ class StudentRegistrationLayout extends Component {
     }
 
   renderAlert() {
-    if(this.props.errorMessage) {
+    if(this.state.error) {
       return (
         <div>
-          <span><strong>Error!</strong> {this.props.errorMessage}</span>
+          <span><strong>Error!</strong> {this.state.error}</span>
         </div>
       );
     }
@@ -82,14 +84,26 @@ class StudentRegistrationLayout extends Component {
   render() {
     return (<div className="student-registration-layout row">
               <AppHeader className="z-index3"/>
+              { this.renderAlert() }
+              <p> {cookie.load('email')} </p>
               <form onSubmit={this.studFormSubmit} className="student-registration-form">
                 <div className="form-group">
                   <label htmlFor="email">Email address</label>
-                  <input name="email"  value={this.state.email} onChange={this.handleInputChange} type="email" className="form-control" aria-describedby="emailHelp" placeholder="Enter email"/>
+                  <input name="email"
+                         value={this.state.email}
+                         onChange={this.handleInputChange}
+                         type="email"
+                         className="form-control"
+                         aria-describedby="emailHelp"
+                         placeholder="Enter email"/>
                 </div>
                 <div className="form-group">
                   <label htmlFor="password">Password</label>
-                  <input name="password"  value={this.state.password} onChange={this.handleInputChange} type="password" className="form-control" placeholder="Password"/>
+                  <input name="password"
+                         value={this.state.password}
+                         onChange={this.handleInputChange}
+                         type="password" className="form-control"
+                         placeholder="Password"/>
                 </div>
                 <button type="submit" className="btn btn-primary">Submit</button>
               </form>

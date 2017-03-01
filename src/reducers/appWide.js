@@ -46,7 +46,7 @@ const tuberApp = (state = initialState, action) => {
       });
 
     case 'AUTH_USER':
-      return { ...state, error: '', message: '', authenticated: true };
+      return { ...state, error: '', message: '', authenticated: true, page: 'home' };
 
     case 'UNAUTH_USER':
       return { ...state, authenticated: false };

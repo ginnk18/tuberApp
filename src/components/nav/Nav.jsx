@@ -5,8 +5,29 @@ import { studentActions } from '../../actions';
 import { userActions } from '../../actions';
 import Logo from '../logo/Logo.jsx';
 import SearchBox from '../search_box/SearchBox.jsx';
+import cookie from 'react-cookie';
+
+
+const renderTutorReg = ()=> store.dispatch(tutorActions.showRegisterTutorForm())
+const renderStudentReg = () => store.dispatch(studentActions.showStudRegForm())
+const renderLogin = () => store.dispatch(userActions.showLoginForm())
 
 class Nav extends Component {
+
+  registrationButtons() {
+    if (cookie.load('email')){
+      return <ul className="nav navbar-nav navbar-right">
+               <li><a onClick={ renderStudentReg } href="#0">{cookie.load('email')}}</a></li>
+               <li><a onClick={ logout } href= "#0">Logout</a></li>
+             </ul>
+    } else {
+      return <ul className="nav navbar-nav navbar-right">
+               <li><a onClick={ this.renderTutorReg } href= "#0">Become a tutor</a></li>
+               <li><a onClick={ this.renderStudentReg } href="#0">Sign up</a></li>
+               <li><a onClick={ this.renderLogin } href="#0">Log in</a></li>
+             </ul>
+    }
+  }
 
   render() {
     const renderTutorReg = ()=> store.dispatch(tutorActions.showRegisterTutorForm())
@@ -26,11 +47,18 @@ class Nav extends Component {
                 <button type="submit" className="btn btn-default">Submit</button>
               </span>
             </form>
-            <ul className="nav navbar-nav navbar-right">
-                <li><a onClick={ renderTutorReg } href= "#0">Become a tutor</a></li>
-                <li><a onClick={ renderStudentReg } href="#0">Sign up</a></li>
-                <li><a onClick={ renderLogin } href="#0">Log in</a></li>
-            </ul>
+                if (cookie.load('email')){
+                  <ul className="nav navbar-nav navbar-right">
+                     <li><a onClick={ renderStudentReg } href="#0">{cookie.load('email')}}</a></li>
+                     <li><a onClick={ logout } href= "#0">Logout</a></li>
+                   </ul>
+                } else {
+                  <ul className="nav navbar-nav navbar-right">
+                     <li><a onClick={ this.renderTutorReg } href= "#0">Become a tutor</a></li>
+                     <li><a onClick={ this.renderStudentReg } href="#0">Sign up</a></li>
+                     <li><a onClick={ this.renderLogin } href="#0">Log in</a></li>
+                   </ul>
+                }
           </div>
         </div>
       </nav>

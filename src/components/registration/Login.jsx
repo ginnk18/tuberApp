@@ -13,7 +13,8 @@ class LoginLayout extends Component {
   constructor(props) {
     super(props);
     this.state = {student_or_tutor: "student",
-                  email: ''};
+                  email: '',
+                  password: ''};
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.loginFormSubmit = this.loginFormSubmit.bind(this);
@@ -35,7 +36,8 @@ class LoginLayout extends Component {
            data: this.state})
       .then(response => {
         console.log('response', response);
-        cookie.save('token', response.data.user.token, { path: '/' });
+        cookie.save('token', response.data.token, { path: '/' });
+        cookie.save('user', response.data.email, { path: '/' });
         store.dispatch({ type: types.AUTH_USER });
         window.location.href = home;
       })
@@ -47,6 +49,7 @@ class LoginLayout extends Component {
   render() {
     return (<div className="login-layout row">
               <AppHeader className="z-index3"/>
+              <p> {cookie.load('user')} </p>
               <form onSubmit={this.loginFormSubmit} className="login-form">
                 <div className="form-group">
                   <label htmlFor="email">Email address</label>
