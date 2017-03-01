@@ -14,7 +14,7 @@ class Card extends Component {
     if (this.props.tutor) {
         const [clr , available] = this.availabilityColor.bind(this)();
         return <figure className={classes.call(this, "card")}>
-                <img src={`http://localhost:3000/${this.props.tutor.avatar.replace("assets/", "")}`} />
+                <img src={this.props.tutor.avatar} />
                 <figcaption>
                   <strong className="name">{this.props.tutor.name}</strong><br/>
                   <span className="tutor-attr">Major:&nbsp;&nbsp;</span><span>{this.props.tutor.subjects_taught[0]}</span><br/>
