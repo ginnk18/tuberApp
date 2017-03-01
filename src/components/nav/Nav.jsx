@@ -6,19 +6,19 @@ import { userActions } from '../../actions';
 import Logo from '../logo/Logo.jsx';
 import SearchBox from '../search_box/SearchBox.jsx';
 import cookie from 'react-cookie';
-
-
-const renderTutorReg = ()=> store.dispatch(tutorActions.showRegisterTutorForm())
-const renderStudentReg = () => store.dispatch(studentActions.showStudRegForm())
-const renderLogin = () => store.dispatch(userActions.showLoginForm())
+import axios from 'axios';
+import types from '../../actionTypes';
 
 class Nav extends Component {
+  renderTutorReg () { store.dispatch(tutorActions.showRegisterTutorForm()) }
+  renderStudentReg () { store.dispatch(studentActions.showStudRegForm()) }
+  renderLogin () { store.dispatch(userActions.showLoginForm()) }
 
   registrationButtons() {
     if (cookie.load('email')){
       return <ul className="nav navbar-nav navbar-right">
-               <li><a onClick={ renderStudentReg } href="#0">{cookie.load('email')}}</a></li>
-               <li><a onClick={ logout } href= "#0">Logout</a></li>
+               <li><a href="#0">{cookie.load('email')}</a></li>
+               <li><a onClick={ this.logout } href= "#0">Logout</a></li>
              </ul>
     } else {
       return <ul className="nav navbar-nav navbar-right">
@@ -29,10 +29,24 @@ class Nav extends Component {
     }
   }
 
+  logout(e) {
+    e.preventDefault();
+    axios({method: 'delete',
+           url: `http://localhost:3000/sessions/:${cookie.load('token')}`
+         })
+      .then(response => {
+        console.log('response', response);
+        cookie.remove('token')
+        cookie.remove('email')
+        store.dispatch({ type: types.AUTH_USER });
+        window.location.href = home;
+      })
+      .catch((error) => {
+        // errorHandler(store.dispatch, error.response, types.AUTH_ERROR)
+      });
+    };
+
   render() {
-    const renderTutorReg = ()=> store.dispatch(tutorActions.showRegisterTutorForm())
-    const renderStudentReg = () => store.dispatch(studentActions.showStudRegForm())
-    const renderLogin = () => store.dispatch(userActions.showLoginForm())
     return (
       <nav className="navbar navbar-default main-nav">
         <div className="container-fluid">
@@ -47,18 +61,7 @@ class Nav extends Component {
                 <button type="submit" className="btn btn-default">Submit</button>
               </span>
             </form>
-                if (cookie.load('email')){
-                  <ul className="nav navbar-nav navbar-right">
-                     <li><a onClick={ renderStudentReg } href="#0">{cookie.load('email')}}</a></li>
-                     <li><a onClick={ logout } href= "#0">Logout</a></li>
-                   </ul>
-                } else {
-                  <ul className="nav navbar-nav navbar-right">
-                     <li><a onClick={ this.renderTutorReg } href= "#0">Become a tutor</a></li>
-                     <li><a onClick={ this.renderStudentReg } href="#0">Sign up</a></li>
-                     <li><a onClick={ this.renderLogin } href="#0">Log in</a></li>
-                   </ul>
-                }
+            { this.registrationButtons() }
           </div>
         </div>
       </nav>

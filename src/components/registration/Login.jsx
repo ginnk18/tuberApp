@@ -37,9 +37,8 @@ class LoginLayout extends Component {
       .then(response => {
         console.log('response', response);
         cookie.save('token', response.data.token, { path: '/' });
-        cookie.save('user', response.data.email, { path: '/' });
+        cookie.save('email', response.data.email, { path: '/' });
         store.dispatch({ type: types.AUTH_USER });
-        window.location.href = home;
       })
       .catch((error) => {
         // errorHandler(store.dispatch, error.response, types.AUTH_ERROR)

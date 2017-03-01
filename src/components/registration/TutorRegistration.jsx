@@ -39,7 +39,8 @@ class TutorRegistrationLayout extends Component {
   constructor(props) {
     super(props);
     this.state = {student_or_tutor: "tutor",
-                  subjects: []};
+                  subjects: [],
+                  password: ''};
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.tutFormSubmit = this.tutFormSubmit.bind(this);
@@ -79,8 +80,8 @@ class TutorRegistrationLayout extends Component {
            data: this.state})
       .then(response => {
         console.log('response', response);
-        cookie.save('token', response.data.token, { path: '/' });
-        cookie.save('email', response.data.email, { path: '/' });
+        cookie.save('token', response.data.user.token, { path: '/' });
+        cookie.save('email', response.data.user.email, { path: '/' });
         store.dispatch({ type: types.AUTH_USER });
         window.location.href = home;
       })
