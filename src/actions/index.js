@@ -1,8 +1,14 @@
 import tutorActions from './tutorActions';
+import studentActions from './studentActions';
+import userActions from './userActions'
 
 
 const actions = {
-  tutorActions
+  tutorActions,
+  studentActions,
+  userActions
 };
 export { tutorActions };
+export { studentActions };
+export { userActions }
 export default actions;
