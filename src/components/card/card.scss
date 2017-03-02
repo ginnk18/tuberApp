@@ -1,8 +1,8 @@
 .card {
   width: 660px; // TO DO: Review a smaller design
   img {
-    width: 50%;
-    height: 489px;
+    width: 300px;
+    height: 185px;
     overflow: hidden;
   }
 
@@ -92,16 +92,13 @@
 
 .no-detail {
   width: 330px; // TODO: responsiveness
-  
+
   figcaption {
     width: 100%;
   }
-  
+
   figcaption:first-of-type {
     display: none;
   }
 
-  img {
-    width: 100%;
-  }
 }
