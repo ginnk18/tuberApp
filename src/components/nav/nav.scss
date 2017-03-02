@@ -3,26 +3,35 @@
   height: 100%;
   text-align: right;
 
+  // .container-fluid {
+  //   height: 100%;
+
+  //   .navbar-collapse {
+  //     height: 100%;
+  //   }
+  // }
 
   ul {
     align-items: center;
     display: inline-flex;
     height: 100%;
     list-style: none;
-    padding: 0;
+    margin: 0;
+    padding: $spacing-unit3 0;
 
-  #tuber-search-form {
-    margin-top: 0.3em;
-  }
+  // #tuber-search-form {
+  //   margin-top: 0.3em;
+  // }
 
-  #logo {
-    color: #F44336;
-    text-decoration: none;
-    margin-left: 0.5em;
-    font-size: 2.2em;
-    font-weight: bold;
-  }
+  // #logo {
+  //   color: #F44336;
+  //   text-decoration: none;
+  //   margin-left: 0.5em;
+  //   font-size: 2.2em;
+  //   font-weight: bold;
+  // }
     li {
+      font-size: 1.7rem;
       margin-left: $spacing-unit1;
     }
   }
