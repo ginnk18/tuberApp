@@ -132,6 +132,7 @@ body {
             text-align: right;
 
             .avatar {
+              background-color: lighten($brand-color, 40%);
               border-radius: 35px;
               height: 70px;
               width: 70px;
