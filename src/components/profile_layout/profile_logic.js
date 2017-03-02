@@ -41,10 +41,10 @@ const transformToProfileState = (obj) => {
     joined_date: formatDate(obj["created_at"]),
     phone: formatPhoneNum(obj.phone),
     rate: currencify(obj["rate_cents"]),
-    reviews: undefined,
+    reviews: obj.reviews,
     status: parseISAvailable(obj["is_available"]),
     subjects: obj.subjects_taught,
-    summary: obj.summary
+    summary: obj.user.description
     user_id: obj.user_id
   }
 }
@@ -52,7 +52,7 @@ const transformToProfileState = (obj) => {
 const M = ["January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December"]
 
-const addressify = (location) => undefined;
+const addressify = (location) => location.other;
 
 const currencify = (cents) => `$${Math.round(cents / 100)}/hr`;
 

@@ -5,7 +5,7 @@ const initialState = {
 
 export default function profileReducer(state = initialState, action) {
   switch (action.type) {
-    case "LOAD_PROFILE"/*_FULFILLED*/:
+    case "LOAD_PROFILE_FULFILLED":
       return {
         ...state,
         page: "profile",

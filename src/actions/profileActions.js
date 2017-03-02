@@ -1,6 +1,17 @@
 import Types from './actionTypes';
 import axios from 'axios';
 
+const sampleReview = {
+  id: 1,
+  avatar: "http://localhost:3000/images/default_profile_images_default_profile_6_400x400.png",
+  city: "Oyo",
+  country: "Nigeria",
+  created_at: "January, 2017",
+  rating: 1,
+  reviewer: "Jonny",
+  text: "lkflk kjhsrif skfhnksdf  ahsfnkjahnfc hnkjsdf ajkehiuqweh  hflauhf",
+}
+
 const sampleTutor = {
   id: 1,
   address: undefined,
@@ -17,7 +28,7 @@ const sampleTutor = {
   phone: "+1-403-770-9052",
   education: "BA Sociology",
   rate: "$30/hr",
-  reviews: [],
+  reviews: [sampleReview],
   status: { text: "available but offline", color: "#dddd11" },
   subjects: [3, 7],
   summary: "Sed blandit sollicitudin dapibus. Sed justo ligula, congue a accumsan ut,\
@@ -29,8 +40,12 @@ const sampleTutor = {
 export function loadProfile(user_id) {
   return {
     type: Types.LOAD_PROFILE,
-    payload: {data: sampleTutor}//axios.get(`http://localhost:3000/users/${user_id}`)
+    payload: axios.get(`http://localhost:3000/tutors/${user_id}`)
   }
+}
+
+export function postReview(reviewData) {
+  
 }
 
 export default {

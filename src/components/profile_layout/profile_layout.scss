@@ -83,12 +83,45 @@ body {
 
       #reviews {
         padding: $spacing-unit2;
+        
+        .new-review {
+          padding: $spacing-unit1 0 $spacing-unit2;
+          border-bottom: 1px solid $line-color;
 
-        .review-summary {
-          font-weight: normal;
-          padding-top: $spacing-unit1;
+          div {
+            padding-bottom: $spacing-unit1
+          }
+
+          label {
+            display: none;
+          }
+
+          #new-review-text {
+            padding: $spacing-unit1;
+            width: 100%;
+          }
+
+          button {
+            background-color: $brand-color;
+            border: none;
+            color: $light;
+            padding: $spacing-unit-half 0;
+            text-align: center;
+            width: 100%;
+
+            &:visited {
+              background-color: $line-color;
+              color: $less_dark
+            }
+          }
         }
-
+        .review-summary {
+          border-bottom: 1px solid $line-color;
+          font-style: italic;
+          font-weight: normal;
+          padding: $spacing-unit-half 0 $spacing-unit2;
+        }
+  
         .review {
           display: flex;
           padding: $spacing-unit3;

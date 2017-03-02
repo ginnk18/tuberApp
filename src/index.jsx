@@ -17,4 +17,4 @@ const unsubscribe = store.subscribe(() => {
 });
 
 // Dispatch default action
-store.dispatch(profileActions.loadProfile());
+store.dispatch(profileActions.loadProfile(1));

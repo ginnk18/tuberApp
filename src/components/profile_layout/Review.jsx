@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Rating from "react-rating";
 
 export default class Review extends Component {
 
@@ -6,13 +7,18 @@ export default class Review extends Component {
     return (
       <article className="review row" >
         <figure className="reviewer" >
-          <img className="avatar" src="https://placehold.it/100" />
-          <figcaption className="reviewer-name" >James</figcaption>
+          <img className="avatar" src={this.props.review.avatar} />
+          <figcaption className="reviewer-name" >{this.props.review.reviewer}</figcaption>
         </figure>
         <blockquote className="review-text" >
-          <p>Lorem Ipsum is ting industry. Lorem type and scrambled it to make a
-          type specimen book.</p>
-          <footer>Calgary, Canada · February 2017</footer>
+          <Rating
+           readonly={true}
+           initialRate={this.props.review.rating}
+           empty='fa fa-star-o'
+           full='fa fa-star'
+          />
+          <p>{this.props.review.text}</p>
+          <footer>{this.props.review.city}, {this.props.review.country} · {this.props.review.created_at}</footer>
         </blockquote>
       </article>
     )
