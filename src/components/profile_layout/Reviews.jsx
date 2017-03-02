@@ -44,7 +44,7 @@ export default class Reviews extends Component {
             Rate your lesson &nbsp;<Rating onChange={(r) => this.handleRating(r)} name="new-rating"
             empty='fa fa-star-o' full='fa fa-star' />
           </div>
-          <label htmlfor="new-review">Your Review here</label>
+          <label htmlFor="new-review">Your Review here</label>
           <textarea id="new-review-text" placeholder="Your Review here" />
           <button type="submit" className="">Submit</button>
       </form>

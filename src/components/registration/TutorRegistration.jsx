@@ -10,7 +10,7 @@ import axios from 'axios';
 import { registerUser } from '../../actions/userActions.js';
 import { createStore } from 'redux';
 import store from '../../tuberStore';
-import types from '../../actionTypes';
+import types from '../../actions/actionTypes';
 
 const errorHandler = function(dispatch, error, type) {
   let errorMessage = '';
@@ -96,7 +96,7 @@ class TutorRegistrationLayout extends Component {
     return (
       <div className="tutor-registration-layout row">
         <AppHeader className="z-index3"/>
-        
+
       <form onSubmit={this.tutFormSubmit} className="tutor-registration-form">
         <div className="form-group">
           <label htmlFor="tutorRegEmail">Email address</label>

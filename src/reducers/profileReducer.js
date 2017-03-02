@@ -1,3 +1,5 @@
+import { transformToProfileState } from '../components/profile_layout/profile_logic';
+
 const initialState = {
   page: "profile",
   profile: {}
@@ -9,7 +11,7 @@ export default function profileReducer(state = initialState, action) {
       return {
         ...state,
         page: "profile",
-        profile: action.payload.data,
+        profile: transformToProfileState(action.payload.data),
         status: "FETCHED"
       };
 

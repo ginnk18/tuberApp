@@ -17,7 +17,7 @@ export default class Review extends Component {
            empty='fa fa-star-o'
            full='fa fa-star'
           />
-          <p>{this.props.review.text}</p>
+          <p>{this.props.review.content}</p>
           <footer>{this.props.review.city}, {this.props.review.country} · {this.props.review.created_at}</footer>
         </blockquote>
       </article>

@@ -3,7 +3,7 @@
 // Load up the application styles
 require("../styles/application.scss");
 
-import types from './actionTypes';
+import types from './actions/actionTypes';
 
 // Render the top-level React component
 import React from 'react';
