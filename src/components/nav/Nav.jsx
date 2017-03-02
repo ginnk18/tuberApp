@@ -57,7 +57,6 @@ class Nav extends Component {
         cookie.remove('token');
         cookie.remove('email');
         store.dispatch({ type: types.AUTH_USER });
-        window.location.href = home;
       })
       .catch((error) => {
         // errorHandler(store.dispatch, error.response, types.AUTH_ERROR)
