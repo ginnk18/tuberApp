@@ -124,7 +124,7 @@ body {
   
         .review {
           display: flex;
-          padding: $spacing-unit3;
+          padding: $spacing-unit3 $spacing-unit3 0;
           
           .reviewer {
             flex: none;

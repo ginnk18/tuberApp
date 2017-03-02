@@ -42,7 +42,7 @@ export const transformToProfileState = (obj) => {
     joined_date: formatDate(obj["created_at"]),
     phone: obj.phone,
     rate: currencify(obj["rate_cents"]),
-    reviews: obj.reviews,
+    reviews: transformReviews(obj.reviews),
     status: parseISAvailable(obj["status_code"]),
     subjects: obj.subjects.map(s => s.name),
     summary: obj.user.description,
@@ -79,4 +79,18 @@ const parseISAvailable = (int) => [
                                 { text: "available but offline", color: "#dddd11" },
                                 { text: "unavailable", color: "#dddddd" }
                               ][Number(int) - 1];
+
+const transformReviews = (reviews) => reviews.map(r => {
+  r.student.current_location = JSON.parse(r.student.current_location);
+  return {
+    id: r.id,
+    avatar: r.student.avatar,
+    city: r.student.current_location.city,
+    content: r.content,
+    country: r.student.current_location.country,
+    created_at: formatDate(r.created_at),
+    rating: r.rating,
+    reviewer: deriveFirstName(r.student.name)
+  }
+});
 

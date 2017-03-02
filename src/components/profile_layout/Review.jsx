@@ -4,21 +4,22 @@ import Rating from "react-rating";
 export default class Review extends Component {
 
   render() {
+    const review = this.props.review;
     return (
       <article className="review row" >
         <figure className="reviewer" >
-          <img className="avatar" src={this.props.review.avatar} />
-          <figcaption className="reviewer-name" >{this.props.review.reviewer}</figcaption>
+          <img className="avatar" src={review.avatar} />
+          <figcaption className="reviewer-name" >{review.reviewer}</figcaption>
         </figure>
         <blockquote className="review-text" >
           <Rating
            readonly={true}
-           initialRate={this.props.review.rating}
+           initialRate={review.rating}
            empty='fa fa-star-o'
            full='fa fa-star'
           />
-          <p>{this.props.review.content}</p>
-          <footer>{this.props.review.city}, {this.props.review.country} · {this.props.review.created_at}</footer>
+          <p>{review.content}</p>
+          <footer>{review.city}, {review.country} · {review.created_at}</footer>
         </blockquote>
       </article>
     )
