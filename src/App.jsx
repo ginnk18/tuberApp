@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-// import Content from './components/content/Content.jsx';
 import HomeLayout from './components/home_layout/HomeLayout.jsx';
 import ProfileLayout from './components/profile_layout/ProfileLayout.jsx';
 import SearchResultLayout from './components/search_result_layout/SearchResultLayout.jsx';
 import TutorRegistrationLayout from './components/registration/TutorRegistration.jsx';
 import StudentRegistrationLayout from './components/registration/StudentRegistration.jsx';
 import LoginLayout from './components/registration/Login.jsx';
+
 
 class App extends Component {
   constructor(props) {
@@ -15,8 +15,8 @@ class App extends Component {
 
   pages() {
     return {
-      "home": <HomeLayout tutors={this.props.appState.tutors}/>,
-      "profile": <ProfileLayout />,
+      "home": <HomeLayout tutors={this.props.appState.tutors} />,
+      "profile": <ProfileLayout profile={this.props.appState.profile} />,
       "register_tutor": <TutorRegistrationLayout />,
       "register_student": <StudentRegistrationLayout />,
       "search_result": <SearchResultLayout />,
@@ -25,7 +25,7 @@ class App extends Component {
   }
 
   render() {
-    if (this.props.appState.tutors.length > 0) {
+    if (this.props.appState) {
       return (<div>
                 {this.pages()[this.props.appState.page]}
               </div>

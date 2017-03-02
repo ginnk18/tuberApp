@@ -1,3 +1,6 @@
+// // Load up the application styles
+// require("./tutor_registration.scss");
+
 import React, { Component } from 'react';
 import AppHeader from '../app_header/AppHeader.jsx';
 import Card from '../card/Card.jsx';
@@ -94,7 +97,7 @@ class TutorRegistrationLayout extends Component {
     return (
       <div className="tutor-registration-layout row">
         <AppHeader className="z-index3"/>
-
+        
       <form onSubmit={this.tutFormSubmit} className="tutor-registration-form">
         <div className="form-group">
           <label htmlFor="tutorRegEmail">Email address</label>
