@@ -24,12 +24,13 @@
 
 // }
 
-const transformToProfileState = (obj) => {
+export const transformToProfileState = (obj) => {
+  obj.current_location = JSON.parse(obj.current_location);
   return {
     id: obj.id,
     address: addressify(obj["current_location"]),
-    availability: obj["hours"],
-    avatar: formateUrl(obj.avatar),
+    availability: JSON.parse(obj.hours),
+    avatar: obj.avatar,
     city: obj.current_location.city,
     conversations: undefined,
     coordinate: gpsify(obj["current_location"]),
@@ -39,12 +40,12 @@ const transformToProfileState = (obj) => {
     experience: obj.experience,
     first_name: deriveFirstName(obj["name"]),
     joined_date: formatDate(obj["created_at"]),
-    phone: formatPhoneNum(obj.phone),
+    phone: obj.phone,
     rate: currencify(obj["rate_cents"]),
     reviews: obj.reviews,
-    status: parseISAvailable(obj["is_available"]),
-    subjects: obj.subjects_taught,
-    summary: obj.user.description
+    status: parseISAvailable(obj["status_code"]),
+    subjects: obj.subjects.map(s => s.name),
+    summary: obj.user.description,
     user_id: obj.user_id
   }
 }
@@ -68,8 +69,6 @@ const formatPhoneNum = (num) => {
   return `+${numArr[0]}-${numArr.slice(1,4).join("")}-${numArr.slice(4,7).join("")}-${numArr.slice(7).join("")}`
 }
 
-const formateUrl = (url) => url.replace("assets", "");
-
 const gpsify = (location) => {
   const { long, lat } = { ...location };
   return { long, lat };
@@ -81,4 +80,3 @@ const parseISAvailable = (int) => [
                                 { text: "unavailable", color: "#dddddd" }
                               ][Number(int) - 1];
 
-export { transformToProfileState };

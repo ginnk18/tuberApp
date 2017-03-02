@@ -7,7 +7,7 @@ import Logo from '../logo/Logo.jsx';
 import SearchBox from '../search_box/SearchBox.jsx';
 import cookie from 'react-cookie';
 import axios from 'axios';
-import types from '../../actionTypes';
+import types from '../../actions/actionTypes';
 
 class Nav extends Component {
   renderTutorReg () { store.dispatch(tutorActions.showRegisterTutorForm()) }

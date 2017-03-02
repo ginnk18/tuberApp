@@ -1,5 +1,6 @@
-import tutorActions from './tutorActions';
+import profileActions from './profileActions';
 import studentActions from './studentActions';
+import tutorActions from './tutorActions';
 import userActions from './userActions'
 
 const actions = {

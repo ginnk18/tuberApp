@@ -7,7 +7,7 @@ import axios from 'axios';
 import { registerUser } from '../../actions/userActions.js';
 import { createStore } from 'redux';
 import store from '../../tuberStore';
-import types from '../../actionTypes';
+import types from '../../actions/actionTypes';
 
 const errorHandler = function(dispatch, error, type) {
   let errorMessage = '';
