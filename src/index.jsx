@@ -11,8 +11,7 @@ import ReactDOM from 'react-dom';
 import App from './App.jsx';
 import store from './tuberStore';
 import cookie from 'react-cookie';
-import { tutorActions } from './actions';
-import actions from './actions';
+import actions, { profileActions, tutorActions } from './actions';
 
 
 // Note that subscribe() returns a function for unregistering the listener
@@ -26,4 +25,4 @@ if (token) {
 }
 
 // Dispatch default action
-store.dispatch(tutorActions.loadHome());
+store.dispatch(profileActions.loadProfile(1));
