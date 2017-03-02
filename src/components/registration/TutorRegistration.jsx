@@ -1,3 +1,6 @@
+// // Load up the application styles
+// require("./tutor_registration.scss");
+
 import React, { Component } from 'react';
 import AppHeader from '../app_header/AppHeader.jsx';
 import Card from '../card/Card.jsx';
@@ -7,7 +10,7 @@ import axios from 'axios';
 import { registerUser } from '../../actions/userActions.js';
 import { createStore } from 'redux';
 import store from '../../tuberStore';
-import types from '../../actionTypes';
+import types from '../../actions/actionTypes';
 
 const errorHandler = function(dispatch, error, type) {
   let errorMessage = '';

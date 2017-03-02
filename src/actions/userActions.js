@@ -1,7 +1,6 @@
 import axios from 'axios';
-import { browserHistory } from 'react-router';
 import cookie from 'react-cookie';
-import types from '../actionTypes';
+import types from './actionTypes';
 
 const API_URL = 'http://localhost:3000/';
 

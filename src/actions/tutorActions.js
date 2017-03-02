@@ -1,6 +1,6 @@
-import Types from '../actionTypes';
+import Types from './actionTypes';
 import axios from 'axios';
-import store from '../tuberStore';
+// import store from '../tuberStore';
 
 const loadHome = () => {
   return {

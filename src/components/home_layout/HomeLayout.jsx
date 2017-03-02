@@ -18,6 +18,7 @@ class HomeLayout extends Component {
   }
 
   render() {
+    if (this.props.tutors.length > 0) {
     return (
       <div className="home-layout row">
         <AppHeader type="home" className="z-index3"/>
@@ -95,7 +96,7 @@ class HomeLayout extends Component {
           </section>
         </section>
       </div>
-    )
+    )} return null;
   }
 }
 
