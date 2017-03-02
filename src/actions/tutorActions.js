@@ -45,10 +45,7 @@ const registerTutor = () => {
 const search = (searchData) => {
   return {
     type: Types.SEARCH,
-    payload: {
-      searchTerm: searchData.searchTerm,
-      filters: searchData.filters
-    }
+    payload: { page: "search_results" }
   }
 }
 

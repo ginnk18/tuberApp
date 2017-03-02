@@ -73,7 +73,7 @@ class Nav extends Component {
          })
       .then(response => {
         console.log('response', response);
-        store.dispatch({ type: types.SEARCH });
+        store.dispatch({ type: types.SEARCH, payload: response.data });
       })
       .catch((error) => {
         // errorHandler(store.dispatch, error.response, types.AUTH_ERROR)
