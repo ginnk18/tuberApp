@@ -62,6 +62,9 @@ const tuberApp = (state = initialState, action) => {
         page: 'login'
       });
 
+    case 'SEARCH':
+      return { ...state, page: 'search', tutors: action.payload.tutors };
+
     default:
       return state;
   }
