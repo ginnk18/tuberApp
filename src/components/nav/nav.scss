@@ -4,17 +4,8 @@
   text-align: right;
   a:hover {
     transition-duration: 0.6s;
-    color: #F44336;
+    color: $brand-color;
   }
-
-
-  // .container-fluid {
-  //   height: 100%;
-
-  //   .navbar-collapse {
-  //     height: 100%;
-  //   }
-  // }
 
   ul {
     align-items: center;
@@ -22,7 +13,7 @@
     height: 100%;
     list-style: none;
     margin: 0;
-    padding: $spacing-unit3 0;
+    padding: $spacing-unit3 0 $spacing-unit2;
 
   // #tuber-search-form {
   //   margin-top: 0.3em;

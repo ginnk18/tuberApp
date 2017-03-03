@@ -12,11 +12,11 @@ class ProfileLayout extends Component {
   render() {
     if (this.props.profile) {
     return (
-      <div className="profile-layout row">
+      <div className="profile-layout rowx">
         <AppHeader className="z-index3"/>
 
         <section className="main-content">
-          <section className="row">
+          <section className="row rowx">
             <aside className="profile-summaries one-third">
               <img src={this.props.profile.avatar} />
             </aside>
@@ -25,7 +25,7 @@ class ProfileLayout extends Component {
             </div>
           </section>
 
-          <section className="row">
+          <section className="row rowx">
             <aside className="profile-summaries one-third">
               <About profile={this.props.profile}/>
             </aside>
