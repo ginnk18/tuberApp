@@ -81,27 +81,22 @@ class Nav extends Component {
 
   render() {
     return (
-<div>
+    <div>
       <nav className="main-nav">
         <div className="container-fluid">
-          <div className="navbar-header">
-            <a className="navbar-brand" id="logo" href="/">tuber</a>
-          </div>
-
-          <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <form onSubmit={this.subjectSearch}
-                  className="navbar-form navbar-left"
-                  id="tuber-search-form">
-              <span className="form-group" id= "tuber-search-form" >
-                <input name="search_term"
-                       type="text"
-                       className="form-control"
-                       placeholder="Enter a subject"
-                       value={this.state.search_term}
-                       onChange={this.handleInputChange}/>
-                <button type="submit" className="btn btn-default">Submit</button>
-              </span>
-            </form>
+            {/*<form onSubmit={this.subjectSearch}
+                              className="navbar-form navbar-left"
+                              id="tuber-search-form">
+                          <span className="form-group" id= "tuber-search-form" >
+                            <input name="search_term"
+                                   type="text"
+                                   className="form-control"
+                                   placeholder="Enter a subject"
+                                   value={this.state.search_term}
+                                   onChange={this.handleInputChange}/>
+                            <button type="submit" className="btn btn-default">Submit</button>
+                          </span>
+                        </form>*/}
           <div className="collapse navbar-collapse">
             { this.registrationButtons() }
           </div>
@@ -110,15 +105,15 @@ class Nav extends Component {
       <nav className="mobile-nav">
         <div className="line"></div>
         <div className="line" id="menuline">
-        <ul className="menu">
-          <li><a onClick={ this.renderTutorReg } href= "#0">Become a tutor</a></li>
-          <li><a onClick={ this.renderStudentReg } href="#0">Sign up</a></li>
-          <li><a onClick={ this.renderLogin } href="#0">Log in</a></li>
-        </ul>
+          <ul className="menu">
+            <li><a onClick={ this.renderTutorReg } href= "#0">Become a tutor</a></li>
+            <li><a onClick={ this.renderStudentReg } href="#0">Sign up</a></li>
+            <li><a onClick={ this.renderLogin } href="#0">Log in</a></li>
+          </ul>
         </div>
         <div className="line"></div>
       </nav>
-      </div>
+    </div>
     )
   }
 }

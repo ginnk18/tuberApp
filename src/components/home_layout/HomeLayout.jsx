@@ -91,7 +91,8 @@ class HomeLayout extends Component {
                 </section>
             </div>
         )
-    }
+    } return null;
+  }
 }
 
 export default HomeLayout;
