@@ -30,11 +30,6 @@ class ProfileLayout extends Component {
               <About profile={this.props.profile}/>
             </aside>
             <div className="profile-details two-third tab-area" >
-              {/*<div className="tabs-buttons-wrapper">
-                <a className="active" href="#0" data-id="reviews">Reviews</a>
-                <a href="#0" data-id="availability">Availability</a>
-                <a href="#0" data-id="messages">Messages</a>
-              </div>*/}
               <Tabs>
                 <TabList>
                   <Tab>Reviews</Tab>

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Review from "./Review.jsx";
 import Rating from "react-rating";
+import cookie from 'react-cookie';
 
 export default class Reviews extends Component {
 
@@ -11,13 +12,15 @@ export default class Reviews extends Component {
 
   handleReview(e) {
     e.preventDefault();
+    const user = cookie.load("user")
+    const location = JSON.parse(user.current_location);
     const data = {
-      city: "Ibadan",
-      country: "Nigeria",
+      city: location.city,
+      country: location.country,
       text: document.getElementById("new-review-text").value,
       rating: this.state.rating,
-      reviewer: "bolly", //loggedin user. first_name
-      reviewer_id: 23
+      reviewer: user.name, //loggedin user. first_name
+      reviewer_id: user.id
     }
     console.log(data);
   }

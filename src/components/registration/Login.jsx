@@ -33,9 +33,9 @@ class LoginLayout extends Component {
            url: 'http://localhost:3000/sessions',
            data: this.state})
       .then(response => {
-        console.log('response', response);
-        cookie.save('token', response.data.token, { path: '/' });
-        cookie.save('email', response.data.email, { path: '/' });
+        console.log('response', response.data);
+        cookie.save('token', response.data.user.token, { path: '/' });
+        cookie.save('user', response.data, { path: '/' });
         store.dispatch({ type: types.AUTH_USER });
       })
       .catch((error) => {
@@ -46,7 +46,7 @@ class LoginLayout extends Component {
   render() {
     return (<div className="login-layout row">
               <AppHeader className="z-index3"/>
-              <p> {cookie.load('user')} </p>
+              <p> {cookie.load('user').email} </p>
               <form onSubmit={this.loginFormSubmit} className="login-form">
                 <div className="form-group">
                   <label htmlFor="email">Email address</label>
