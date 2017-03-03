@@ -1,12 +1,16 @@
-import React, { Component } from 'react';
-import '../../../styles/variables.scss';
-import AppHeader from '../app_header/AppHeader.jsx';
-import SearchBox from '../search_box/SearchBox.jsx';
-import Card from '../card/Card.jsx';
+import React, { Component } from "react";
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import AppHeader from "../app_header/AppHeader.jsx";
+import Intro from "./Intro.jsx"
+import About from "./About.jsx"
+import Reviews from "./Reviews.jsx"
+import Availability from "./Availability.jsx"
+import Messages from "./Messages.jsx"
 
 class ProfileLayout extends Component {
 
   render() {
+    if (this.props.profile) {
     return (
       <div className="profile-layout row">
         <AppHeader className="z-index3"/>
@@ -14,129 +18,44 @@ class ProfileLayout extends Component {
         <section className="main-content">
           <section className="row">
             <aside className="profile-summaries one-third">
-              <img src="http://placehold.it/1580" />
+              <img src={this.props.profile.avatar} />
             </aside>
             <div className="intro profile-details two-third">
-              <h1>Hey, I'm Jovanna</h1>
-              <h3>
-                <i style={{color:"#11dd11"}} className="fa fa-circle" aria-hidden="true"></i>
-                &nbsp; available and online · City, Country · Tubering since February 2017
-              </h3>
-              <a href="#0" className="report"><i className="fa fa-flag" aria-hidden></i>
-                Report tutor
-              </a>
-              <blockquote className="quirky">
-                Sed blandit sollicitudin dapibus. Sed justo ligula, congue a accumsan ut,
-                dignissim at metus. Nullam consectetur tempus velit quis tincidunt.
-                Vestibulum fringilla arcu eu felis
-              </blockquote>
+              <Intro profile={this.props.profile}/>
             </div>
           </section>
 
           <section className="row">
             <aside className="profile-summaries one-third">
-              <section className="about">
-                <h2>About Me</h2>
-                <dl className="profile-summary">
-                  <dt>Contact</dt>
-                  <dd>Email: <span>mightytutor@tubers.ca</span></dd>
-                  <dd>Phone: <span>403-5862-1452</span></dd>
-                  <dd>Address: <span>119 14th Avenue, Calgary NW, AB, Canada</span></dd>
-
-                  <dt>Qualification</dt>
-                  <dd>Some dodgy Phd in philosophy from UofC..in ur phase:P</dd>
-
-                  <dt>Experience</dt>
-                  <dd>40 years experience lazing around and playing PES</dd>
-                </dl>
-              </section>
+              <About profile={this.props.profile}/>
             </aside>
             <div className="profile-details two-third tab-area" >
-              <div className="tabs-buttons-wrapper">
+              {/*<div className="tabs-buttons-wrapper">
                 <a className="active" href="#0" data-id="reviews">Reviews</a>
                 <a href="#0" data-id="availability">Availability</a>
                 <a href="#0" data-id="messages">Messages</a>
-              </div>
-              <section id="reviews">
-                <h2 className="review-summary">4/5 in 39 reviews</h2>
-                <article className="review row" >
-                  <figure className="reviewer" >
-                    <img className="avatar" src="https://placehold.it/100" />
-                    <figcaption className="reviewer-name" >James</figcaption>
-                  </figure>
-                  <blockquote className="review-text" >
-                    <p>Lorem Ipsum is ting industry. Lorem type and scrambled it to make a
-                    type specimen book.</p>
-                    <footer>Calgary, Canada · February 2017</footer>
-                  </blockquote>
-                </article>
-                <article className="review row" >
-                  <figure className="reviewer" >
-                    <img className="avatar" src="https://placehold.it/100" />
-                    <figcaption className="reviewer-name" >James</figcaption>
-                  </figure>
-                  <blockquote className="review-text" >
-                    <p>Lorem Ipsum is ting industry. Lorem type and scrambled it to make a
-                    type specimen book.</p>
-                    <footer>Calgary, Canada · February 2017</footer>
-                  </blockquote>
-                </article>
-                <article className="review row" >
-                  <figure className="reviewer" >
-                    <img className="avatar" src="https://placehold.it/100" />
-                    <figcaption className="reviewer-name" >James</figcaption>
-                  </figure>
-                  <blockquote className="review-text" >
-                    <p>Lorem Ipsum is ting industry. Lorem type and scrambled it to make a
-                    type specimen book.</p>
-                    <footer>Calgary, Canada · February 2017</footer>
-                  </blockquote>
-                </article>
-                <article className="review row" >
-                  <figure className="reviewer" >
-                    <img className="avatar" src="https://placehold.it/100" />
-                    <figcaption className="reviewer-name" >James</figcaption>
-                  </figure>
-                  <blockquote className="review-text" >
-                    <p>Lorem Ipsum is ting industry. Lorem type and scrambled it to make a
-                    type specimen book.</p>
-                    <footer>Calgary, Canada · February 2017</footer>
-                  </blockquote>
-                </article>
-                <article className="review row" >
-                  <figure className="reviewer" >
-                    <img className="avatar" src="https://placehold.it/100" />
-                    <figcaption className="reviewer-name" >James</figcaption>
-                  </figure>
-                  <blockquote className="review-text" >
-                    <p>Lorem Ipsum is ting industry. Lorem type and scrambled it to make a
-                    type specimen book.</p>
-                    <footer>Calgary, Canada · February 2017</footer>
-                  </blockquote>
-                </article>
-                <article className="review row" >
-                  <figure className="reviewer" >
-                    <img className="avatar" src="https://placehold.it/100" />
-                    <figcaption className="reviewer-name" >James</figcaption>
-                  </figure>
-                  <blockquote className="review-text" >
-                    <p>Lorem Ipsum is ting industry. Lorem type and scrambled it to make a
-                    type specimen book.</p>
-                    <footer>Calgary, Canada · February 2017</footer>
-                  </blockquote>
-                </article>
-              </section>
-              <section id="availability">
-
-              </section>
-              <section id="messages">
-
-              </section>
+              </div>*/}
+              <Tabs>
+                <TabList>
+                  <Tab>Reviews</Tab>
+                  <Tab>Availability</Tab>
+                  <Tab>Messages</Tab>
+                </TabList>
+                <TabPanel>
+                  <Reviews reviews={this.props.profile.reviews}/>
+                </TabPanel>
+                <TabPanel>
+                  <Availability availability={this.props.profile.availability}/>
+                </TabPanel>
+                <TabPanel>
+                  <Messages conversations={this.props.profile.conversations}/>
+                </TabPanel>
+              </Tabs>
             </div>
           </section>
         </section>
       </div>
-    )
+    )} return null
   }
 }
 
