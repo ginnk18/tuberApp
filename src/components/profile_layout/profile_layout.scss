@@ -124,7 +124,7 @@ body {
   
         .review {
           display: flex;
-          padding: $spacing-unit3;
+          padding: $spacing-unit3 $spacing-unit3 0;
           
           .reviewer {
             flex: none;
@@ -132,6 +132,7 @@ body {
             text-align: right;
 
             .avatar {
+              background-color: lighten($brand-color, 40%);
               border-radius: 35px;
               height: 70px;
               width: 70px;

@@ -1,8 +1,8 @@
 .card {
   width: 660px; // TO DO: Review a smaller design
   img {
-    width: 50%;
-    height: 489px;
+    width: 300px;
+    height: 185px;
     overflow: hidden;
   }
 
@@ -12,7 +12,7 @@
     &:first-of-type {
       border: 1px solid $line-color;
       float: right;
-      height: 489px;
+      height: auto;
       padding: $spacing-unit1;
 
       .name {
@@ -92,16 +92,20 @@
 
 .no-detail {
   width: 330px; // TODO: responsiveness
-  
+
   figcaption {
     width: 100%;
   }
-  
   figcaption:first-of-type {
     display: none;
   }
-
-  img {
-    width: 100%;
-  }
 }
+//.poptutforsubj {
+//  figcaption {
+//    height: 0 auto;
+//    width: 100%;
+//  }
+//  figcaption:first-of-type span {
+//    display: none;
+//  }
+//}
