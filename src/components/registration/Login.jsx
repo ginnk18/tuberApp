@@ -24,9 +24,7 @@ class LoginLayout extends Component {
     const target = event.target;
     const value = target.value;
     const name = target.name;
-    this.setState({
-      [name]: value
-    });
+    this.setState({ [name]: value });
   }
 
   loginFormSubmit (e) {
@@ -52,7 +50,12 @@ class LoginLayout extends Component {
               <form onSubmit={this.loginFormSubmit} className="login-form">
                 <div className="form-group">
                   <label htmlFor="email">Email address</label>
-                  <input name="email"  value={this.state.email} onChange={this.handleInputChange} type="email" className="form-control" aria-describedby="emailHelp" placeholder="Enter email"/>
+                  <input name="email"
+                         value={this.state.email}
+                         onChange={this.handleInputChange}
+                         type="email" className="form-control"
+                         aria-describedby="emailHelp"
+                         placeholder="Enter email"/>
                 </div>
                 <div className="form-group">
                   <label htmlFor="password">Password</label>
