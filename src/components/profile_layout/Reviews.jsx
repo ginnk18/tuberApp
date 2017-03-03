@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import Review from "./Review.jsx";
 import Rating from "react-rating";
 import cookie from 'react-cookie';
+import store from "../../tuberStore";
+import { profileActions } from "../../actions";
 
 export default class Reviews extends Component {
 
@@ -19,10 +21,11 @@ export default class Reviews extends Component {
       country: location.country,
       text: document.getElementById("new-review-text").value,
       rating: this.state.rating,
-      reviewer: user.name, //loggedin user. first_name
-      reviewer_id: user.id
+      reviewer: user.name.split(" ")[0], //loggedin user. first_name
+      reviewer_id: user.id,
+      tutor_id: this.props.profileID
     }
-    console.log(data);
+    store.dispatch(profileActions.postReview(data));
   }
 
   handleRating(r) {
@@ -40,7 +43,7 @@ export default class Reviews extends Component {
            empty='fa fa-star-o'
            full='fa fa-star'
           />
-          &nbsp;in 39 reviews
+          &nbsp;in {this.props.reviews.length} reviews
         </h2>
         <form onSubmit={(e) => this.handleReview(e)} className="new-review">
           <div>
