@@ -9,7 +9,7 @@ class SearchBox extends Component {
     if (e.key === "Enter") {
       const search_term = e.target.value;
       e.preventDefault();
-      axios(`http://localhost:3000/tutors/search/:${search_term}`)
+      axios(`http://localhost:3000/tutors/search/${search_term}`)
       .then(response => {
         console.log('response', response);
         store.dispatch({ type: types.SEARCH, payload: response.data });
