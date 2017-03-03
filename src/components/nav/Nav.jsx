@@ -63,15 +63,15 @@ class Nav extends Component {
         </div>
       </nav>
       <nav className="mobile-nav">
-      <div className="line"></div>
-      <div className="line" id="menuline">
-      <ul className="menu">
-      <li><a onClick={ handleClick } href= "#0">Become a tutor!</a></li>
-      <li><p>Register</p></li>
-      <li><p>Log in</p></li>
-      </ul>
-      </div>
-      <div className="line"></div>
+        <div className="line"></div>
+        <div className="line" id="menuline">
+        <ul className="menu">
+          <li><a onClick={ this.renderTutorReg } href= "#0">Become a tutor</a></li>
+          <li><a onClick={ this.renderStudentReg } href="#0">Sign up</a></li>
+          <li><a onClick={ this.renderLogin } href="#0">Log in</a></li>
+        </ul>
+        </div>
+        <div className="line"></div>
       </nav>
       </div>
     )
