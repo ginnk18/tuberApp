@@ -10,6 +10,17 @@ import axios from 'axios';
 import types from '../../actions/actionTypes';
 
 class Nav extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {student_or_tutor: "student",
+                  email: ' ',
+                  password: '',
+                  search_term: ''};
+
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.subjectSearch = this.subjectSearch.bind(this);
+  }
+
   renderTutorReg () { store.dispatch(tutorActions.showRegisterTutorForm()) }
   renderStudentReg () { store.dispatch(studentActions.showStudRegForm()) }
   renderLogin () { store.dispatch(userActions.showLoginForm()) }
@@ -29,6 +40,13 @@ class Nav extends Component {
     }
   }
 
+  handleInputChange(event) {
+    const target = event.target;
+    const value = target.value;
+    const name = target.name;
+    this.setState({ [name]: value });
+  }
+
   logout(e) {
     e.preventDefault();
     axios({method: 'delete',
@@ -36,28 +54,55 @@ class Nav extends Component {
          })
       .then(response => {
         console.log('response', response);
-        cookie.remove('token')
-        cookie.remove('email')
+        cookie.remove('token');
+        cookie.remove('email');
         store.dispatch({ type: types.AUTH_USER });
-        window.location.href = home;
       })
       .catch((error) => {
         // errorHandler(store.dispatch, error.response, types.AUTH_ERROR)
       });
-    };
+  };
+
+  subjectSearch(e) {
+    e.preventDefault();
+    console.log('search_term', this.state);
+    axios({method: 'get',
+           url: `http://localhost:3000/tutors/search/:${this.state.search_term}`,
+           data: this.state
+         })
+      .then(response => {
+        console.log('response', response);
+        store.dispatch({ type: types.SEARCH, payload: response.data });
+      })
+      .catch((error) => {
+        // errorHandler(store.dispatch, error.response, types.AUTH_ERROR)
+      });
+  }
 
   render() {
     return (
 <div>
       <nav className="main-nav">
         <div className="container-fluid">
+          <div className="navbar-header">
+            <a className="navbar-brand" id="logo" href="/">tuber</a>
+          </div>
+
+          <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <form onSubmit={this.subjectSearch}
+                  className="navbar-form navbar-left"
+                  id="tuber-search-form">
+              <span className="form-group" id= "tuber-search-form" >
+                <input name="search_term"
+                       type="text"
+                       className="form-control"
+                       placeholder="Enter a subject"
+                       value={this.state.search_term}
+                       onChange={this.handleInputChange}/>
+                <button type="submit" className="btn btn-default">Submit</button>
+              </span>
+            </form>
           <div className="collapse navbar-collapse">
-            {/*<form className="navbar-form navbar-left" id="tuber-search-form">
-                          <span className="form-group" id= "tuber-search-form">
-                            <input type="text" className="form-control" placeholder="Enter a subject"/>
-                            <button type="submit" className="btn btn-default">Submit</button>
-                          </span>
-                        </form>*/}
             { this.registrationButtons() }
           </div>
         </div>

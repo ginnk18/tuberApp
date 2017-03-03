@@ -19,25 +19,18 @@ class HomeLayout extends Component {
         return topFour.join();
     }
 
-    render() {
-        return (
-            <div className="home-layout row" id="Navfix">
-                <AppHeader type="home" className="z-index3"/>
-                <section className="main-content">
-                    <section className="tagline">
-                        <h1>
-                            <span className="brand">tuber&nbsp;</span>
-                            <span className="tagline-text">connects students with tutors painlessly. No more email lags folks!</span>
-                        </h1>
-                    </section>
-
-                    <section className="main-search-wrapper z-index2">
-                        <h4 className="label">What subject do you need help with?</h4>
-                        <div className="search-group">
-                            <SearchBox className="main-search"/>
-                            <button name="search" className="z-index2">Search</button>
-                        </div>
-                    </section>
+  render() {
+    if (this.props.tutors.length > 0) {
+    return (
+      <div className="home-layout row">
+        <AppHeader type="home" className="z-index3"/>
+        <section className="main-content">
+          <section className="tagline">
+            <h1><span className="brand">Tuber&nbsp;</span>
+              <span className="tagline-text">connects students with
+              tutors painlessly. No more email lags folks!</span>
+            </h1>
+          </section>
 
                     <section className="shows">
                         <article className="show">

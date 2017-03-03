@@ -64,7 +64,6 @@ class StudentRegistrationLayout extends Component {
         cookie.save('token', response.data.user.token, { path: '/' });
         cookie.save('email', response.data.user.email, { path: '/' });
         store.dispatch({ type: types.AUTH_USER });
-        window.location.href = home;
       })
       .catch((error) => {
         // errorHandler(store.dispatch, error.response, types.AUTH_ERROR)
