@@ -84,19 +84,19 @@ class Nav extends Component {
     <div>
       <nav className="main-nav">
         <div className="container-fluid">
-            {/*<form onSubmit={this.subjectSearch}
-                              className="navbar-form navbar-left"
-                              id="tuber-search-form">
-                          <span className="form-group" id= "tuber-search-form" >
-                            <input name="search_term"
-                                   type="text"
-                                   className="form-control"
-                                   placeholder="Enter a subject"
-                                   value={this.state.search_term}
-                                   onChange={this.handleInputChange}/>
-                            <button type="submit" className="btn btn-default">Submit</button>
-                          </span>
-                        </form>*/}
+            <form onSubmit={this.subjectSearch}
+                  className="navbar-form navbar-left"
+                  id="tuber-search-form">
+              <span className="form-group" id= "tuber-search-form" >
+                <input name="search_term"
+                       type="text"
+                       className="form-control"
+                       placeholder="Enter a subject"
+                       value={this.state.search_term}
+                       onChange={this.handleInputChange}/>
+                <button type="submit" className="btn btn-default">Submit</button>
+              </span>
+            </form>
           <div className="collapse navbar-collapse">
             { this.registrationButtons() }
           </div>
