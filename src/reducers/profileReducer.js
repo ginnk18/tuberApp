@@ -1,6 +1,7 @@
 import { transformToProfileState } from '../components/profile_layout/profile_logic';
 
 const initialState = {
+  page: "profile",
   profile: {}
 }
 
@@ -31,18 +32,18 @@ export default function profileReducer(state = initialState, action) {
       };
 
     case "POST_REVIEW_FULFILLED":
-      const updatedProfile = {
-        ...state.profile,
-        reviews: action.payload.data
-      }
+      const updatedProfile = state.profile
+      updatedProfile.reviews = action.payload.data
       return {
         ...state,
+        error: undefined,
         page: "profile",
         profile: updatedProfile,
         status: "FETCHED"
       };
 
     case "POST_REVIEW_PENDING":
+    console.log(state)
       return {
         ...state,
         status: "FETCHING"

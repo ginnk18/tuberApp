@@ -46,7 +46,7 @@ class LoginLayout extends Component {
   render() {
     return (<div className="login-layout row">
               <AppHeader className="z-index3"/>
-              <p> {cookie.load('user').email} </p>
+              {/*<p> {cookie.load('user').email} </p>*/}
               <form onSubmit={this.loginFormSubmit} className="login-form">
                 <div className="form-group">
                   <label htmlFor="email">Email address</label>

@@ -26,9 +26,9 @@ class Nav extends Component {
   renderLogin () { store.dispatch(userActions.showLoginForm()) }
 
   registrationButtons() {
-    if (cookie.load('email')){
+    if (cookie.load('user')){
       return <ul className="">
-               <li><a href="#0">{cookie.load('email')}</a></li>
+               <li><a href="#0">{cookie.load('user').email}</a></li>
                <li><a onClick={ this.logout } href= "#0">Logout</a></li>
              </ul>
     } else {
@@ -50,13 +50,13 @@ class Nav extends Component {
   logout(e) {
     e.preventDefault();
     axios({method: 'delete',
-           url: `http://localhost:3000/sessions/:${cookie.load('token')}`
+           url: `http://localhost:3000/sessions/${cookie.load('token')}`
          })
       .then(response => {
         console.log('response', response);
         cookie.remove('token');
-        cookie.remove('email');
-        store.dispatch({ type: types.AUTH_USER });
+        cookie.remove('user');
+        store.dispatch({ type: types.UNAUTH_USER });
       })
       .catch((error) => {
         // errorHandler(store.dispatch, error.response, types.AUTH_ERROR)
