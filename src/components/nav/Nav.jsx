@@ -79,6 +79,7 @@ class Nav extends Component {
   //     });
   // }
 
+
   render() {
     return (
     <div>
@@ -98,7 +99,7 @@ class Nav extends Component {
               </span>
             </form>*/}
           <div className="collapse navbar-collapse">
-            { this.registrationButtons() }
+          { this.registrationButtons() }
           </div>
         </div>
       </nav>

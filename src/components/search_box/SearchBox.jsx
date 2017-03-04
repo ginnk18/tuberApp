@@ -24,7 +24,8 @@ class SearchBox extends Component {
     return (
       <div className={classes.call(this, "search-box")}>
         <i className="fa fa-search" aria-hidden="true"></i>
-        <input onKeyUp={(e) => this.subjectSearch(e)} className="search-input" type="search" />  
+
+        <input onKeyUp={(e) => this.subjectSearch(e)} className="search-input" type="search" />
       </div>
     )
   }

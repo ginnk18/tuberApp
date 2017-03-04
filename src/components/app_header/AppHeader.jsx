@@ -17,11 +17,12 @@ class AppHeader extends Component {
 
   render() {
 
-    return <header className={classes.call(this, "main-header")} >
+    return <div>
+           <header className={classes.call(this, "main-header")} >
             <Logo />
-              {this.decideSearchOrNot()}
             <Nav />
            </header>
+           </div>
   }
 }
 
