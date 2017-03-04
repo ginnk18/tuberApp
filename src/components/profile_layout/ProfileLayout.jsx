@@ -10,7 +10,8 @@ import Messages from "./Messages.jsx"
 class ProfileLayout extends Component {
 
   render() {
-    if (this.props.profile) {
+    const profile = this.props.profile;
+    if (profile) {
     return (
       <div className="profile-layout rowx">
         <AppHeader className="z-index3"/>
@@ -18,23 +19,18 @@ class ProfileLayout extends Component {
         <section className="main-content">
           <section className="row rowx">
             <aside className="profile-summaries one-third">
-              <img src={this.props.profile.avatar} />
+              <img src={profile.avatar} />
             </aside>
             <div className="intro profile-details two-third">
-              <Intro profile={this.props.profile}/>
+              <Intro profile={profile}/>
             </div>
           </section>
 
           <section className="row rowx">
             <aside className="profile-summaries one-third">
-              <About profile={this.props.profile}/>
+              <About profile={profile}/>
             </aside>
             <div className="profile-details two-third tab-area" >
-              {/*<div className="tabs-buttons-wrapper">
-                <a className="active" href="#0" data-id="reviews">Reviews</a>
-                <a href="#0" data-id="availability">Availability</a>
-                <a href="#0" data-id="messages">Messages</a>
-              </div>*/}
               <Tabs>
                 <TabList>
                   <Tab>Reviews</Tab>
@@ -42,13 +38,13 @@ class ProfileLayout extends Component {
                   <Tab>Messages</Tab>
                 </TabList>
                 <TabPanel>
-                  <Reviews reviews={this.props.profile.reviews}/>
+                  <Reviews reviews={profile.reviews} profileID={profile.id} />
                 </TabPanel>
                 <TabPanel>
-                  <Availability availability={this.props.profile.availability}/>
+                  <Availability availability={profile.availability}/>
                 </TabPanel>
                 <TabPanel>
-                  <Messages conversations={this.props.profile.conversations}/>
+                  <Messages conversations={profile.conversations}/>
                 </TabPanel>
               </Tabs>
             </div>

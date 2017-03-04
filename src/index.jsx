@@ -25,4 +25,4 @@ if (token) {
 }
 
 // Dispatch default action
-store.dispatch(profileActions.loadProfile(1));
+store.dispatch(profileActions.loadProfile(150));

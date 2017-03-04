@@ -18,7 +18,7 @@ class Nav extends Component {
                   search_term: ''};
 
     this.handleInputChange = this.handleInputChange.bind(this);
-    this.subjectSearch = this.subjectSearch.bind(this);
+    // this.subjectSearch = this.subjectSearch.bind(this);
   }
 
   renderTutorReg () { store.dispatch(tutorActions.showRegisterTutorForm()) }
@@ -63,32 +63,29 @@ class Nav extends Component {
       });
   };
 
-  subjectSearch(e) {
-    e.preventDefault();
-    console.log('search_term', this.state);
-    axios({method: 'get',
-           url: `http://localhost:3000/search/`,
-           params: { city: '*',
-                     status_code: '*',
-                     rate_range: '*',
-                     subject: this.state.search_term,
-                     sort: '*'}
-         })
-      .then(response => {
-        console.log('response', response);
-        store.dispatch({ type: types.SEARCH, payload: response.data });
-      })
-      .catch((error) => {
-        // errorHandler(store.dispatch, error.response, types.AUTH_ERROR)
-      });
-  }
+  // subjectSearch(e) {
+  //   e.preventDefault();
+  //   console.log('search_term', this.state);
+  //   axios({method: 'get',
+  //          url: `http://localhost:3000/tutors/search/:${this.state.search_term}`,
+  //          data: this.state
+  //        })
+  //     .then(response => {
+  //       console.log('response', response);
+  //       store.dispatch({ type: types.SEARCH, payload: response.data });
+  //     })
+  //     .catch((error) => {
+  //       // errorHandler(store.dispatch, error.response, types.AUTH_ERROR)
+  //     });
+  // }
+
 
   render() {
     return (
     <div>
       <nav className="main-nav">
         <div className="container-fluid">
-            <form onSubmit={this.subjectSearch}
+            {/*<form onSubmit={this.subjectSearch}
                   className="navbar-form navbar-left"
                   id="tuber-search-form">
               <span className="form-group" id= "tuber-search-form" >
@@ -100,7 +97,7 @@ class Nav extends Component {
                        onChange={this.handleInputChange}/>
                 <button type="submit" className="btn btn-default">Submit</button>
               </span>
-            </form>
+            </form>*/}
           <div className="collapse navbar-collapse">
           { this.registrationButtons() }
           </div>
