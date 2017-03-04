@@ -26,7 +26,7 @@ class SearchBox extends Component {
       <div className={classes.call(this, "search-box")}>
         <i className="fa fa-search" aria-hidden="true"></i>
         <input onsearch={(e) => this.subjectSearch(e)} className="search-input" type="search" name="search_term" />
-         
+
         {/*<form onSubmit={this.subjectSearch}
                       className="navbar-form navbar-left"
                       id="tuber-search-form">

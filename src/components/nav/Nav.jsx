@@ -67,8 +67,12 @@ class Nav extends Component {
     e.preventDefault();
     console.log('search_term', this.state);
     axios({method: 'get',
-           url: `http://localhost:3000/tutors/search/:${this.state.search_term}`,
-           data: this.state
+           url: `http://localhost:3000/search/`,
+           params: { city: '*',
+                     status_code: '*',
+                     rate_range: '*',
+                     subject: this.state.search_term,
+                     sort: '*'}
          })
       .then(response => {
         console.log('response', response);
@@ -98,7 +102,7 @@ class Nav extends Component {
               </span>
             </form>
           <div className="collapse navbar-collapse">
-            { this.registrationButtons() }
+          { this.registrationButtons() }
           </div>
         </div>
       </nav>

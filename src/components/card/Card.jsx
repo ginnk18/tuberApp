@@ -17,8 +17,8 @@ class Card extends Component {
                 <img src={this.props.tutor.avatar} />
                 <figcaption>
                   <strong className="name">{this.props.tutor.name}</strong><br/>
-                  <span className="tutor-attr">Major:&nbsp;&nbsp;</span><span>{this.props.tutor.subjects_taught[0]}</span><br/>
-                  <span className="tutor-attr">Other Subjects:&nbsp;&nbsp;</span><span>{this.props.tutor.subjects_taught}</span><br/>
+                  <span className="tutor-attr">Major:&nbsp;&nbsp;</span><span>{this.props.tutor.subjects}</span><br/>
+                  <span className="tutor-attr">Other Subjects:&nbsp;&nbsp;</span><span>{this.props.tutor.subjects}</span><br/>
                   <span className="tutor-attr">Qualification:&nbsp;&nbsp;</span><span>{this.props.tutor.education}</span><br/>
                   <span className="tutor-attr">Experience:&nbsp;&nbsp;</span><span>{this.props.tutor.experience}</span>
                   <div className="card-btn">
