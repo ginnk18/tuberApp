@@ -176,5 +176,22 @@ body {
       align-items: flex-start;
       padding: $spacing-unit1 0;
     }
+
+    .rbc-row,
+    .rbc-timeslot-group {
+      display: flex;
+    }
+
+    .rbc-time-slot {
+      background-color: $line-color;
+      cursor: pointer;
+      flex: 1;
+
+      &.rbc-label {
+        background-color: transparent;
+        cursor: default;
+        flex: none;
+      }
+    }
   }
 }

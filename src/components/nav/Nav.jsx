@@ -50,13 +50,13 @@ class Nav extends Component {
   logout(e) {
     e.preventDefault();
     axios({method: 'delete',
-           url: `http://localhost:3000/sessions/:${cookie.load('token')}`
+           url: `http://localhost:3000/sessions/${cookie.load('token')}`
          })
       .then(response => {
         console.log('response', response);
         cookie.remove('token');
         cookie.remove('user');
-        store.dispatch({ type: types.AUTH_USER });
+        store.dispatch({ type: types.UNAUTH_USER });
       })
       .catch((error) => {
         // errorHandler(store.dispatch, error.response, types.AUTH_ERROR)

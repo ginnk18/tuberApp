@@ -21,6 +21,7 @@ class AppHeader extends Component {
            <header className={classes.call(this, "main-header")} >
            {this.decideSearchOrNot()}
             <Logo />
+              { this.decideSearchOrNot() }
             <Nav />
            </header>
            </div>

@@ -5,7 +5,7 @@ import profileReducer from './profileReducer';
 
 function rootReduce(reducers) {
   return (state, action) => {
-    let newState;
+    let newState = state;
     Object.keys(reducers).forEach((reducer) => {
       newState = {
         ...newState,

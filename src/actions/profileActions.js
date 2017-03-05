@@ -10,10 +10,12 @@ export function loadProfile(user_id) {
 }
 
 export function postReview(reviewData) {
+  console.log(`http://localhost:3000/tutors/${reviewData.tutor_id}/reviews`)
   return {
     type: Types.POST_REVIEW,
-    payload: axios.post({
-      url: `http://localhost:3000/tutors/${reviewData.tutor_id}/reviews`,
+    payload: axios({
+      method: "POST",
+      url: `http://0.0.0.0:3000/tutors/${reviewData.tutor_id}/reviews`,
       data: reviewData
     })
   }

@@ -31,7 +31,7 @@ class ProfileLayout extends Component {
               <About profile={profile}/>
             </aside>
             <div className="profile-details two-third tab-area" >
-              <Tabs>
+              <Tabs selectedIndex={1}>
                 <TabList>
                   <Tab>Reviews</Tab>
                   <Tab>Availability</Tab>
