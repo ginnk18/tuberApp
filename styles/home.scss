@@ -2,6 +2,7 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,700");
 @import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
 @import url("https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css");
+@import url("//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/js/bootstrap-select.min.js");
 
 html * {
   box-sizing: border-box;
@@ -22,14 +23,14 @@ body {
     text-decoration: none;
 
     &:hover {
-      text-decoration: none;      
+      text-decoration: none;
     }
   }
 
   h1, h2, h3, h4, h5, h6 {
     margin: 0;
   }
-  
+
   // Default style for select
   select {
     /* styling */
@@ -43,7 +44,7 @@ body {
 
     /* reset */
 
-    margin: 0;      
+    margin: 0;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -83,7 +84,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  
+
   .half {
     flex: none;
     overflow: hidden;

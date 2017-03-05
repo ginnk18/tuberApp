@@ -2,16 +2,6 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import types from '../../actions/actionTypes';
 
-const ARC_DE_TRIOMPHE_POSITION = {
-  lat: 48.873947,
-  lng: 2.295038
-};
-
-const EIFFEL_TOWER_POSITION = {
-  lat: 48.858608,
-  lng: 2.294471
-};
-
 const loadJS = function(src) {
     const ref = window.document.getElementsByTagName("script")[0];
     const script = window.document.createElement("script");

@@ -58,13 +58,16 @@ class SearchResultLayout extends Component {
 
   render() {
     return (
+
     <div>
-      <div className="search-result-layout row">
+      <div className="search-result-layout">
         <AppHeader />
-        <section className="filters z-index3">
+        <section className="filters">
+        <div className="selectContainer">
           <select onChange={(event)=>this.handleSelectChange(event)}
                   name="city"
-                  value={this.state.city}>
+                  value={this.state.city}
+                  className="col-xs-2">
             <option value="*">City</option>
             <option value="Calgary">Calgary</option>
             <option value="Edmonton">Edmonton</option>
@@ -77,17 +80,23 @@ class SearchResultLayout extends Component {
             <option value="Toronto">Toronto</option>
             <option value="Winnipeg">Winnipeg</option>
           </select>
+        </div>
+        <div className="selectContainer">
           <select onChange={(event)=>this.handleSelectChange(event)}
                   name="status_code"
-                  value={this.state.status_code}>
+                  value={this.state.status_code}
+                  className="col-xs-2">
             <option value="*">Availability</option>
             <option value="1" >All</option>
             <option value="2">Available but offline</option>
             <option value="3">Unavailable</option>
           </select>
+        </div>
+        <div className="selectContainer">
           <select onChange={(event)=>this.handleSelectChange(event)}
                   name="rate_range"
-                  value = {this.state.rate_range}>
+                  value = {this.state.rate_range}
+                  className="col-xs-2">
             <option value="*">Rate</option>
             <option value="0" >$0/hr - $20/hr</option>
             <option value="20">$20/hr - $40/hr</option>
@@ -95,9 +104,12 @@ class SearchResultLayout extends Component {
             <option value="60">$60/hr - $80/hr</option>
             <option value="80">$80/hr - $100/hr</option>
           </select>
+        </div>
+        <div className="selectContainer">
           <select onChange={(event)=>this.handleSelectChange(event)}
                   name="subject"
-                  value = {this.state.subject}>
+                  value = {this.state.subject}
+                  className="col-xs-2">
             <option value="*">Subject</option>
             <option value='Visual Arts'>Visual Arts</option>
             <option value='Geography'>Geography </option>
@@ -117,15 +129,20 @@ class SearchResultLayout extends Component {
             <option value='Agriculture'>Agriculture </option>
             <option value='Computer science'>Computer science </option>
             <option value='Engineering'>Engineering </option>
-            <option value='Medicine'>Medicine </option>          </select>
+            <option value='Medicine'>Medicine </option>
+            </select>
+          </div>
+        <div className="selectContainer">
           <select onChange={(event)=>this.handleSelectChange(event)}
                   name="sort"
-                  value = {this.state.sort}>
+                  value = {this.state.sort}
+                  className="col-xs-4">
             <option value="*">Sort by</option>
-            <option value="rate" >Rate</option>
-            <option value="review">Review stars</option>
-            <option value="availability">Availability</option>
+            <option value="rate-lowest-first" >Rate - lowest first</option>
+            <option value="rate-highest-first" >Rate - highest first</option>
+            <option value="review">Average review rating</option>
           </select>
+        </div>
         </section>
         <section className="three-fifth results">
           <div className="notices"><h5></h5></div>
@@ -154,8 +171,6 @@ class SearchResultLayout extends Component {
         <aside className="two-fifth map">
         <GoogleMap tutors = {this.state.tutors}/>
         </aside>
-      </div>
-      <div>
       </div>
     </div>
     )
