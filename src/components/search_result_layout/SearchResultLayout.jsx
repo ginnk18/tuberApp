@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import AppHeader from '../app_header/AppHeader.jsx';
 import Card from '../card/Card.jsx';
+import Container from '../map/Container.jsx'
 import axios from 'axios';
 import types from '../../actions/actionTypes';
 
@@ -152,7 +153,7 @@ class SearchResultLayout extends Component {
           </div>
         </section>
         <aside className="two-fifth map">
-          { <iframe width="100%" height="100%" frameBorder="0" style={{border:0}} allowFullScreen src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d17953.437785452483!2d-114.10257767293234!3d51.052182808984014!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sca!4v1487569968863"></iframe>}
+        <Container />
         </aside>
       </div>
       <div>

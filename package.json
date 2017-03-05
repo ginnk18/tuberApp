@@ -52,6 +52,7 @@
   },
   "dependencies": {
     "axios": "^0.15.3",
+    "google-maps-react": "^1.0.19",
     "react": "latest",
     "react-cookie": "^1.0.4",
     "react-dom": "latest",

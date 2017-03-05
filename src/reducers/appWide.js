@@ -63,7 +63,6 @@ const tuberApp = (state = initialState, action) => {
       });
 
     case 'SEARCH':
-      console.log('action.payload', action.payload)
       return { ...state, page: 'search_result',
                          tutors: action.payload,
                          city: "Calgary" };

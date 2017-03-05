@@ -18,7 +18,7 @@ class Nav extends Component {
                   search_term: ''};
 
     this.handleInputChange = this.handleInputChange.bind(this);
-    // this.subjectSearch = this.subjectSearch.bind(this);
+    this.subjectSearch = this.subjectSearch.bind(this);
   }
 
   renderTutorReg () { store.dispatch(tutorActions.showRegisterTutorForm()) }
@@ -26,9 +26,9 @@ class Nav extends Component {
   renderLogin () { store.dispatch(userActions.showLoginForm()) }
 
   registrationButtons() {
-    if (cookie.load('email')){
+    if (cookie.load('user')){
       return <ul className="">
-               <li><a href="#0">{cookie.load('email')}</a></li>
+               <li><a href="#0">{cookie.load('user').email}</a></li>
                <li><a onClick={ this.logout } href= "#0">Logout</a></li>
              </ul>
     } else {
@@ -55,7 +55,7 @@ class Nav extends Component {
       .then(response => {
         console.log('response', response);
         cookie.remove('token');
-        cookie.remove('email');
+        cookie.remove('user');
         store.dispatch({ type: types.AUTH_USER });
       })
       .catch((error) => {
@@ -63,21 +63,21 @@ class Nav extends Component {
       });
   };
 
-  // subjectSearch(e) {
-  //   e.preventDefault();
-  //   console.log('search_term', this.state);
-  //   axios({method: 'get',
-  //          url: `http://localhost:3000/tutors/search/:${this.state.search_term}`,
-  //          data: this.state
-  //        })
-  //     .then(response => {
-  //       console.log('response', response);
-  //       store.dispatch({ type: types.SEARCH, payload: response.data });
-  //     })
-  //     .catch((error) => {
-  //       // errorHandler(store.dispatch, error.response, types.AUTH_ERROR)
-  //     });
-  // }
+  subjectSearch(e) {
+    e.preventDefault();
+    console.log('search_term', this.state);
+    axios({method: 'get',
+           url: `http://localhost:3000/`,
+           data: this.state
+         })
+      .then(response => {
+        console.log('response', response);
+        store.dispatch({ type: types.SEARCH, payload: response.data });
+      })
+      .catch((error) => {
+        // errorHandler(store.dispatch, error.response, types.AUTH_ERROR)
+      });
+  }
 
 
   render() {
@@ -85,7 +85,7 @@ class Nav extends Component {
     <div>
       <nav className="main-nav">
         <div className="container-fluid">
-            {/*<form onSubmit={this.subjectSearch}
+            <form onSubmit={this.subjectSearch}
                   className="navbar-form navbar-left"
                   id="tuber-search-form">
               <span className="form-group" id= "tuber-search-form" >
@@ -97,7 +97,7 @@ class Nav extends Component {
                        onChange={this.handleInputChange}/>
                 <button type="submit" className="btn btn-default">Submit</button>
               </span>
-            </form>*/}
+            </form>
           <div className="collapse navbar-collapse">
           { this.registrationButtons() }
           </div>
