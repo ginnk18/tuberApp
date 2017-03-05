@@ -19,7 +19,6 @@ class AppHeader extends Component {
 
     return <div>
            <header className={classes.call(this, "main-header")} >
-           {this.decideSearchOrNot()}
             <Logo />
               { this.decideSearchOrNot() }
             <Nav />

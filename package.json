@@ -52,7 +52,6 @@
   },
   "dependencies": {
     "axios": "^0.15.3",
-    "google-maps-react": "^1.0.19",
     "moment": "^2.17.1",
     "react": "latest",
     "react-big-calendar": "^0.12.3",
