@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import AppHeader from '../app_header/AppHeader.jsx';
 import Card from '../card/Card.jsx';
-import Container from '../map/Container.jsx'
+import GoogleMap from '../google_map/GoogleMap.jsx'
 import axios from 'axios';
 import types from '../../actions/actionTypes';
-
 
 class SearchResultLayout extends Component {
 
@@ -153,7 +152,7 @@ class SearchResultLayout extends Component {
           </div>
         </section>
         <aside className="two-fifth map">
-        <Container />
+        <GoogleMap tutors = {this.state.tutors}/>
         </aside>
       </div>
       <div>
