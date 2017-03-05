@@ -63,7 +63,7 @@ const tuberApp = (state = initialState, action) => {
       });
 
     case 'SEARCH':
-      console.log('action.payload', action.payload)
+      console.log('in search reducer')
       return { ...state, page: 'search_result',
                          tutors: action.payload,
                          city: "Calgary" };

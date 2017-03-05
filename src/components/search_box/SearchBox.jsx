@@ -2,14 +2,23 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { classes } from '../utils';
 import types from '../../actions/actionTypes';
+import store from '../../tuberStore';
 
 class SearchBox extends Component {
+    constructor(props) {
+    super(props);
+    this.subjectSearch = this.subjectSearch.bind(this);
+  }
+
 
   subjectSearch(e) {
     if (e.key === "Enter") {
       const search_term = e.target.value;
       e.preventDefault();
-      axios(`http://localhost:3000/tutors/search/${search_term}`)
+      axios({method: 'get',
+           url: `http://localhost:3000/`,
+           data: {search_term: e.target.value}
+         })
       .then(response => {
         console.log('response', response);
         store.dispatch({ type: types.SEARCH, payload: response.data });
