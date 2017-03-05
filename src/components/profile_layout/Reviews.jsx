@@ -24,26 +24,17 @@ export default class Reviews extends Component {
         tutor_id: this.props.profileID
       }
        store.dispatch(profileActions.postReview(data));
+       e.target.reset()
     } else { console.log("Not logged in")} // TODO: find better error handle!
   }
 
   handleRating(r) {
-    console.log(r)
     this.state.rating = r;
   }
 
-  render() {
-    return (
-      <section id="reviews">
-        <h2 className="review-summary">
-          <Rating
-           readonly={true}
-           initialRate={4}
-           empty='fa fa-star-o'
-           full='fa fa-star'
-          />
-          &nbsp;in {this.props.reviews.length} reviews
-        </h2>
+  newReviewIfLoggedIn() {
+    if (cookie.load("user")) {
+      return (
         <form onSubmit={(e) => this.handleReview(e)} className="new-review">
           <div>
             Rate your lesson &nbsp;<Rating onChange={(r) => this.handleRating(r)} name="new-rating"
@@ -52,8 +43,28 @@ export default class Reviews extends Component {
           <label htmlFor="new-review">Your Review here</label>
           <textarea id="new-review-text" name="text" placeholder="Your Review here" />
           <button type="submit" className="">Submit</button>
-      </form>
-       {this.props.reviews.map(r => <Review key={r.id} review={r} />)}
+        </form>
+      )
+    }
+  }
+  
+  render() {
+    const reviews = this.props.reviews;
+    const len = reviews.length;
+    return (
+      <section id="reviews">
+        <h2 className="review-summary">
+          <Rating
+           readonly={true}
+           initialRate={reviews.reduce((sum,r) => sum + r.rating, 0) / len}
+           empty='fa fa-star-o'
+           full='fa fa-star'
+          />
+          &nbsp;in {len} reviews
+        </h2>
+        { this.newReviewIfLoggedIn() }
+
+        {reviews.map(r => <Review key={r.id} review={r} />)}
       </section>
     )
   }

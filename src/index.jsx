@@ -25,4 +25,4 @@ if (token) {
 }
 
 // Dispatch default action
-store.dispatch(profileActions.loadProfile(Math.ceil(Math.random() * 10)));
+store.dispatch(profileActions.loadProfile(10 + Math.ceil(Math.random() * 10)));

@@ -1,0 +1,40 @@
+@import "../../../styles/variables.scss";
+
+#tuber-appointment {
+
+  table {
+    display: flex;
+    flex-flow: column;
+  
+    tr {
+      display: flex;
+
+      .selected {
+        background-color: $brand-color;
+      }
+
+      .timing {
+        opacity: 0.6;
+
+        &.all,
+        &.all ~ td {
+          background-color: $brand-color;
+        }
+
+        &.clear,
+        &.clear ~ td {
+          background-color: transparent;
+        }
+      }
+      th, td {
+        border: 0.5px solid $line-color;
+        flex: 1;
+        text-align: center;
+      }
+
+      td {
+        cursor: pointer;
+      }
+    }
+  }
+}
