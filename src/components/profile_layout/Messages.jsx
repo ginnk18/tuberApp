@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import Message from "./Message.jsx";
+import TuberMessage from "./messaging/App.jsx";
 
 export default class Messages extends Component {
 
   render() {
     return (
       <section id="messages">
-        <Message />
+        <TuberMessage />
       </section>
     )
   }
