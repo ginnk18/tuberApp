@@ -48,6 +48,7 @@ class LoginLayout extends Component {
               <AppHeader className="z-index3"/>
               {/*<p> {cookie.load('user').email} </p>*/}
               <form onSubmit={this.loginFormSubmit} className="login-form">
+              <h3> Log in </h3>
                 <div className="form-group">
                   <label htmlFor="email">Email address</label>
                   <input name="email"

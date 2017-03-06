@@ -86,6 +86,7 @@ class StudentRegistrationLayout extends Component {
               { this.renderAlert() }
               <p> {cookie.load('email')} </p>
               <form onSubmit={this.studFormSubmit} className="student-registration-form">
+                <h3> Sign up for tuber! </h3>
                 <div className="form-group">
                   <label htmlFor="email">Email address</label>
                   <input name="email"

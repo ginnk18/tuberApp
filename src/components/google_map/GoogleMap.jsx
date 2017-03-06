@@ -1,3 +1,8 @@
+// Callback process:
+// componentDidMount loads the map api, and calls initMap
+// initMap calls geolocation, which calls new maps.Map,
+// which loops over the tutors to make markers and info windows
+
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import types from '../../actions/actionTypes';
@@ -20,11 +25,9 @@ class GoogleMap extends Component {
   }
 
   componentDidMount() {
-    // Connect the initMap() function within this class to the global window context,
-    // so Google Maps can invoke it
-    console.log('in componentdidmount for map')
+    // Connect the initMap() function within this class to the global window context
     window.initMap = this.initMap;
-    // Asynchronously load the Google Maps script, passing in the callback reference
+    // Welcome to callback hell
     loadJS('https://maps.googleapis.com/maps/api/js?key=AIzaSyAHk8BSOFCOmRSS0DF_ibXPoitqZZbbgMI&callback=initMap')
   }
 
@@ -54,7 +57,7 @@ class GoogleMap extends Component {
                 `<h5 class="infoWindowFirstHeading">${tutor.name}</h5>`+
                 `<img style="max-width: 40%; max-height: 40%" class="info-window-avatar" src=${tutor.avatar}/>` +
                 `<p>Phone: ${tutor.phone}</p>` +
-                `<p>Email: email</p>`+
+                `<p>Email: ${tutor}</p>`+
                 '</div>';
 
           var infowindow = new google.maps.InfoWindow({
@@ -111,7 +114,7 @@ class GoogleMap extends Component {
     };
 
     return (
-      <div ref="map" style={mapStyle}>I should be a map!</div>
+      <div ref="map" style={mapStyle}>Map loading...</div>
     );
   }
 }
