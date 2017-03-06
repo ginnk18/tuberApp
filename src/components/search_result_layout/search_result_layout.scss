@@ -3,7 +3,7 @@ body {
 }
 .search-result-layout {
   padding-top: 64px;
-  
+
   .filters {
     border: 1px solid $line-color;
     height: 50px;
@@ -21,7 +21,7 @@ body {
     position: fixed;
     top: 114px;
   }
-  
+
   .map {
     left: auto;
     right: 0;
@@ -34,7 +34,7 @@ body {
     width: 60%;
     overflow-y: scroll;
     padding: $spacing-unit-half;
-    
+
     .notices {
       height: 100px;
       padding: $spacing-unit1;
@@ -44,4 +44,5 @@ body {
       padding: $spacing-unit1 $spacing-unit-half;
     }
   }
+
 }

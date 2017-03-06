@@ -27,7 +27,7 @@ class App extends Component {
   render() {
     if (this.props.appState) {
       return (<div>
-                {this.pages()["search_result"]}
+                {this.pages()[this.props.appState.page]}
               </div>
       );
     } return null;

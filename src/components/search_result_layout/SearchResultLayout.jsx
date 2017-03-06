@@ -9,7 +9,6 @@ class SearchResultLayout extends Component {
 
   constructor(props) {
     super(props);
-    console.log('state in constructor', this.state);
     this.state = {city: '*',
                   status_code: '*',
                   rate_range: '*',
