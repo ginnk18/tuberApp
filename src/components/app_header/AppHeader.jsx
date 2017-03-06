@@ -12,9 +12,6 @@ class AppHeader extends Component {
   }
 
   decideSearchOrNot() {
-    console.log('in decide search ', this.props);
-    console.log('in decide search ', this.state);
-    console.log(this.props.type !== 'home');
     if (this.props.type !== 'home') {
       return <HeaderDropdown />
     }

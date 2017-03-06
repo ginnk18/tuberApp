@@ -98,6 +98,7 @@ class TutorRegistrationLayout extends Component {
         <AppHeader className="z-index3"/>
 
       <form onSubmit={this.tutFormSubmit} className="tutor-registration-form">
+        <h3>Become a tutor for Tuber!</h3>
         <div className="form-group">
           <label htmlFor="tutorRegEmail">Email address</label>
           <input name="email" value={this.state.email} onChange={this.handleInputChange} type="email" className="form-control" id="tutorRegEmail" aria-describedby="emailHelp" placeholder="Enter email"/>
@@ -115,7 +116,7 @@ class TutorRegistrationLayout extends Component {
           <textarea name="experience" value={this.state.experience} onChange={this.handleInputChange} className="form-control" id="tutorFormExperience" rows="3"></textarea>
         </div>
         <div className="form-group">
-          <label htmlFor="tutorRegPhone" className="col-form-label">Telephone</label>
+          <label htmlFor="tutorRegPhone" className="col-form-label">Phone Number</label>
             <input name="phone" value={this.state.phone} onChange={this.handleInputChange} className="form-control" type="tel" id="tutorRegPhone"/>
         </div>
         <div className="form-group">
