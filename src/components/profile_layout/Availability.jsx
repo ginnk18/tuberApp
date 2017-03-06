@@ -4,17 +4,10 @@ import TuberAppointment from './TuberAppointment.jsx';
 
 export default class Availability extends Component {
 
-  handleSlotSelect(info) {
-    console.log(info);
-    return true;
-  }
-
   render() {
-    const avail = this.props.availability;
     return (
       <section id="availability">
-         <TuberAppointment  />
-        {Object.keys(avail).map(day => <div key={day}>{day}: {avail[day]}</div>)}
+         <TuberAppointment profileID={this.props.profileID} bookings={this.props.availability} />
       </section>
     )
   }

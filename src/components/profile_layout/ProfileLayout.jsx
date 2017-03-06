@@ -41,10 +41,10 @@ class ProfileLayout extends Component {
                   <Reviews reviews={profile.reviews} profileID={profile.id} />
                 </TabPanel>
                 <TabPanel>
-                  <Availability availability={profile.availability}/>
+                  <Availability availability={profile.availability} profileID={profile.id} />
                 </TabPanel>
                 <TabPanel>
-                  <Messages conversations={profile.conversations}/>
+                  <Messages conversations={profile.conversations} profileID={profile.id} />
                 </TabPanel>
               </Tabs>
             </div>

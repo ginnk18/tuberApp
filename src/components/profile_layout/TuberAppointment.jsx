@@ -2,7 +2,8 @@
 require("./tuber_appointment.scss");
 
 import React, { Component } from "react";
-import moment from 'moment';
+// import moment from 'moment';
+import cookie from "react-cookie";
 
 export default class TuberAppointment extends Component {
 
@@ -19,15 +20,18 @@ export default class TuberAppointment extends Component {
   }
 
   handleSlotSelect(e) {
-    const clicked = e.target;
-    if (clicked.matches("td")) {
-      if (clicked.matches(".timing")) {
-        this.toggleTimeRow(clicked);
-      } else {
-        this.toggleCell(clicked);
+    const loggedIn = cookie.load("user");
+    if (loggedIn && (loggedIn.id === this.props.profileID)) { 
+      const clicked = e.target;
+      if (clicked.matches("td")) {
+        if (clicked.matches(".timing")) {
+          this.toggleTimeRow(clicked);
+        } else {
+          this.toggleCell(clicked);
+        }
+        console.log(this.bookings)
+        return false;
       }
-      console.log(this.bookings)
-      return false;
     }
   }
 
@@ -105,7 +109,7 @@ export default class TuberAppointment extends Component {
             {this.DAYS.map(ddd => <th key={ddd}>{ddd}</th>)}
           </tr></thead>
           <tbody>
-            {this.buildTableBody({Fri: ["04"]})}
+            {this.buildTableBody(this.props.bookings)}
           </tbody>
         </table>
       </section>
