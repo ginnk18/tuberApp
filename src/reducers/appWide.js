@@ -64,8 +64,8 @@ const tuberApp = (state = initialState, action) => {
 
     case 'SEARCH':
       return { ...state, page: 'search_result',
-                         tutors: action.payload,
-                         subject: "Geography" };
+                         tutors: action.payload.tutors,
+                         subject: action.payload.subject };
 
     default:
       return state;

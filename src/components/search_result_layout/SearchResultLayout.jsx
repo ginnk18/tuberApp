@@ -9,10 +9,11 @@ class SearchResultLayout extends Component {
 
   constructor(props) {
     super(props);
+    console.log('props in searchresult layout ', props)
     this.state = {city: '*',
                   status_code: '*',
                   rate_range: '*',
-                  subject: '*',
+                  subject: props.subject,
                   sort: '*',
                   tutors: props.tutors};
     this.handSelectChange = this.handleSelectChange.bind(this);
@@ -168,7 +169,7 @@ class SearchResultLayout extends Component {
           </div>
         </section>
         <aside className="two-fifth map">
-        <GoogleMap tutors = {this.state.tutors}/>
+          <GoogleMap tutors = {this.state.tutors}/>
         </aside>
       </div>
     </div>

@@ -16,12 +16,16 @@ class SearchBox extends Component {
     const search_term = e.target.value;
     e.preventDefault();
     axios({method: 'get',
-         url: `http://localhost:3000/`,
-         data: {search_term: e.target.value}
+         url: `http://localhost:3000/search`,
+         params: {city: '*',
+                  status_code: '*',
+                  rate_range: '*',
+                  subject: search_term,
+                  sort: '*'}
        })
     .then(response => {
       console.log('response', response);
-      store.dispatch({ type: types.SEARCH, payload: response.data });
+      store.dispatch({ type: types.SEARCH, payload: {tutors: response.data, subject: search_term} });
     })
     .catch((error) => {
       // errorHandler(store.dispatch, error.response, types.AUTH_ERROR)

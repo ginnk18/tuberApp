@@ -1,5 +1,5 @@
 // Callback process:
-// componentDidMount loads the map api, and calls initMap
+// componentDidMount loads the map api, which has initMap as a callback
 // initMap calls geolocation, which calls new maps.Map,
 // which loops over the tutors to make markers and info windows
 
@@ -15,6 +15,9 @@ const loadJS = function(src) {
     ref.parentNode.insertBefore(script, ref);
 }
 
+const availabilityColor = {1: ["#11dd11", "Available and online"],
+                           2: ["#dddd11", "Available but offline"],
+                           3: ["#999999", "Unavailable"]}
 
 class GoogleMap extends Component {
 
@@ -41,10 +44,12 @@ class GoogleMap extends Component {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
         let center = {lat: position.coords.latitude, lng: position.coords.longitude};
+
         const map = new window.google.maps.Map(ReactDOM.findDOMNode(this.refs["map"]), {
           zoom: 4,
           center: center
         });
+
         this.props.tutors.forEach((tutor) => {
           let location = JSON.parse(tutor.current_location);
           let marker = new google.maps.Marker({
@@ -53,16 +58,24 @@ class GoogleMap extends Component {
             title: tutor.name
           });
 
-          var contentString = '<div class="infoWindowContent">'+
-                `<h5 class="infoWindowFirstHeading">${tutor.name}</h5>`+
-                `<img style="max-width: 40%; max-height: 40%" class="info-window-avatar" src=${tutor.avatar}/>` +
-                `<p>Phone: ${tutor.phone}</p>` +
-                `<p>Email: ${tutor}</p>`+
+          let availabilityStats = availabilityColor[tutor.status_code];
+          let contentString = '<div class="infoWindowContent">'+
+                '<div style="display: inline-block; vertical-align: top;">' +
+                  `<h2>${tutor.name}</h2>`+
+                  `<i style="color:${availabilityStats[0]};" class="fa fa-circle" aria-hidden="true"></i>` +
+                  `<span> ${availabilityStats[1]}</span>` +
+                '</div>' +
+                '<div>' +
+                  `<img style="max-width: 75%; max-height: 75%" class="info-window-avatar" src=${tutor.avatar}/>` +
+                  `<p>Phone: ${tutor.phone}</p>` +
+                  `<p>Rate: $${tutor.rate_cents / 100.0}/hr</p>`+
+                '</div>'
                 '</div>';
 
-          var infowindow = new google.maps.InfoWindow({
+          let infowindow = new google.maps.InfoWindow({
             content: contentString
           });
+
           marker.addListener('click', function() {
             infowindow.open(map, marker);
           });
@@ -87,7 +100,7 @@ class GoogleMap extends Component {
               `<h5 class="infoWindowFirstHeading">${tutor.name}</h5>`+
               `<img style="max-width: 40%; max-height: 40%" class="info-window-avatar" src=${tutor.avatar}/>` +
               `<p>Phone: ${tutor.phone}</p>` +
-              `<p>Email: email</p>`+
+              `<p></p>`+
               '</div>';
 
         var infowindow = new google.maps.InfoWindow({
