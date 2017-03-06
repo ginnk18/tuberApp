@@ -10,6 +10,7 @@ const loadJS = function(src) {
     ref.parentNode.insertBefore(script, ref);
 }
 
+
 class GoogleMap extends Component {
 
   constructor(props) {
@@ -28,32 +29,72 @@ class GoogleMap extends Component {
   }
 
   initMap() {
-    console.log('props in GoogleMap', this.props);
-    let map = new window.google.maps.Map(ReactDOM.findDOMNode(this.refs["map"]), {
-      zoom: 4,
-      center: {lat: 51.0486, lng: 114.0708}
-    });
+    let center = {lat: 51.0486, lng: 114.0708}
+    function setPosition(position) {
+      center = {lat: position.coords.latitude, lng: position.coords.longitude};
+      console.log('center in set position: ', center);
+    }
 
-    this.props.tutors.forEach((tutor) => {
-      let location = JSON.parse(tutor.current_location);
-      let marker = new google.maps.Marker({
-        position: {lat: location.lat, lng: location.long},
-        map:map,
-        title: tutor.name
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        let center = {lat: position.coords.latitude, lng: position.coords.longitude};
+        const map = new window.google.maps.Map(ReactDOM.findDOMNode(this.refs["map"]), {
+          zoom: 4,
+          center: center
+        });
+        this.props.tutors.forEach((tutor) => {
+          let location = JSON.parse(tutor.current_location);
+          let marker = new google.maps.Marker({
+            position: {lat: location.lat, lng: location.long},
+            map: map,
+            title: tutor.name
+          });
+
+          var contentString = '<div class="infoWindowContent">'+
+                `<h5 class="infoWindowFirstHeading">${tutor.name}</h5>`+
+                `<img style="max-width: 40%; max-height: 40%" class="info-window-avatar" src=${tutor.avatar}/>` +
+                `<p>Phone: ${tutor.phone}</p>` +
+                `<p>Email: email</p>`+
+                '</div>';
+
+          var infowindow = new google.maps.InfoWindow({
+            content: contentString
+          });
+          marker.addListener('click', function() {
+            infowindow.open(map, marker);
+          });
+        })
       });
 
-      var contentString = '<div class="infoWindowContent">'+
-            `<h5 class="infoWindowHeading" class="infoWindowFirstHeading">${tutor.name}</h5>`+
-            `<p>Phone: ${tutor.phone}</p>`
-            '</div>';
+    } else {
+      // Browser does not support geolocation
+      const map = new window.google.maps.Map(ReactDOM.findDOMNode(this.refs["map"]), {
+        zoom: 4,
+        center: {lat: 52.0486, lng: -112.0708}
+      });
+      this.props.tutors.forEach((tutor) => {
+        let location = JSON.parse(tutor.current_location);
+        let marker = new google.maps.Marker({
+          position: {lat: location.lat, lng: location.long},
+          map: map,
+          title: tutor.name
+        });
 
-      var infowindow = new google.maps.InfoWindow({
-        content: contentString
-      });
-      marker.addListener('click', function() {
-        infowindow.open(map, marker);
-      });
-    })
+        var contentString = '<div class="infoWindowContent">'+
+              `<h5 class="infoWindowFirstHeading">${tutor.name}</h5>`+
+              `<img style="max-width: 40%; max-height: 40%" class="info-window-avatar" src=${tutor.avatar}/>` +
+              `<p>Phone: ${tutor.phone}</p>` +
+              `<p>Email: email</p>`+
+              '</div>';
+
+        var infowindow = new google.maps.InfoWindow({
+          content: contentString
+        });
+        marker.addListener('click', function() {
+          infowindow.open(map, marker);
+        });
+      })
+    }
   }
 
   componentDidUpdate(prevProps, prevState) {
