@@ -25,6 +25,8 @@
       position: relative;
       display: flex;
       .selectContainer{
+        width: 0;
+        height: 0;
         font-size: x-large;
       }
     }

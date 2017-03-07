@@ -46,7 +46,7 @@ class GoogleMap extends Component {
         let center = {lat: position.coords.latitude, lng: position.coords.longitude};
 
         const map = new window.google.maps.Map(ReactDOM.findDOMNode(this.refs["map"]), {
-          zoom: 4,
+          zoom: 12,
           center: center
         });
 
@@ -135,6 +135,3 @@ class GoogleMap extends Component {
 
 
 export default GoogleMap;
-
-
-
