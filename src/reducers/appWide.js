@@ -15,6 +15,7 @@ const tuberApp = (state, action) => {
     case 'LOAD_HOME_FULFILLED':
       return {
         ...state,
+        page: 'home',
         tutors: action.payload.data,
         status: 'FETCHED'
       };

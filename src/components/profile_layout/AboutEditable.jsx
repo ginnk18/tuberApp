@@ -5,7 +5,8 @@ export default class About extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      subjects: []
+      current_location: this.props.profile.current_location,
+      subjects_taught: this.props.profile.subjects
     }
     this.SUBJECTS = [
       'Visual Arts', 'Geography', 'History',
@@ -42,14 +43,14 @@ export default class About extends Component {
   selectCell(picked) {
     picked.classList.add("picked");
     const subject = picked.getAttribute("data-subject");
-    const idx = this.state.subjects.indexOf(subject);
-    idx === -1 && this.state.subjects.push(subject)
+    const idx = this.state.subjects_taught.indexOf(subject);
+    idx === -1 && this.state.subjects_taught.push(subject)
   }
 
   unselectCell(picked) {
     const subject = picked.getAttribute("data-subject");
-    const idx = this.state.subjects.indexOf(subject);
-    idx > -1 && this.state.subjects.splice(idx, 1)
+    const idx = this.state.subjects_taught.indexOf(subject);
+    idx > -1 && this.state.subjects_taught.splice(idx, 1)
     picked.classList.remove("picked");
   }
 
@@ -60,8 +61,12 @@ export default class About extends Component {
 
     if (input.matches("input")) {
       if (name.includes("address")) {
-        this.setState({address: {[name.replace("address-", "")]: value}});
-      } else {
+        this.setState({current_location: {[name.replace("address-", "")]: value}});
+      } 
+      if (name === "rate_cents") {
+        this.setState({[name]: (value * 100)})
+      }
+      else {
         this.setState({[name]: value})
       }
     }
@@ -92,7 +97,7 @@ export default class About extends Component {
           <dd onClick={(e) => this.toggleSelect(e)} >{this.renderSubjects()}</dd>
 
           <dt>Rate</dt>
-          <dd>$ per hour<input name="rate" type="number" 
+          <dd>$ per hour<input name="rate_cents" type="number" 
               defaultValue={Number(profile.rate.slice(1).replace(/\/hr/, ""))} />
           </dd>
         </dl>
