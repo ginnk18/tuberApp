@@ -19,7 +19,7 @@ class App extends Component {
       "profile": <ProfileLayout profile={this.props.appState.profile} />,
       "register_tutor": <TutorRegistrationLayout />,
       "register_student": <StudentRegistrationLayout />,
-      "search_result": <SearchResultLayout tutors={this.props.appState.tutors}/>,
+      "search_result": <SearchResultLayout tutors={this.props.appState.tutors} subject={this.props.appState.subject}/>,
       "login": <LoginLayout />
     };
   }
