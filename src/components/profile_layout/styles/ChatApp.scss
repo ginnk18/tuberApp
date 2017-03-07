@@ -1,17 +1,37 @@
-#messages {
-    .container {
+@import '../../../../styles/variables';
+#messages,
+#chat-root {
+  #chat-app {
+    background-color: white;
+    border: 1px solid #e0e0e0;
+    bottom: 0;
     display: flex;
     flex-direction: column;
+    // height: 600px;
+    padding: 0;
+    position: fixed;
+    right: 0;
+    width: 500px;
+
+    -webkit-transition: all 0.4s cubic-bezier(0.65, 0.05, 0.36, 1);
+    -moz-transition: all 0.4s cubic-bezier(0.65, 0.05, 0.36, 1);
+    transition: all 0.4s cubic-bezier(0.65, 0.05, 0.36, 1);
+
+    &.minimize {
+      bottom: -500px;
+    }
   }
 
   .messages {
     overflow-y: scroll;
     overflow-x: hidden;
-    flex-grow: 1;
+    flex: none;
+    height: 400px;
     padding: 20px;
   }
 
-  h3 {
+  h3.header {
+    cursor: pointer;
     text-align: center;
     padding: 20px 0;
     margin: 0;
@@ -20,16 +40,18 @@
   }
 
   .chat-input {
+    background-color: lighten($brand-color, 30%);
     position: relative;
     overflow: hidden;
-    padding: 0 40px;
+    padding: 20px;
     flex-shrink: 0;
+    font-size: 18px;
   }
 
   .chat-input input[type="text"] {
+    height: 60px;
     width: 100%;
-    margin-left: -20px;
-    margin-right: -20px;
+    padding: 0px 20px;
   }
 
   .message.from-me .username {

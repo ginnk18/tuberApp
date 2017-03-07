@@ -61,8 +61,6 @@ class HomeLayout extends Component {
   render() {
     console.log("STATES!!!!!!!",this.state.tutors)
     console.log("PROPS", this.props.tutors)
-
-
     return (
 
     <div>

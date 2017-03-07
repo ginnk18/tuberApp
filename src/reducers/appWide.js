@@ -1,16 +1,6 @@
 // import actions from '../actions';
 
-const initialState = {
-  user: undefined,
-  page: 'home',
-  tutors: [],
-  error: '',
-  message: '',
-  content: '',
-  authenticated: false
-};
-
-const tuberApp = (state = initialState, action) => {
+const tuberApp = (state, action) => {
   switch (action.type) {
     case 'LOAD_HOME_REJECTED':
       console.log(action.payload);
@@ -23,8 +13,10 @@ const tuberApp = (state = initialState, action) => {
       });
 
     case 'LOAD_HOME_FULFILLED':
+      console.log('action payload in loadhome fulfilled reducer', action.payload.data);
       return {
         ...state,
+        page: 'home',
         tutors: action.payload.data,
         status: 'FETCHED'
       };
@@ -46,6 +38,7 @@ const tuberApp = (state = initialState, action) => {
       });
 
     case 'AUTH_USER':
+      console.log('in auth user');
       return { ...state, error: '', message: '', authenticated: true, page: 'home' };
 
     case 'UNAUTH_USER':

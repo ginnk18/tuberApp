@@ -3,6 +3,13 @@ body {
 }
 .profile-layout {
   
+  blockquote {
+    border-left: none;
+    font-size: 18px;
+    line-height: 1.6;
+    padding-left: $spacing-unit2;
+    padding-right: $spacing-unit2;
+  }
   .border-butt {
     border-bottom: 1px solid $line-color;
   }
@@ -11,22 +18,57 @@ body {
     display: flex;
     flex-direction: column;
     margin: 0 auto;
-    min-width: 600px;
+    // min-width: 600px;
     padding-top: 200px;
-    width: 66.7%;
+    // width: 66.7%;
 
     .profile-summaries {
       flex: none;
-      height: 400px;
       padding: 0 $spacing-unit1;
-      width: 350px;
-
+      max-width: 400px;
+      overflow: hidden;
+      
+      .image-wrapper {
+        background-color: $line-color;
+        height: 400px;
+        width: 380px;
+        text-align: center;
+      }
       img {
         height: 100%;
         width: 100%;
       }
 
       .about {
+        .head-wrapper {
+          align-items: center;
+          display: flex;
+
+          i.fa {
+            cursor: pointer;
+            margin-left: auto;
+            opacity: 0.5;
+            transition: all 0.3s ease-in-out;
+
+            &:hover {
+              opacity: 1;
+            }
+          }
+
+        }
+        .subject-label {
+          background-color: lighten($line-color, 20%);
+          cursor: pointer;
+          line-height: 1.5;
+          margin: 2px;
+          padding: 0 $spacing-unit1;
+          
+          &.picked {
+            background-color: lighten($brand-color, 20%);
+            box-shadow: 0px 0px 2px $dark;
+            color: #ffffff;
+          }
+        }
 
         h2 {
           background-color: $light;
@@ -37,28 +79,42 @@ body {
 
         .profile-summary {
           padding: 0 $spacing-unit-half;
-
+          
           dt {
             color: $accent-color;
-            font-size: 1.5rem;
+            font-size: 2rem;
             padding: $spacing-unit2 $spacing-unit-half 0;
           }
 
           dd {
-            line-height: 2;
+            display: flex;
+            flex-wrap: wrap;
+            line-height: 2.5;
             padding: 0 $spacing-unit-half;
-
-            // &:hover {
-            //   border-left: 1px solid $brand-color;
-            // }
+            
+            input {
+              border: none;
+              border-bottom: 2px solid #eee;
+              flex: 1;
+              margin-left: auto;
+              text-align: right;
+              transition: all 0.3s ease-in-out;
+            
+              &:hover, &:focus {
+                // border-left: 3px solid $brand-color;
+                border-bottom: 2px solid $accent-color;
+                outline: none;
+              }
+            }
           }
         }
       }
     }
 
     .profile-details {
-      padding: 0 $spacing-unit1;
-
+      padding: 0 50px;
+      max-width: 800px;
+      min-width: 600px;
       h1 {
         font-size: 3rem;
       }
@@ -174,7 +230,7 @@ body {
     
     .row {
       align-items: flex-start;
-      padding: $spacing-unit1 0;
+      padding-bottom: 50px;
     }
 
     .rbc-row,
