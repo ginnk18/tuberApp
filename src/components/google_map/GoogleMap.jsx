@@ -12,7 +12,19 @@ const loadJS = function(src) {
     const script = window.document.createElement("script");
     script.src = src;
     script.async = true;
-    ref.parentNode.insertBefore(script, ref);
+    let length = window.document.getElementsByTagName("script").length
+    let googleApiLoaded = false;
+    // I know, I know, but you can't loop through nodeCollections the good way
+    for (let i=0; i < length; i++) {
+      if (window.document.getElementsByTagName("script")[i].src == script.src) {
+        googleApiLoaded = true;
+      }
+    }
+    if (!googleApiLoaded) {
+      ref.parentNode.insertBefore(script, ref);
+    } else {
+      initMap();
+    }
 }
 
 const availabilityColor = {1: ["#11dd11", "Available and online"],
