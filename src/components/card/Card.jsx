@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { classes } from '../utils';
+import store from '../../tuberStore';
+import { profileActions } from '../../actions'
 
 class Card extends Component {
 
@@ -12,27 +14,30 @@ class Card extends Component {
 
   render() {
     if (this.props.tutor) {
+        // const reviews = this.props.tutors.reviews;
+        // const sampleReview = reviews[Math.floor(Math.random(reviews.length))]
         const [clr , available] = this.availabilityColor.bind(this)();
         return <figure className={classes.call(this, "card")}>
-                <img src={this.props.tutor.avatar} />
+                <img onClick={() => store.dispatch(profileActions.loadProfile(this.props.tutor.id)) } src={this.props.tutor.avatar} />
                 <figcaption className="main">
-                  <strong className="name">{this.props.tutor.name}</strong><br/>
-                  <span className="tutor-attr">Major:&nbsp;&nbsp;</span><span>{this.props.tutor.subjects}</span><br/>
-                  <span className="tutor-attr">Other Subjects:&nbsp;&nbsp;</span><span>{this.props.tutor.subjects}</span><br/>
+                  <a href="#0" onClick={() => store.dispatch(profileActions.loadProfile(this.props.tutor.id)) } >
+                    <strong className="name">{this.props.tutor.name}</strong><br/>
+                  </a>
+                  <span className="tutor-attr">Subjects:&nbsp;&nbsp;</span><span>{this.props.tutor.subjects}</span><br/>
                   <span className="tutor-attr">Qualification:&nbsp;&nbsp;</span><span>{this.props.tutor.education}</span><br/>
                   <span className="tutor-attr">Experience:&nbsp;&nbsp;</span><span>{this.props.tutor.experience}</span>
                   <div className="card-btn">
-                    <a className="z-index1" href="#0">hire</a>
-                    <a className="z-index1" href="#0">see more</a>
+                    <a className="z-index1" href="#0">contact</a>
+                    <a className="z-index1" href="#0" onClick={() => store.dispatch(profileActions.loadProfile(this.props.tutor.id)) }>see more</a>
                   </div>
-                  <blockqoute>
-                    <p><em>
-                      "Marias really a great tutor. I wouldnt pay her shyt to teach nofn"
-                    </em></p>
-                    <footer>
-                    — <cite><a href="#0">Jennifer Lawson</a></cite>
-                    </footer>
-                  </blockqoute>
+                  {/*<blockqoute>
+                                      <p><em>
+                                        {`${sampleReview.content.substring(0,20)}...`}
+                                      </em></p>
+                                      <footer>
+                                      — <cite><a href="#0">{sampleReview.reviewer}</a></cite>
+                                      </footer>
+                                    </blockqoute>
                   <ul className="next-prev">
                     <li className="prev"><a href="#0"><i className="fa fa-chevron-left" aria-hidden="true"></i></a></li>
                     <li className="next"><a href="#0"><i className="fa fa-chevron-right" aria-hidden="true"></i></a></li>
@@ -45,12 +50,14 @@ class Card extends Component {
                     &nbsp; {available}  ·  {this.props.tutor.current_location.city}, {this.props.tutor.current_location.country}
                   </div>
                   <div>
-                    <i className="fa fa-star" aria-hidden="true"></i>
-                    <i className="fa fa-star" aria-hidden="true"></i>
-                    <i className="fa fa-star" aria-hidden="true"></i>
-                    <i className="fa fa-star" aria-hidden="true"></i>
-                    <i className="fa fa-star-half-o" aria-hidden="true"></i> in 56 reviews
-                  </div>
+                    <Rating
+                    readonly={true}
+                    initialRate={reviews.reduce((sum,r) => sum + r.rating, 0) / reviews.length}
+                    empty='fa fa-star-o'
+                    full='fa fa-star'
+                    />
+                    &nbsp;in {reviews.length} reviews
+                  </div>*/}
                 </figcaption>
               </figure>
     }

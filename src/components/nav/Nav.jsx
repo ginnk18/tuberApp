@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import store from '../../tuberStore';
-import { tutorActions } from '../../actions';
-import { studentActions } from '../../actions';
-import { userActions } from '../../actions';
+import { tutorActions, profileActions } from '../../actions';
+import { studentActions, userActions } from '../../actions';
+// import { userActions } from '../../actions';
 import Logo from '../logo/Logo.jsx';
 import SearchBox from '../search_box/SearchBox.jsx';
 import cookie from 'react-cookie';
@@ -25,9 +25,10 @@ class Nav extends Component {
   renderLogin () { store.dispatch(userActions.showLoginForm()) }
 
   registrationButtons() {
-    if (cookie.load('user')){
+    const loggedIn = cookie.load('user');
+    if (loggedIn){
       return <ul className="">
-               <li><a href="#0">{cookie.load('user').email}</a></li>
+               <li><a onClick={() => store.dispatch(profileActions.loadProfile(loggedIn.id)) } href="#0">{loggedIn.email}</a></li>
                <li><a onClick={ this.logout } href= "#0">Logout</a></li>
              </ul>
     } else {
