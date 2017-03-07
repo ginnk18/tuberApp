@@ -67,7 +67,7 @@ class GoogleMap extends Component {
                   `<span> ${availabilityStats[1]}</span>` +
                 '</div>' +
                 '<div>' +
-                  `<img style="max-width: 75%; max-height: 75%" class="info-window-avatar" src=${tutor.avatar}/>` +
+                  `<img style="max-width: 50%; max-height: 50%" class="info-window-avatar" src=${tutor.avatar}/>` +
                   `<p>Phone: ${tutor.phone}</p>` +
                   `<p>Rate: $${tutor.rate_cents / 100.0}/hr</p>`+
                 '</div>'

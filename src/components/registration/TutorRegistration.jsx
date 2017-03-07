@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import AppHeader from '../app_header/AppHeader.jsx';
 import Card from '../card/Card.jsx';
-import actions from '../../actions';
 import cookie from 'react-cookie';
 import axios from 'axios';
 import { registerUser } from '../../actions/userActions.js';
+import actions, { profileActions, tutorActions } from '../../actions';
 import { createStore } from 'redux';
 import store from '../../tuberStore';
 import types from '../../actions/actionTypes';
@@ -89,9 +89,12 @@ class TutorRegistrationLayout extends Component {
            data: this.state
     }).then(response => {
         console.log('response', response);
+        console.log('token', response.data.user.user.token)
         cookie.save('token', response.data.user.user.token, { path: '/' });
         cookie.save('user', response.data.user, { path: '/' });
-        store.dispatch({ type: types.AUTH_USER });
+        console.log('after cookie save', response.data.user.id)
+        store.dispatch(profileActions.loadProfile(response.data.user.id));
+        // store.dispatch({ type: types.LOAD_PROFILE });
     }).catch((error) => {
         // errorHandler(store.dispatch, error.response, types.AUTH_ERROR)
     });
@@ -116,9 +119,21 @@ class TutorRegistrationLayout extends Component {
           <label htmlFor="tutorRegName">Name</label>
           <input name="name" value={this.state.name} onChange={this.handleInputChange} className="form-control" id="tutorRegName"></input>
         </div>
+
         <div className="form-group">
           <label htmlFor="tutorRegHours">City</label>
-          <textarea name="city" value={this.state.city} onChange={this.handleInputChange} className="form-control" id="tutorRegCity" rows="1"></textarea>
+          <select name="city" value={this.state.city} onChange={this.handleInputChange} className="form-control" id="tutorRegCity">
+              <option value="Calgary">Calgary</option>
+              <option value="Edmonton">Edmonton</option>
+              <option value="Hamilton">Hamilton</option>
+              <option value="Kitchener">Kitchener</option>
+              <option value="Montreal">Montreal</option>
+              <option value="Ottawa">Ottawa</option>
+              <option value="Quebec City">Quebec City</option>
+              <option value="Toronto">Toronto</option>
+              <option value="Vancouver">Vancouver</option>
+              <option value="Winnipeg">Winnipeg</option>
+          </select>
         </div>
         <div className="form-group">
           <label htmlFor="tutorRegEducation">Summary of your education</label>
