@@ -1,17 +1,32 @@
 #Navfix {
   margin: 0;
 }
+.mainMap{
+  z-index: -1;
+  opacity: 0.5;
+  width: 100%;
+  height: 700px;
+  position: fixed;
+  top: 60px;
+}
 .home-layout {
+  padding-bottom: 50px;
   // min-height:
   .main-content {
     margin: 0 auto;
     min-width: 600px;
-    padding-top: 200px;
     width: 60%;
 
-    .mainMap{
-      width: 100%;
-      height: 500px;
+    .position{
+      position: fixed;
+      top: 200px;
+    }
+    .tagline-text{
+      position: relative;
+      display: flex;
+      .selectContainer{
+        font-size: x-large;
+      }
     }
 
     .main-search-wrapper {
@@ -67,13 +82,25 @@
       }
     }
   }
-
+  #useIdForHome{
+    padding-left: 50px;
+    pointer-events: all;
+  }
   .tagline {
+    pointer-events: none;
+    width: 0px;
+    height: 0px;
+    position: relative;
+    z-index: 0;
     font-size: 4rem;
-    padding-bottom: 100px;
+    padding-bottom: 50px;
 
     .brand {
+      pointer-events: all;
       color: $brand-color;
+      position: relative;
+      font-weight: bold;
+      z-index: 1;
     }
     .brand:hover {
       -webkit-animation:rainbow 2s ease-in infinite;

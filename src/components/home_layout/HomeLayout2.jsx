@@ -66,14 +66,16 @@ class HomeLayout extends Component {
     <div className="home-layout row">
       <AppHeader type="home" className="z-index3"/>
       <section className="main-content">
+      <section className="position">
         <section className="tagline">
-          <h1><span className="brand">Tuber&nbsp;</span>
+          <h1><span className="brand">tuber&nbsp;</span>
             <span className="tagline-text">painlessly connects students with
-            tutors.</span>
+            tutors.<HeaderDropdown /></span>
           </h1>
           <div className="styleButton">
-          <HeaderDropdown />
+          {/*<HeaderDropdown />*/}
           </div>
+          </section>
           <section className="three-fifth results">
             <div className="row">
               <article className="result half">
@@ -96,12 +98,12 @@ class HomeLayout extends Component {
               </article>
             </div>
           </section>
-          <aside className="mainMap">
-          <GoogleMap tutors = {this.props.tutors}/>
-          </aside>
           </section>
-        </section>
+          </section>
         </div>
+        <aside className="mainMap">
+        <GoogleMap tutors = {this.props.tutors}/>
+        </aside>
         </div>
     )
   }

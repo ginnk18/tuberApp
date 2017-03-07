@@ -1,11 +1,6 @@
 import { transformToProfileState } from '../components/profile_layout/profile_logic';
 
-const initialState = {
-  page: "profile",
-  profile: {}
-}
-
-export default function profileReducer(state = initialState, action) {
+export default function profileReducer(state, action) {
   switch (action.type) {
     case "LOAD_PROFILE_FULFILLED":
       return {
@@ -30,6 +25,13 @@ export default function profileReducer(state = initialState, action) {
         profile: {},
         status: "REJECTED"
       };
+
+    case "NEW_NOTIFY":
+      state.cable.messages.push(action.payload)
+      return {
+        ...state,
+        status: "MESSAGE APPENDED"
+      }
 
     case "POST_REVIEW_FULFILLED":
       const updatedProfile = state.profile
@@ -56,6 +58,34 @@ export default function profileReducer(state = initialState, action) {
         error: action.payload,
         status: "REJECTED"
       };
+
+    case "SEND_CHAT":
+      state.profile.chatSent = true;
+      return {
+        ...state,
+        status: "CHAT SENT"
+      };
+
+    case "SEND_SMS_FULFILLED":
+      state.profile.offlineSent = true;
+      return {
+        ...state,
+        status: "SMS SENT"
+      };
+
+    case "SEND_SMS_REJECTED":
+      state.profile.offlineError = true;
+      return {
+        ...state,
+        status: "SMS ERROR"
+      }
+
+    case "UPDATE_PROFILE_FULFILLED":
+      return {
+        ...state,
+        profile: action.payload.data,
+        status: "PROFILE UPDATED"
+      }
 
     default:
       return state;

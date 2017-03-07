@@ -6,7 +6,7 @@ export default class Messages extends Component {
   render() {
     return (
       <section id="messages">
-        <TuberMessage />
+        <TuberMessage cable={this.props.cable} profile={this.props.profile} />
       </section>
     )
   }

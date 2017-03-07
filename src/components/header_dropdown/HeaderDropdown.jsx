@@ -34,7 +34,7 @@ class SearchBox extends Component {
 
   render() {
     return (
-        <div className="selectContainer">
+        <div className="selectContainer" id="useIdForHome">
           <select onChange={(event)=>this.subjectSearch(event)}
                   name="subject">
             <option value="*">Pick a subject to search for tutors</option>
