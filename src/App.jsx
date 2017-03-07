@@ -1,7 +1,7 @@
 import { ActionCable, Cable } from 'action-cable-react';
 import { CableMixin, ChannelMixin } from 'action-cable-react';
 import React, {Component} from 'react';
-import HomeLayout from './components/home_layout/HomeLayout.jsx';
+import HomeLayout from './components/home_layout/HomeLayout2.jsx';
 import ProfileLayout from './components/profile_layout/ProfileLayout.jsx';
 import SearchResultLayout from './components/search_result_layout/SearchResultLayout.jsx';
 import TutorRegistrationLayout from './components/registration/TutorRegistration.jsx';
@@ -49,7 +49,7 @@ module.exports = React.createClass({
       "profile": <ProfileLayout cable={this.state.cable} profile={this.props.appState.profile} />,
       "register_tutor": <TutorRegistrationLayout />,
       "register_student": <StudentRegistrationLayout />,
-      "search_result": <SearchResultLayout tutors={this.props.appState.tutors}/>,
+      "search_result": <SearchResultLayout tutors={this.props.appState.tutors} subject={this.props.appState.subject}/>,
       "login": <LoginLayout />
     };
   },
@@ -57,7 +57,7 @@ module.exports = React.createClass({
   render() {
     if (this.props.appState) {
       return (<div>
-                {this.pages()[this.props.appState.page]}
+                {this.pages()["home"/*this.props.appState.page*/]}
               </div>
       );
     } return null;

@@ -15,7 +15,7 @@ class Card extends Component {
         const [clr , available] = this.availabilityColor.bind(this)();
         return <figure className={classes.call(this, "card")}>
                 <img src={this.props.tutor.avatar} />
-                <figcaption>
+                <figcaption className="main">
                   <strong className="name">{this.props.tutor.name}</strong><br/>
                   <span className="tutor-attr">Major:&nbsp;&nbsp;</span><span>{this.props.tutor.subjects}</span><br/>
                   <span className="tutor-attr">Other Subjects:&nbsp;&nbsp;</span><span>{this.props.tutor.subjects}</span><br/>
@@ -38,7 +38,7 @@ class Card extends Component {
                     <li className="next"><a href="#0"><i className="fa fa-chevron-right" aria-hidden="true"></i></a></li>
                   </ul>
                 </figcaption>
-                <figcaption>
+                <figcaption className="rate">
                   <div><strong>Physics</strong> ${this.props.tutor.rate_cents / 100}/hr</div>
                   <div>
                     <i style={{color:{clr}}} className="fa fa-circle" aria-hidden="true"></i>

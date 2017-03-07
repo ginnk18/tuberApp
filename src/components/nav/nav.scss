@@ -63,6 +63,9 @@
  }
 }
 @media (max-device-width: 568px) {
+  .selectContainer{
+    padding-right: 3%;
+  }
   .mobile-nav:hover{
     .line {
       //transition: 0.7s;

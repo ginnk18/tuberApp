@@ -1,9 +1,24 @@
 body {
   overflow-y: hidden;
 }
+.card{
+  display: flex;
+  width: 100%;
+  img{
+    width: 50%;
+    height: auto;
+  }
+  .figcaption{
+    width: 50%;
+    height: auto;
+  }
+  .rate{
+    display: none;
+  }
+}
 .search-result-layout {
   padding-top: 64px;
-  
+
   .filters {
     border: 1px solid $line-color;
     height: 50px;
@@ -21,7 +36,7 @@ body {
     position: fixed;
     top: 114px;
   }
-  
+
   .map {
     left: auto;
     right: 0;
@@ -34,7 +49,7 @@ body {
     width: 60%;
     overflow-y: scroll;
     padding: $spacing-unit-half;
-    
+
     .notices {
       height: 100px;
       padding: $spacing-unit1;
@@ -44,4 +59,23 @@ body {
       padding: $spacing-unit1 $spacing-unit-half;
     }
   }
+  @media (max-device-width: 568px){
+    .map{
+      border-style: solid;
+      border-color: red;
+      border-width: medium;
+      width: 100%;
+      height: 30%;
+    }
+    .three-fifth.results{
+      top: 560px;
+      width: 100%;
+    }
+    .card{
+      width: 100%;
+      max-height: 300px;
+      height: auto;
+      display: inline-flex;
+    }
+    }
 }

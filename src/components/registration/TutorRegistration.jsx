@@ -98,6 +98,7 @@ class TutorRegistrationLayout extends Component {
         <AppHeader className="z-index3"/>
 
       <form onSubmit={this.tutFormSubmit} className="tutor-registration-form">
+        <h3>Become a tutor for Tuber!</h3>
         <div className="form-group">
           <label htmlFor="tutorRegEmail">Email address</label>
           <input name="email" value={this.state.email} onChange={this.handleInputChange} type="email" className="form-control" id="tutorRegEmail" aria-describedby="emailHelp" placeholder="Enter email"/>
@@ -115,7 +116,7 @@ class TutorRegistrationLayout extends Component {
           <textarea name="experience" value={this.state.experience} onChange={this.handleInputChange} className="form-control" id="tutorFormExperience" rows="3"></textarea>
         </div>
         <div className="form-group">
-          <label htmlFor="tutorRegPhone" className="col-form-label">Telephone</label>
+          <label htmlFor="tutorRegPhone" className="col-form-label">Phone Number</label>
             <input name="phone" value={this.state.phone} onChange={this.handleInputChange} className="form-control" type="tel" id="tutorRegPhone"/>
         </div>
         <div className="form-group">
@@ -127,7 +128,7 @@ class TutorRegistrationLayout extends Component {
           <textarea name="rate_cents" value={this.state.rate_cents} onChange={this.handleInputChange} className="form-control" id="tutorRegRate" rows="1"></textarea>
         </div>
         <div className="form-group">
-          <label htmlFor="tutorRegSubjects">Subjects taught</label>
+          <label htmlFor="tutorRegSubjects">Subjects you can teach</label>
           <select name="subjects" value={this.state.subjects} onChange={this.handleInputChange} multiple className="form-control" id="tutorRegSubjects">
             <option value="Visual Arts">Visual Arts</option>
             <option value="Geography">Geography</option>
@@ -153,7 +154,7 @@ class TutorRegistrationLayout extends Component {
         <div className="form-group">
           <label htmlFor="tutRegAvatar">Profile Picture</label>
           <input name="avatar" value={this.state.avatar} onChange={this.handleInputChange} type="string" className="form-control-file" id="tutRegAvatar" aria-describedby="fileHelp"/>
-          <small id="fileHelp" className="form-text text-muted">Upload an image for your profile</small>
+          <small id="fileHelp" className="form-text text-muted"> Enter a URL</small>
         </div>
         <button type="submit" className="btn btn-primary">Submit</button>
       </form>
