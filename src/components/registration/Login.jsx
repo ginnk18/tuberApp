@@ -28,16 +28,19 @@ class LoginLayout extends Component {
   }
 
   loginFormSubmit (e) {
+    console.log('in login form submit')
     e.preventDefault();
     if (navigator.geolocation) {
+      console.log('in geolocation if')
       navigator.geolocation.getCurrentPosition((position) => {
+        console.log('in geolocation get current')
         axios({method: 'post',
              url: 'http://localhost:3000/sessions',
              data: {email: this.state.email,
                     password: this.state.password,
                     lat: position.coords.latitude,
                     lng: position.coords.longitude}
-              })
+             })
         .then(response => {
           console.log('response', response.data);
           cookie.save('token', response.data.user.token, { path: '/' });
