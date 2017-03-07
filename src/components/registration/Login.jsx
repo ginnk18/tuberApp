@@ -29,19 +29,27 @@ class LoginLayout extends Component {
 
   loginFormSubmit (e) {
     e.preventDefault();
-    axios({method: 'post',
-           url: 'http://localhost:3000/sessions',
-           data: this.state})
-      .then(response => {
-        console.log('response', response.data);
-        cookie.save('token', response.data.user.token, { path: '/' });
-        cookie.save('user', response.data, { path: '/' });
-        store.dispatch({ type: types.AUTH_USER });
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        axios({method: 'post',
+             url: 'http://localhost:3000/sessions',
+             data: {email: this.state.email,
+                    password: this.state.password,
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude}
+              })
+        .then(response => {
+          console.log('response', response.data);
+          cookie.save('token', response.data.user.token, { path: '/' });
+          cookie.save('user', response.data, { path: '/' });
+          store.dispatch({ type: types.AUTH_USER });
+        })
+        .catch((error) => {
+          // errorHandler(store.dispatch, error.response, types.AUTH_ERROR)
+        })
       })
-      .catch((error) => {
-        // errorHandler(store.dispatch, error.response, types.AUTH_ERROR)
-      });
     }
+  }
 
   render() {
     return (<div className="login-layout row">
