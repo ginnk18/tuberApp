@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import AppHeader from '../app_header/AppHeader.jsx';
 import Card from '../card/Card.jsx';
-import actions from '../../actions';
+import actions, { profileActions, tutorActions } from '../../actions';
 import cookie from 'react-cookie';
 import axios from 'axios';
 import { registerUser } from '../../actions/userActions.js';
@@ -45,7 +45,7 @@ class LoginLayout extends Component {
           console.log('response', response.data);
           cookie.save('token', response.data.user.token, { path: '/' });
           cookie.save('user', response.data, { path: '/' });
-          store.dispatch({ type: types.AUTH_USER });
+        store.dispatch(tutorActions.loadHome());
         })
         .catch((error) => {
           // errorHandler(store.dispatch, error.response, types.AUTH_ERROR)

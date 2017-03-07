@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import AppHeader from '../app_header/AppHeader.jsx';
 import Card from '../card/Card.jsx';
-import actions from '../../actions';
 import cookie from 'react-cookie';
 import axios from 'axios';
 import { registerUser } from '../../actions/userActions.js';
+import actions, { profileActions, tutorActions } from '../../actions';
 import { createStore } from 'redux';
 import store from '../../tuberStore';
 import types from '../../actions/actionTypes';
@@ -89,9 +89,12 @@ class TutorRegistrationLayout extends Component {
            data: this.state
     }).then(response => {
         console.log('response', response);
+        console.log('token', response.data.user.user.token)
         cookie.save('token', response.data.user.user.token, { path: '/' });
         cookie.save('user', response.data.user, { path: '/' });
-        store.dispatch({ type: types.AUTH_USER });
+        console.log('after cookie save', response.data.user.id)
+        store.dispatch(profileActions.loadProfile(response.data.user.id));
+        // store.dispatch({ type: types.LOAD_PROFILE });
     }).catch((error) => {
         // errorHandler(store.dispatch, error.response, types.AUTH_ERROR)
     });
