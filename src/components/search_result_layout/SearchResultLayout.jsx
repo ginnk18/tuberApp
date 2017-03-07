@@ -87,8 +87,8 @@ class SearchResultLayout extends Component {
                   value={this.state.status_code}
                   className="col-xs-2">
             <option value="*">Availability</option>
-            <option value="1" >All</option>
-            <option value="2">Available but offline</option>
+            <option value="1" >Available, Online</option>
+            <option value="2">Available, Offline</option>
             <option value="3">Unavailable</option>
           </select>
         </div>

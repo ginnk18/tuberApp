@@ -1,13 +1,10 @@
-// // Load up the application styles
-// require("./tutor_registration.scss");
-
 import React, { Component } from 'react';
 import AppHeader from '../app_header/AppHeader.jsx';
 import Card from '../card/Card.jsx';
-import actions from '../../actions';
 import cookie from 'react-cookie';
 import axios from 'axios';
 import { registerUser } from '../../actions/userActions.js';
+import actions, { profileActions, tutorActions } from '../../actions';
 import { createStore } from 'redux';
 import store from '../../tuberStore';
 import types from '../../actions/actionTypes';
@@ -43,7 +40,16 @@ class TutorRegistrationLayout extends Component {
     super(props);
     this.state = {student_or_tutor: "tutor",
                   subjects: [],
-                  password: ''};
+                  password: '',
+                  name: '',
+                  city: '',
+                  email: '',
+                  education: '',
+                  experience: '',
+                  phone: '',
+                  hours: '',
+                  rate_cents: '',
+                  avatar: 'http://kids.nationalgeographic.com/content/dam/kids/photos/animals/Mammals/Q-Z/sun-bear-tongue.jpg.adapt.945.1.jpg'};
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.tutFormSubmit = this.tutFormSubmit.bind(this);
@@ -80,16 +86,18 @@ class TutorRegistrationLayout extends Component {
     e.preventDefault();
     axios({method: 'post',
            url: 'http://localhost:3000/users',
-           data: this.state})
-      .then(response => {
+           data: this.state
+    }).then(response => {
         console.log('response', response);
+        console.log('token', response.data.user.user.token)
         cookie.save('token', response.data.user.user.token, { path: '/' });
         cookie.save('user', response.data.user, { path: '/' });
-        store.dispatch({ type: types.AUTH_USER });
-      })
-      .catch((error) => {
+        console.log('after cookie save', response.data.user.id)
+        store.dispatch(profileActions.loadProfile(response.data.user.id));
+        // store.dispatch({ type: types.LOAD_PROFILE });
+    }).catch((error) => {
         // errorHandler(store.dispatch, error.response, types.AUTH_ERROR)
-      });
+    });
   }
 
   render() {
@@ -106,6 +114,14 @@ class TutorRegistrationLayout extends Component {
         <div className="form-group">
           <label htmlFor="tutorRegPassword">Password</label>
           <input name="password" value={this.state.password} onChange={this.handleInputChange} type="password" className="form-control" id="tutorRegPassword" placeholder="Password"/>
+        </div>
+        <div className="form-group">
+          <label htmlFor="tutorRegName">Name</label>
+          <input name="name" value={this.state.name} onChange={this.handleInputChange} className="form-control" id="tutorRegName"></input>
+        </div>
+        <div className="form-group">
+          <label htmlFor="tutorRegHours">City</label>
+          <textarea name="city" value={this.state.city} onChange={this.handleInputChange} className="form-control" id="tutorRegCity" rows="1"></textarea>
         </div>
         <div className="form-group">
           <label htmlFor="tutorRegEducation">Summary of your education</label>
@@ -153,8 +169,14 @@ class TutorRegistrationLayout extends Component {
         </div>
         <div className="form-group">
           <label htmlFor="tutRegAvatar">Profile Picture</label>
-          <input name="avatar" value={this.state.avatar} onChange={this.handleInputChange} type="string" className="form-control-file" id="tutRegAvatar" aria-describedby="fileHelp"/>
-          <small id="fileHelp" className="form-text text-muted"> Enter a URL</small>
+          <input name="avatar"
+                 value={this.state.avatar}
+                 onChange={this.handleInputChange}
+                 type="string"
+                 className="form-control-file"
+                 id="tutRegAvatar"
+                 aria-describedby="fileHelp"/>
+          <small id="fileHelp" className="form-text text-muted"> Enter a URL (defaults to the majestic Sun Bear)</small>
         </div>
         <button type="submit" className="btn btn-primary">Submit</button>
       </form>
@@ -164,14 +186,3 @@ class TutorRegistrationLayout extends Component {
 }
 
 export default TutorRegistrationLayout;
-
-
-// Just in case
-        // email: this.state.email,
-        // password: this.state.password,
-        // education: this.state.education,
-        // experience: this.state.experience,
-        // phone: this.state.phone,
-        // hours: this.state.hours,
-        // rate_cents: this.state.rate_cents,
-        // subjects: this.state.subjects,

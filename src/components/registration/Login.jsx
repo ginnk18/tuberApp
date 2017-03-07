@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import AppHeader from '../app_header/AppHeader.jsx';
 import Card from '../card/Card.jsx';
-import actions from '../../actions';
+import actions, { profileActions, tutorActions } from '../../actions';
 import cookie from 'react-cookie';
 import axios from 'axios';
 import { registerUser } from '../../actions/userActions.js';
@@ -28,20 +28,31 @@ class LoginLayout extends Component {
   }
 
   loginFormSubmit (e) {
+    console.log('in login form submit')
     e.preventDefault();
-    axios({method: 'post',
-           url: 'http://localhost:3000/sessions',
-           data: this.state})
-      .then(response => {
-        console.log('response', response.data);
-        cookie.save('token', response.data.user.token, { path: '/' });
-        cookie.save('user', response.data, { path: '/' });
-        store.dispatch({ type: types.AUTH_USER });
+    if (navigator.geolocation) {
+      console.log('in geolocation if')
+      navigator.geolocation.getCurrentPosition((position) => {
+        console.log('in geolocation get current')
+        axios({method: 'post',
+             url: 'http://localhost:3000/sessions',
+             data: {email: this.state.email,
+                    password: this.state.password,
+                    lat: position.coords.latitude,
+                    long: position.coords.longitude}
+             })
+        .then(response => {
+          console.log('response', response.data);
+          cookie.save('token', response.data.user.token, { path: '/' });
+          cookie.save('user', response.data, { path: '/' });
+        store.dispatch(tutorActions.loadHome());
+        })
+        .catch((error) => {
+          // errorHandler(store.dispatch, error.response, types.AUTH_ERROR)
+        })
       })
-      .catch((error) => {
-        // errorHandler(store.dispatch, error.response, types.AUTH_ERROR)
-      });
     }
+  }
 
   render() {
     return (<div className="login-layout row">

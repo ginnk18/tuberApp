@@ -13,6 +13,7 @@ const tuberApp = (state, action) => {
       });
 
     case 'LOAD_HOME_FULFILLED':
+      console.log('action payload in loadhome fulfilled reducer', action.payload.data);
       return {
         ...state,
         page: 'home',
@@ -37,6 +38,7 @@ const tuberApp = (state, action) => {
       });
 
     case 'AUTH_USER':
+      console.log('in auth user');
       return { ...state, error: '', message: '', authenticated: true, page: 'home' };
 
     case 'UNAUTH_USER':

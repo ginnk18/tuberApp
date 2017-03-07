@@ -17,7 +17,8 @@ const loadJS = function(src) {
 
 const availabilityColor = {1: ["#11dd11", "Available and online"],
                            2: ["#dddd11", "Available but offline"],
-                           3: ["#999999", "Unavailable"]}
+                           3: ["#999999", "Unavailable"],
+                           null: ["#999999", "Unavailable"]}
 
 class GoogleMap extends Component {
 
@@ -35,6 +36,7 @@ class GoogleMap extends Component {
   }
 
   initMap() {
+    console.log('tutors in initmap', this.props.tutors);
     let center = {lat: 51.0486, lng: 114.0708}
     function setPosition(position) {
       center = {lat: position.coords.latitude, lng: position.coords.longitude};
@@ -44,9 +46,8 @@ class GoogleMap extends Component {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
         let center = {lat: position.coords.latitude, lng: position.coords.longitude};
-
         const map = new window.google.maps.Map(ReactDOM.findDOMNode(this.refs["map"]), {
-          zoom: 4,
+          zoom: 12,
           center: center
         });
 
@@ -62,7 +63,7 @@ class GoogleMap extends Component {
           let contentString = '<div class="infoWindowContent">'+
                 '<div style="display: inline-block; vertical-align: top;">' +
                   `<h2>${tutor.name}</h2>`+
-                  `<i style="color:${availabilityStats[0]};" class="fa fa-circle" aria-hidden="true"></i>` +
+                  `<i style="color:${availabilityStats[0]}" class="fa fa-circle" aria-hidden="true"></i>` +
                   `<span> ${availabilityStats[1]}</span>` +
                 '</div>' +
                 '<div>' +
@@ -135,6 +136,3 @@ class GoogleMap extends Component {
 
 
 export default GoogleMap;
-
-
-
