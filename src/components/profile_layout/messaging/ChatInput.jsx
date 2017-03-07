@@ -18,7 +18,7 @@ class ChatInput extends React.Component {
     this.setState({ chatInput: '' });
 
     // Call the onSend callback with the chatInput message
-    this.props.onSend(this.state.chatInput);
+    this.props.onSend(this.state.chatInput); //works due to async?
   }
 
   textChangeHandler(event)  {

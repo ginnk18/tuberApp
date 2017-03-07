@@ -1,16 +1,6 @@
 // import actions from '../actions';
 
-const initialState = {
-  user: undefined,
-  page: 'home',
-  tutors: [],
-  error: '',
-  message: '',
-  content: '',
-  authenticated: false
-};
-
-const tuberApp = (state = initialState, action) => {
+const tuberApp = (state, action) => {
   switch (action.type) {
     case 'LOAD_HOME_REJECTED':
       console.log(action.payload);

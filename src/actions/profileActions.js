@@ -21,7 +21,43 @@ export function postReview(reviewData) {
   }
 }
 
+export function sendChat(mssg) {
+  return {
+    type: Types.SEND_CHAT,
+    payload: mssg.cable.channels
+    .NotificationChannel.perform(
+      "newNotification",
+      {
+        sender_id: mssg.sender_id,
+        receiver_id: mssg.receiver_id,
+        message: mssg.message
+      }
+    )
+  }
+}
+
+export function newNotify(data) {
+  return {
+    type: Types.NEW_NOTIFY,
+    payload: data
+  }
+}
+
+export function sendSMS(mssg) {
+  return {
+    type: Types.SEND_SMS,
+    payload: axios({
+      method: "POST",
+      url: `http://0.0.0.0:3000/message/sms`,
+      data: mssg
+    })
+  }
+}
+
 export default {
   loadProfile,
-  postReview
+  newNotify,
+  postReview,
+  sendChat,
+  sendSMS
 }

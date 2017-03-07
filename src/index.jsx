@@ -9,14 +9,18 @@ import types from './actions/actionTypes';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App.jsx';
+import ChatApp from './components/profile_layout/messaging/ChatApp.jsx';
 import store from './tuberStore';
-import cookie from 'react-cookie';
 import actions, { profileActions, tutorActions } from './actions';
+import cookie from 'react-cookie';
 
 
 // Note that subscribe() returns a function for unregistering the listener
 const unsubscribe = store.subscribe(() => {
-  ReactDOM.render(<App appState={store.getState()}/>, document.getElementById('react-root'));
+  ReactDOM.render(<App cable={store.getState().cable} appState={store.getState()}/>, document.getElementById('react-root'));
+  ReactDOM.render(<ChatApp cable={store.getState().cable}
+    profile={store.getState().profile} />,
+    document.getElementById('chat-root'))
 });
 
 const token = cookie.load('token');
@@ -25,4 +29,4 @@ if (token) {
 }
 
 // Dispatch default action
-store.dispatch(profileActions.loadProfile(10 + Math.ceil(Math.random() * 10)));
+store.dispatch(profileActions.loadProfile(12 + Math.ceil(Math.random() * 2)));
