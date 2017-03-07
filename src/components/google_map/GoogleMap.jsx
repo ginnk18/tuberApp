@@ -63,8 +63,8 @@ class GoogleMap extends Component {
           let contentString = '<div class="infoWindowContent">'+
                 '<div style="display: inline-block; vertical-align: top;">' +
                   `<h2>${tutor.name}</h2>`+
-                  `<i style="color:#11dd11;" class="fa fa-circle" aria-hidden="true"></i>` +
-                  `<span> availability</span>` +
+                  `<i style="color:${availabilityStats[0]}" class="fa fa-circle" aria-hidden="true"></i>` +
+                  `<span> ${availabilityStats[1]}</span>` +
                 '</div>' +
                 '<div>' +
                   `<img style="max-width: 75%; max-height: 75%" class="info-window-avatar" src=${tutor.avatar}/>` +

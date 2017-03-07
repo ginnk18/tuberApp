@@ -16,6 +16,7 @@ const tuberApp = (state, action) => {
       console.log('action payload in loadhome fulfilled reducer', action.payload.data);
       return {
         ...state,
+        page: 'home',
         tutors: action.payload.data,
         status: 'FETCHED'
       };

@@ -39,7 +39,7 @@ class LoginLayout extends Component {
              data: {email: this.state.email,
                     password: this.state.password,
                     lat: position.coords.latitude,
-                    lng: position.coords.longitude}
+                    long: position.coords.longitude}
              })
         .then(response => {
           console.log('response', response.data);
