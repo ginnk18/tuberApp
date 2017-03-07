@@ -6,6 +6,7 @@ import axios from 'axios';
 import types from '../../actions/actionTypes';
 import HeaderDropdown from '../header_dropdown/HeaderDropdown.jsx'
 import SearchBox from '../search_box/SearchBox.jsx';
+import Anim from '../home_layout/anim.js';
 
 class HomeLayout extends Component {
 
@@ -106,6 +107,20 @@ class HomeLayout extends Component {
         <aside className="mainMap">
         <GoogleMap tutors = {this.props.tutors}/>
         </aside>
+      {/*  <script type="javascript" src="../home_layout/Anim.js">
+
+        </script>
+        <section class="text-slider">
+  <h2 class="text-slider__static"></h2>
+  <div class="text-slider__dynamic">
+    <div class="vertical-slider">
+      <h2 class="vertical-slider__item">tuber</h2>
+      <h2 class="vertical-slider__item">Guber</h2>
+      <h2 class="vertical-slider__item">Nuber</h2>
+      <h2 class="vertical-slider__item">Buber  </h2>
+    </div>
+  </div>
+</section> */}
         </div>
     )
   }

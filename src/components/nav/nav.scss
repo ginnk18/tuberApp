@@ -1,5 +1,5 @@
 .main-nav {
-  background-color: #ffffff;
+  background-color: transparent;
   height: 100%;
   text-align: right;
   a:hover {
@@ -62,7 +62,7 @@
    }
  }
 }
-@media (max-device-width: 568px) {
+@media screen and (max-device-width: 568px) {
   .selectContainer{
     padding-right: 3%;
   }
