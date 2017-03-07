@@ -27,13 +27,13 @@ class HomeLayout extends Component {
         <section className="main-content">
           <section className="tagline">
             <h1><span className="brand">Tuber&nbsp;</span>
-              <span className="tagline-text">connects students with
-              tutors painlessly. No more email lags folks!</span>
+              <span className="tagline-text">painlessly connects students with
+              tutors.</span>
             </h1>
           </section>
 
                     <section className="shows">
-                        <article className="show">
+                        {/*<article className="show">
                             <h2 className="show-title">Most popular subjects</h2>
                             <ul className="row show-items">
                                 <li className="show-item"><Card className="no-detail" tutor={this.props.tutors[0]} key={0}/></li>
@@ -87,6 +87,7 @@ class HomeLayout extends Component {
                                 <li className="show-item"><Card className="no-detail"/></li>
                             </ul>
                         </article>
+                        */}
                     </section>
                 </section>
             </div>

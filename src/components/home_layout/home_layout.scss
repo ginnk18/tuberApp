@@ -9,6 +9,11 @@
     padding-top: 200px;
     width: 60%;
 
+    .mainMap{
+      width: 100%;
+      height: 500px;
+    }
+
     .main-search-wrapper {
       height: 150px;
       border-radius: 10px;
@@ -64,7 +69,7 @@
   }
 
   .tagline {
-    font-size: 2rem;
+    font-size: 4rem;
     padding-bottom: 100px;
 
     .brand {
@@ -117,9 +122,6 @@
   @media (max-device-width: 568px){
     .main-content{
       width: 80%;
-    }
-    .select-container {
-      padding: 20%;
     }
   }
 }

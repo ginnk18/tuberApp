@@ -1,6 +1,21 @@
 body {
   overflow-y: hidden;
 }
+.card{
+  display: flex;
+  width: 100%;
+  img{
+    width: 50%;
+    height: auto;
+  }
+  .figcaption{
+    width: 50%;
+    height: auto;
+  }
+  .rate{
+    display: none;
+  }
+}
 .search-result-layout {
   padding-top: 64px;
 
@@ -46,11 +61,15 @@ body {
   }
   @media (max-device-width: 568px){
     .map{
+      border-style: solid;
+      border-color: red;
+      border-width: medium;
       width: 100%;
       height: 30%;
     }
     .three-fifth.results{
       top: 560px;
+      width: 100%;
     }
     .card{
       width: 100%;
