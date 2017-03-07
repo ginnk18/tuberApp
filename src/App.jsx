@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import HomeLayout from './components/home_layout/HomeLayout.jsx';
+import HomeLayout from './components/home_layout/HomeLayout2.jsx';
 import ProfileLayout from './components/profile_layout/ProfileLayout.jsx';
 import SearchResultLayout from './components/search_result_layout/SearchResultLayout.jsx';
 import TutorRegistrationLayout from './components/registration/TutorRegistration.jsx';
@@ -27,7 +27,7 @@ class App extends Component {
   render() {
     if (this.props.appState) {
       return (<div>
-                {this.pages()[this.props.appState.page]}
+                {this.pages()["home"/*this.props.appState.page*/]}
               </div>
       );
     } return null;
