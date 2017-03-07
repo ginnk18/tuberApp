@@ -87,7 +87,8 @@ class App extends React.Component {
               type="text"
               onChange={(e) => this.firstMessageHandler(e)}
               placeholder="Initiate conversation with me"
-              required />
+              required
+              autofocus />
           </div>
           {this.decidesButton()}
         </form>

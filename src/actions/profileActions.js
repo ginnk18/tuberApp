@@ -54,10 +54,22 @@ export function sendSMS(mssg) {
   }
 }
 
+export function updateProfile(data) {
+  return {
+    type: Types.UPDATE_PROFILE,
+    payload: axios({
+      method: "PUT",
+      url: `http://0.0.0.0:3000/tutors/${data.id}`,
+      data: data
+    })
+  }
+}
+
 export default {
   loadProfile,
   newNotify,
   postReview,
   sendChat,
-  sendSMS
+  sendSMS,
+  updateProfile
 }

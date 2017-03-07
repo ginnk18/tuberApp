@@ -21,7 +21,9 @@ class ProfileLayout extends Component {
         <section className="main-content">
           <section className="row rowx">
             <aside className="profile-summaries one-third">
-              <img src={profile.avatar} />
+              <div className="image-wrapper" >
+                <img src={profile.avatar} />
+              </div>
             </aside>
             <div className="intro profile-details two-third">
               <Intro profile={profile}/>

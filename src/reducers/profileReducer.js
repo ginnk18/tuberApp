@@ -80,6 +80,13 @@ export default function profileReducer(state, action) {
         status: "SMS ERROR"
       }
 
+    case "UPDATE_PROFILE_FULFILLED":
+      return {
+        ...state,
+        profile: action.payload.data,
+        status: "PROFILE UPDATED"
+      }
+
     default:
       return state;
   }

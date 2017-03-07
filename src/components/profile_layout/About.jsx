@@ -1,12 +1,42 @@
 import React, { Component } from "react";
+import AboutEditable from "./AboutEditable.jsx";
+import { profileActions } from "../../actions";
+import store from "../../tuberStore.js"
 
 export default class About extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {};
+  }
+
+  showEditable(e) {
+    this.setState({editable: true});
+    console.log(this.state.editable)
+  }
+
+  update(data) {
+    this.setState({editable: false});
+    data.id = this.props.profile.id;
+    store.dispatch(profileActions.updateProfile(data))
+    console.log(this.state.editable)
+    console.log("Im gonna update", this)
+    console.log("data", data)
+  }
 
   render() {
     const profile = this.props.profile;
+
+    if (this.state.editable) {
+      return <AboutEditable
+              update={(data) => this.update(data)}
+              profile={profile} />
+    }
+
     return (
       <section className="about">
-        <h2>About Me</h2>
+        <h2 className="head-wrapper">About Me
+          <i onClick={(e) => this.showEditable(e)} className="fa fa-edit"></i>
+        </h2>
         <dl className="profile-summary">
           <dt>Contact</dt>
           <dd>Email: <span>{profile.email}</span></dd>

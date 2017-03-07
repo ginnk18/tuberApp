@@ -86,8 +86,3 @@ module.exports = React.createClass({
   }
 
 });
-// ChatApp.defaultProps = {
-//   username: 'Anonymous'
-// };
-
-// export default ChatApp;

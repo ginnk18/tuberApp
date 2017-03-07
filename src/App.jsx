@@ -57,7 +57,7 @@ module.exports = React.createClass({
   render() {
     if (this.props.appState) {
       return (<div>
-                {this.pages()["home"/*this.props.appState.page*/]}
+                {this.pages()[this.props.appState.page]}
               </div>
       );
     } return null;

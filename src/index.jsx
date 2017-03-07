@@ -29,6 +29,6 @@ if (token) {
 }
 
 // Dispatch default action
-// store.dispatch(profileActions.loadProfile(12 + Math.ceil(Math.random() * 2)));
+store.dispatch(profileActions.loadProfile(12 + Math.ceil(Math.random() * 2)));
 
-store.dispatch(tutorActions.loadHome());
+// store.dispatch(tutorActions.loadHome());
