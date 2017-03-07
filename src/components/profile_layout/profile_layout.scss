@@ -1,8 +1,13 @@
+.main-header{
+  .selectContainer{
+    visibility: collapse;
+  }
+}
 body {
   overflow-y: scroll;
 }
 .profile-layout {
-  
+
   blockquote {
     border-left: none;
     font-size: 18px;
@@ -27,7 +32,7 @@ body {
       padding: 0 $spacing-unit1;
       max-width: 400px;
       overflow: hidden;
-      
+
       .image-wrapper {
         background-color: $line-color;
         height: 400px;
@@ -62,7 +67,7 @@ body {
           line-height: 1.5;
           margin: 2px;
           padding: 0 $spacing-unit1;
-          
+
           &.picked {
             background-color: lighten($brand-color, 20%);
             box-shadow: 0px 0px 2px $dark;
@@ -79,7 +84,7 @@ body {
 
         .profile-summary {
           padding: 0 $spacing-unit-half;
-          
+
           dt {
             color: $accent-color;
             font-size: 2rem;
@@ -91,7 +96,7 @@ body {
             flex-wrap: wrap;
             line-height: 2.5;
             padding: 0 $spacing-unit-half;
-            
+
             input {
               border: none;
               border-bottom: 2px solid #eee;
@@ -99,7 +104,7 @@ body {
               margin-left: auto;
               text-align: right;
               transition: all 0.3s ease-in-out;
-            
+
               &:hover, &:focus {
                 // border-left: 3px solid $brand-color;
                 border-bottom: 2px solid $accent-color;
@@ -139,7 +144,7 @@ body {
 
       #reviews {
         padding: $spacing-unit2;
-        
+
         .new-review {
           padding: $spacing-unit1 0 $spacing-unit2;
           border-bottom: 1px solid $line-color;
@@ -177,11 +182,11 @@ body {
           font-weight: normal;
           padding: $spacing-unit-half 0 $spacing-unit2;
         }
-  
+
         .review {
           display: flex;
           padding: $spacing-unit3 $spacing-unit3 0;
-          
+
           .reviewer {
             flex: none;
             padding-right: $spacing-unit3;
@@ -227,7 +232,7 @@ body {
         // font-weight: bold;
       }
     }
-    
+
     .row {
       align-items: flex-start;
       padding-bottom: 50px;

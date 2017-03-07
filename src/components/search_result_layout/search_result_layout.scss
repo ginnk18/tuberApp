@@ -59,7 +59,7 @@ body {
       padding: $spacing-unit1 $spacing-unit-half;
     }
   }
-  @media (max-device-width: 568px){
+  @media screen and (max-device-width: 568px){
     .map{
       border-style: solid;
       border-color: red;
