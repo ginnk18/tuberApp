@@ -128,7 +128,7 @@ class TutorRegistrationLayout extends Component {
           <textarea name="rate_cents" value={this.state.rate_cents} onChange={this.handleInputChange} className="form-control" id="tutorRegRate" rows="1"></textarea>
         </div>
         <div className="form-group">
-          <label htmlFor="tutorRegSubjects">Subjects taught</label>
+          <label htmlFor="tutorRegSubjects">Subjects you can teach</label>
           <select name="subjects" value={this.state.subjects} onChange={this.handleInputChange} multiple className="form-control" id="tutorRegSubjects">
             <option value="Visual Arts">Visual Arts</option>
             <option value="Geography">Geography</option>
@@ -154,7 +154,7 @@ class TutorRegistrationLayout extends Component {
         <div className="form-group">
           <label htmlFor="tutRegAvatar">Profile Picture</label>
           <input name="avatar" value={this.state.avatar} onChange={this.handleInputChange} type="string" className="form-control-file" id="tutRegAvatar" aria-describedby="fileHelp"/>
-          <small id="fileHelp" className="form-text text-muted">Upload an image for your profile</small>
+          <small id="fileHelp" className="form-text text-muted"> Enter a URL</small>
         </div>
         <button type="submit" className="btn btn-primary">Submit</button>
       </form>
