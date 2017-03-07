@@ -3,6 +3,7 @@ import axios from 'axios';
 
 
 export function loadProfile(user_id) {
+  console.log('in loadprofile, ', user_id)
   return {
     type: Types.LOAD_PROFILE,
     payload: axios.get(`http://localhost:3000/tutors/${user_id}`)

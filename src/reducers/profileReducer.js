@@ -7,7 +7,7 @@ export default function profileReducer(state, action) {
         ...state,
         page: "profile",
         profile: transformToProfileState(action.payload.data),
-        status: "FETCHED"
+        status: "FETCHED",
       };
 
     case "LOAD_PROFILE_PENDING":
