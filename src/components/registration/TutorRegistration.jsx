@@ -121,7 +121,7 @@ class TutorRegistrationLayout extends Component {
         <form onSubmit={this.tutFormSubmit} className="tutor-registration-form">
           <div className="row">
             <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-              <h3>Become a tutor for Tuber!</h3>
+              <h3>Start tubering!</h3>
               <div className="form-group">
                 <label htmlFor="tutorRegEmail">Email address</label>
                 <input name="email" value={this.state.email} onChange={this.handleInputChange} type="email" className="form-control" id="tutorRegEmail" aria-describedby="emailHelp" placeholder="Enter email"/>
@@ -156,7 +156,7 @@ class TutorRegistrationLayout extends Component {
               </div>
             <div className="form-group">
                 <label htmlFor="tutorRegRate">Rate</label>
-                <textarea name="rate_cents" value={this.state.rate_cents} onChange={this.handleInputChange} className="form-control" id="tutorRegRate" rows="1"></textarea>
+                <input name="rate_cents" value={this.state.rate_cents} onChange={this.handleInputChange} className="form-control" id="tutorRegRate" type="number"></input>
               </div>
               <div className="form-group">
                 <label htmlFor="tutorRegSubjects">Subjects you can teach</label>

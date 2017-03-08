@@ -73,7 +73,7 @@ class LoginLayout extends Component {
                   <label htmlFor="password">Password</label>
                   <input name="password"  value={this.state.password} onChange={this.handleInputChange} type="password" className="form-control" placeholder="Password"/>
                 </div>
-                <button type="submit" className="btn btn-primary">Submit</button>
+                <button type="submit" className="btn btn-primary reg-submit">Submit</button>
               </form>
             </div>
     )
