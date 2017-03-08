@@ -12,7 +12,19 @@ const loadJS = function(src) {
     const script = window.document.createElement("script");
     script.src = src;
     script.async = true;
-    ref.parentNode.insertBefore(script, ref);
+    let length = window.document.getElementsByTagName("script").length
+    let googleApiLoaded = false;
+    // I know, I know, but you can't loop through nodeCollections the good way
+    for (let i=0; i < length; i++) {
+      if (window.document.getElementsByTagName("script")[i].src == script.src) {
+        googleApiLoaded = true;
+      }
+    }
+    if (!googleApiLoaded) {
+      ref.parentNode.insertBefore(script, ref);
+    } else {
+      initMap();
+    }
 }
 
 const availabilityColor = {1: ["#11dd11", "Available and online"],
@@ -47,7 +59,7 @@ class GoogleMap extends Component {
       navigator.geolocation.getCurrentPosition((position) => {
         let center = {lat: position.coords.latitude, lng: position.coords.longitude};
         const map = new window.google.maps.Map(ReactDOM.findDOMNode(this.refs["map"]), {
-          zoom: 12,
+          zoom: 11,
           center: center
         });
 
@@ -67,7 +79,7 @@ class GoogleMap extends Component {
                   `<span> ${availabilityStats[1]}</span>` +
                 '</div>' +
                 '<div>' +
-                  `<img style="max-width: 75%; max-height: 75%" class="info-window-avatar" src=${tutor.avatar}/>` +
+                  `<img style="max-width: 50%; max-height: 50%" class="info-window-avatar" src=${tutor.avatar}/>` +
                   `<p>Phone: ${tutor.phone}</p>` +
                   `<p>Rate: $${tutor.rate_cents / 100.0}/hr</p>`+
                 '</div>'

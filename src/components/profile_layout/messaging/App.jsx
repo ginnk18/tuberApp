@@ -46,7 +46,7 @@ class App extends React.Component {
     if (this.props.profile.status.text === "available and online") {
       return <input type="submit" value="Send Message" />
     } else {
-      return <input type="submit" value="Send Offiline Message" />
+      return <input type="submit" value="Send Offline Message" />
     }
   }
 
@@ -55,7 +55,7 @@ class App extends React.Component {
       this.props.profile.offlineError = null;
       return (<div className="alert alert-danger fade in">
                 <a href="#" className="close" data-dismiss="alert" aria-label="close">&times;</a>
-               <strong>Aw!</strong> We could not get that done. ):
+               <strong>Aw!</strong> We could not get that done. :(
               </div>)
     }
   }
@@ -69,7 +69,7 @@ class App extends React.Component {
       // User logged in or Form was submitted, now show the main App
       return (<div>
         <h3><em>Chat in progress</em></h3>
-        
+
       </div>);
     }
 

@@ -12,7 +12,8 @@ class AppHeader extends Component {
   }
 
   decideSearchOrNot() {
-    if (this.props.type !== 'home') {
+    if (this.props.page === "profile") {
+      console.log('in return headerdropdown');
       return <HeaderDropdown />
     }
     else {
@@ -25,7 +26,7 @@ class AppHeader extends Component {
     return <div>
            <header className={classes.call(this, "main-header")} >
              <Logo />
-            <HeaderDropdown />
+            {this.decideSearchOrNot()}
              <Nav />
            </header>
            </div>

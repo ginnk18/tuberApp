@@ -13,10 +13,10 @@ class ProfileLayout extends Component {
   render() {
     const profile = this.props.profile;
     if (profile) {
-      
+
     return (
       <div className="profile-layout rowx">
-        <AppHeader className="z-index3"/>
+        <AppHeader className="z-index3" page="profile"/>
 
         <section className="main-content">
           <section className="row rowx">

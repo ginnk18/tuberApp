@@ -15,6 +15,9 @@ body {
   .rate{
     display: none;
   }
+  .card-btn{
+    font-size: 2rem;
+  }
 }
 .search-result-layout {
   padding-top: 64px;
@@ -59,13 +62,19 @@ body {
       padding: $spacing-unit1 $spacing-unit-half;
     }
   }
-  @media (max-device-width: 568px){
+  @media screen and (max-device-width: 568px){
+    .filters{
+      position: absolute;
+      z-index: -1;
+    }
     .map{
       border-style: solid;
       border-color: red;
       border-width: medium;
       width: 100%;
       height: 30%;
+      position: absolute;
+      z-index: -1;
     }
     .three-fifth.results{
       top: 560px;
