@@ -72,10 +72,9 @@ class HomeLayout extends Component {
         <section className="tagline">
           <h1><span className="brand">tuber&nbsp;</span>
             <span className="tagline-text">painlessly connects students with
-            tutors.<Drop /></span>
+            tutors.<HeaderDropdown /></span>
           </h1>
           <div className="styleButton">
-          {/*<HeaderDropdown />*/}
           </div>
           </section>
           <section className="three-fifth results">
