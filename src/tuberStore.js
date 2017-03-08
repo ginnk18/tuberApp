@@ -14,13 +14,14 @@ console.log(user_id)
 
 const cable = new Cable({
   ChatChannel: actionCable.subscriptions.create({
-    channel: 'ChatChannel'}, ['newMessage']),
-  NotificationChannel: actionCable.subscriptions.create({
-    channel: 'NotificationChannel',
-    sender_id: user_id || ""}, ['newNotification'])
+    channel: 'ChatChannel'}, ['newMessage'])
 });
-cable["messages"] = [];
+if (user_id) {
+  
+}
 
+cable["messages"] = {};
+console.log("CABLE",cable)
 const initialState = {
   user: undefined,
   tutors: [],

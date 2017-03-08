@@ -31,7 +31,8 @@ export function sendChat(mssg) {
       {
         sender_id: mssg.sender_id,
         receiver_id: mssg.receiver_id,
-        message: mssg.message
+        message: mssg.message,
+        username: mssg.username
       }
     )
   }

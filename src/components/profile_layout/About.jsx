@@ -25,7 +25,7 @@ export default class About extends Component {
   }
 
   showEditButton(loggedIn) {
-    if (loggedIn && (loggedIn.id === profile.id)) {
+    if (loggedIn && (loggedIn.id === this.props.profile.id)) {
       return <i onClick={(e) => this.showEditable(e)} className="fa fa-edit"></i>
     }
   }
