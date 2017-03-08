@@ -83,7 +83,7 @@ export default function profileReducer(state, action) {
     case "UPDATE_PROFILE_FULFILLED":
       return {
         ...state,
-        profile: action.payload.data,
+        profile: transformToProfileState(action.payload.data),
         status: "PROFILE UPDATED"
       }
 

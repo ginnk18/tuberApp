@@ -129,7 +129,7 @@ class GoogleMap extends Component {
   componentDidUpdate(prevProps, prevState) {
     console.log('in componentdidmount for map');
     window.initMap = this.initMap;
-    loadJS('https://maps.googleapis.com/maps/api/js?key=AIzaSyAHk8BSOFCOmRSS0DF_ibXPoitqZZbbgMI&callback=initMap');
+    loadJS('https://maps.googleapis.com/maps/api/js?key=AIzaSyBzog3EhMlIGbRfV0y9h-bTsA7NQhex_Ug&callback=initMap');
   }
 
   render() {
