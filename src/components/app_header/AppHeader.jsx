@@ -12,7 +12,6 @@ class AppHeader extends Component {
   }
 
   decideSearchOrNot() {
-    console.log('in decide search', this.props)
     if (this.props.page === "profile") {
       console.log('in return headerdropdown');
       return <HeaderDropdown />

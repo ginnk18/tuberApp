@@ -1,13 +1,21 @@
-import React, { Component } from 'react';
+// Components
 import AppHeader from '../app_header/AppHeader.jsx';
 import Card from '../card/Card.jsx';
-import cookie from 'react-cookie';
-import axios from 'axios';
+import AvailabilitySelector from './AvailabilitySelector.jsx'
+
+// Actions and types
 import { registerUser } from '../../actions/userActions.js';
 import actions, { profileActions, tutorActions } from '../../actions';
-import { createStore } from 'redux';
 import store from '../../tuberStore';
 import types from '../../actions/actionTypes';
+
+// Other
+import React, { Component } from 'react';
+import cookie from 'react-cookie';
+import axios from 'axios';
+import { createStore } from 'redux';
+
+
 
 const errorHandler = function(dispatch, error, type) {
   let errorMessage = '';
@@ -36,6 +44,10 @@ const errorHandler = function(dispatch, error, type) {
 
 class TutorRegistrationLayout extends Component {
 
+  availability1 (data) {
+    this.setState({availability: data})
+  }
+
   constructor(props) {
     super(props);
     this.state = {student_or_tutor: "tutor",
@@ -45,6 +57,7 @@ class TutorRegistrationLayout extends Component {
                   city: '',
                   email: '',
                   education: '',
+                  availability: '',
                   experience: '',
                   phone: '',
                   hours: '',
@@ -102,96 +115,101 @@ class TutorRegistrationLayout extends Component {
 
   render() {
     return (
-      <div className="tutor-registration-layout row">
+      <div className="tutor-registration-layout">
         <AppHeader className="z-index3"/>
+        <form onSubmit={this.tutFormSubmit} className="tutor-registration-form">
+          <div className="row">
+            <div className="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+              <h3>Become a tutor for Tuber!</h3>
+              <div className="form-group">
+                <label htmlFor="tutorRegEmail">Email address</label>
+                <input name="email" value={this.state.email} onChange={this.handleInputChange} type="email" className="form-control" id="tutorRegEmail" aria-describedby="emailHelp" placeholder="Enter email"/>
+              </div>
+              <div className="form-group">
+                <label htmlFor="tutorRegPassword">Password</label>
+                <input name="password" value={this.state.password} onChange={this.handleInputChange} type="password" className="form-control" id="tutorRegPassword" placeholder="Password"/>
+              </div>
+              <div className="form-group">
+                <label htmlFor="tutorRegName">Name</label>
+                <input name="name" value={this.state.name} onChange={this.handleInputChange} className="form-control" id="tutorRegName"></input>
+              </div>
 
-      <form onSubmit={this.tutFormSubmit} className="tutor-registration-form">
-        <h3>Become a tutor for Tuber!</h3>
-        <div className="form-group">
-          <label htmlFor="tutorRegEmail">Email address</label>
-          <input name="email" value={this.state.email} onChange={this.handleInputChange} type="email" className="form-control" id="tutorRegEmail" aria-describedby="emailHelp" placeholder="Enter email"/>
-        </div>
-        <div className="form-group">
-          <label htmlFor="tutorRegPassword">Password</label>
-          <input name="password" value={this.state.password} onChange={this.handleInputChange} type="password" className="form-control" id="tutorRegPassword" placeholder="Password"/>
-        </div>
-        <div className="form-group">
-          <label htmlFor="tutorRegName">Name</label>
-          <input name="name" value={this.state.name} onChange={this.handleInputChange} className="form-control" id="tutorRegName"></input>
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="tutorRegHours">City</label>
-          <select name="city" value={this.state.city} onChange={this.handleInputChange} className="form-control" id="tutorRegCity">
-              <option value="Calgary">Calgary</option>
-              <option value="Edmonton">Edmonton</option>
-              <option value="Hamilton">Hamilton</option>
-              <option value="Kitchener">Kitchener</option>
-              <option value="Montreal">Montreal</option>
-              <option value="Ottawa">Ottawa</option>
-              <option value="Quebec City">Quebec City</option>
-              <option value="Toronto">Toronto</option>
-              <option value="Vancouver">Vancouver</option>
-              <option value="Winnipeg">Winnipeg</option>
-          </select>
-        </div>
-        <div className="form-group">
-          <label htmlFor="tutorRegEducation">Summary of your education</label>
-          <textarea name="education" value={this.state.education} onChange={this.handleInputChange} className="form-control" id="tutorRegEducation" rows="1"></textarea>
-        </div>
-        <div className="form-group">
-          <label htmlFor="tutorFormExperience">Tell students about your tutoring or teaching experience</label>
-          <textarea name="experience" value={this.state.experience} onChange={this.handleInputChange} className="form-control" id="tutorFormExperience" rows="3"></textarea>
-        </div>
-        <div className="form-group">
-          <label htmlFor="tutorRegPhone" className="col-form-label">Phone Number</label>
-            <input name="phone" value={this.state.phone} onChange={this.handleInputChange} className="form-control" type="tel" id="tutorRegPhone"/>
-        </div>
-        <div className="form-group">
-          <label htmlFor="tutorRegHours">Hours of availability</label>
-          <textarea name="hours" value={this.state.hours} onChange={this.handleInputChange} className="form-control" id="tutorRegHours" rows="1"></textarea>
-        </div>
-        <div className="form-group">
-          <label htmlFor="tutorRegRate">Rate</label>
-          <textarea name="rate_cents" value={this.state.rate_cents} onChange={this.handleInputChange} className="form-control" id="tutorRegRate" rows="1"></textarea>
-        </div>
-        <div className="form-group">
-          <label htmlFor="tutorRegSubjects">Subjects you can teach</label>
-          <select name="subjects" value={this.state.subjects} onChange={this.handleInputChange} multiple className="form-control" id="tutorRegSubjects">
-            <option value="Visual Arts">Visual Arts</option>
-            <option value="Geography">Geography</option>
-            <option value="History">History</option>
-            <option value="Literature">Literature</option>
-            <option value="Philosophy">Philosophy</option>
-            <option value="Economics">Economics</option>
-            <option value="Law">Law</option>
-            <option value="Political science">Political science</option>
-            <option value="Psychology">Psychology</option>
-            <option value="Sociology">Sociology</option>
-            <option value="Biology">Biology</option>
-            <option value="Chemistry">Chemistry</option>
-            <option value="Earth and space sciences">Earth and space sciences</option>
-            <option value="Mathematics">Mathematics</option>
-            <option value="Physics">Physics</option>
-            <option value="Agriculture">Agriculture</option>
-            <option value="Computer science">Computer science</option>
-            <option value="Engineering">Engineering</option>
-            <option value="Medicine">Medicine</option>
-          </select>
-        </div>
-        <div className="form-group">
-          <label htmlFor="tutRegAvatar">Profile Picture</label>
-          <input name="avatar"
-                 value={this.state.avatar}
-                 onChange={this.handleInputChange}
-                 type="string"
-                 className="form-control-file"
-                 id="tutRegAvatar"
-                 aria-describedby="fileHelp"/>
-          <small id="fileHelp" className="form-text text-muted"> Enter a URL (defaults to the majestic Sun Bear)</small>
-        </div>
-        <button type="submit" className="btn btn-primary">Submit</button>
-      </form>
+              <div className="form-group">
+                <label htmlFor="tutorRegHours">City</label>
+                <select name="city" value={this.state.city} onChange={this.handleInputChange} className="form-control" id="tutorRegCity">
+                    <option value="Calgary">Calgary</option>
+                    <option value="Edmonton">Edmonton</option>
+                    <option value="Hamilton">Hamilton</option>
+                    <option value="Kitchener">Kitchener</option>
+                    <option value="Montreal">Montreal</option>
+                    <option value="Ottawa">Ottawa</option>
+                    <option value="Quebec City">Quebec City</option>
+                    <option value="Toronto">Toronto</option>
+                    <option value="Vancouver">Vancouver</option>
+                    <option value="Winnipeg">Winnipeg</option>
+                </select>
+              </div>
+              <div className="form-group">
+                <label htmlFor="tutorRegEducation">Summary of your education</label>
+                <textarea name="education" value={this.state.education} onChange={this.handleInputChange} className="form-control" id="tutorRegEducation" rows="1"></textarea>
+              </div>
+              <div className="form-group">
+                <label htmlFor="tutorFormExperience">Tell students about your tutoring or teaching experience</label>
+                <textarea name="experience" value={this.state.experience} onChange={this.handleInputChange} className="form-control" id="tutorFormExperience" rows="3"></textarea>
+              </div>
+              <div className="form-group">
+                <label htmlFor="tutorRegPhone" className="col-form-label">Phone Number</label>
+                  <input name="phone" value={this.state.phone} onChange={this.handleInputChange} className="form-control" type="tel" id="tutorRegPhone"/>
+              </div>
+              <div className="form-group">
+                <label htmlFor="tutorRegHours">Hours of availability</label>
+                <textarea name="hours" value={this.state.hours} onChange={this.handleInputChange} className="form-control" id="tutorRegHours" rows="1"></textarea>
+              </div>
+              <div className="form-group">
+                <label htmlFor="tutorRegRate">Rate</label>
+                <textarea name="rate_cents" value={this.state.rate_cents} onChange={this.handleInputChange} className="form-control" id="tutorRegRate" rows="1"></textarea>
+              </div>
+              <div className="form-group">
+                <label htmlFor="tutorRegSubjects">Subjects you can teach</label>
+                <select name="subjects" value={this.state.subjects} onChange={this.handleInputChange} multiple className="form-control" id="tutorRegSubjects">
+                  <option value="Visual Arts">Visual Arts</option>
+                  <option value="Geography">Geography</option>
+                  <option value="History">History</option>
+                  <option value="Literature">Literature</option>
+                  <option value="Philosophy">Philosophy</option>
+                  <option value="Economics">Economics</option>
+                  <option value="Law">Law</option>
+                  <option value="Political science">Political science</option>
+                  <option value="Psychology">Psychology</option>
+                  <option value="Sociology">Sociology</option>
+                  <option value="Biology">Biology</option>
+                  <option value="Chemistry">Chemistry</option>
+                  <option value="Earth and space sciences">Earth and space sciences</option>
+                  <option value="Mathematics">Mathematics</option>
+                  <option value="Physics">Physics</option>
+                  <option value="Agriculture">Agriculture</option>
+                  <option value="Computer science">Computer science</option>
+                  <option value="Engineering">Engineering</option>
+                  <option value="Medicine">Medicine</option>
+                </select>
+              </div>
+              <div className="form-group">
+                <label htmlFor="tutRegAvatar">Profile Picture</label>
+                <input name="avatar"
+                       value={this.state.avatar}
+                       onChange={this.handleInputChange}
+                       type="string"
+                       className="form-control-file"
+                       id="tutRegAvatar"
+                       aria-describedby="fileHelp"/>
+                <small id="fileHelp" className="form-text text-muted"> Enter a URL (defaults to the majestic Sun Bear)</small>
+            </div>
+            <div className="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+              <AvailabilitySelector availability1={(data) => this.availability1(data)}/>
+            </div>
+            <button type="submit" className="btn btn-primary">Submit</button>
+          </div>
+        </form>
       </div>
     )
   }
