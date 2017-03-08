@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import AboutEditable from "./AboutEditable.jsx";
 import { profileActions } from "../../actions";
-import store from "../../tuberStore.js"
+import store from "../../tuberStore.js";
+import cookie from "react-cookie";
 
 export default class About extends Component {
   constructor(props) {
@@ -23,10 +24,16 @@ export default class About extends Component {
     console.log("data", data)
   }
 
+  showEditButton(loggedIn) {
+    if (loggedIn && (loggedIn.id === profile.id)) {
+      return <i onClick={(e) => this.showEditable(e)} className="fa fa-edit"></i>
+    }
+  }
+
   render() {
     const profile = this.props.profile;
-
-    if (this.state.editable) {
+    const loggedIn = cookie.load("user");
+    if (loggedIn && (loggedIn.id === profile.id) && this.state.editable) {
       return <AboutEditable
               update={(data) => this.update(data)}
               profile={profile} />
@@ -35,7 +42,7 @@ export default class About extends Component {
     return (
       <section className="about">
         <h2 className="head-wrapper">About Me
-          <i onClick={(e) => this.showEditable(e)} className="fa fa-edit"></i>
+          {this.showEditButton(loggedIn)}
         </h2>
         <dl className="profile-summary">
           <dt>Contact</dt>
