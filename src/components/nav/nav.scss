@@ -38,11 +38,12 @@
   //position: fixed;
   .menu {
    visibility: collapse;
+   width: 44em;
    list-style: none;
    text-align: left;
    line-height: 30px;
    padding-top: 30px;
-   width: 100px;
+   //width: 100px;
    padding-left: 18px;
    padding-right: 18px;
    a {
@@ -95,7 +96,7 @@
       height: 2px;
     }
      .menu {
-       margin-left: -50px;
+       margin-left: -80px;
       background: white;
       color: black;
       list-style: none;
