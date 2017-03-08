@@ -31,6 +31,9 @@ body {
       border: none;
       border-right: 1px solid $line-color;
       height: 100%;
+      option{
+        background-color: white;
+      }
     }
   }
 

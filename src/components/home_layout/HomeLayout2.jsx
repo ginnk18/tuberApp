@@ -6,6 +6,7 @@ import axios from 'axios';
 import types from '../../actions/actionTypes';
 import HeaderDropdown from '../header_dropdown/HeaderDropdown.jsx'
 import SearchBox from '../search_box/SearchBox.jsx';
+import Drop from '../header_dropdown/HomeDropDown.jsx';
 import Anim from '../home_layout/anim.js';
 
 class HomeLayout extends Component {
@@ -71,7 +72,7 @@ class HomeLayout extends Component {
         <section className="tagline">
           <h1><span className="brand">tuber&nbsp;</span>
             <span className="tagline-text">painlessly connects students with
-            tutors.<HeaderDropdown /></span>
+            tutors.<Drop /></span>
           </h1>
           <div className="styleButton">
           {/*<HeaderDropdown />*/}
