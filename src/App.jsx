@@ -20,7 +20,7 @@ module.exports = React.createClass({
   mixins: [CableMixin(React), ChannelMixin('NotificationChannel')],
 
   getInitialState() {
-    
+
     return { cable: this.props.cable }
   },
 
@@ -46,7 +46,7 @@ module.exports = React.createClass({
   pages() {
     return {
       "home": <HomeLayout tutors={this.props.appState.tutors} />,
-      "profile": <ProfileLayout cable={this.state.cable} profile={this.props.appState.profile} />,
+      "profile": <ProfileLayout cable={this.state.cable} profile={this.props.appState.profile} page="profile" />,
       "register_tutor": <TutorRegistrationLayout />,
       "register_student": <StudentRegistrationLayout />,
       "search_result": <SearchResultLayout tutors={this.props.appState.tutors} subject={this.props.appState.subject}/>,

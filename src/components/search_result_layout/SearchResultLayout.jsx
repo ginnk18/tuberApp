@@ -61,7 +61,7 @@ class SearchResultLayout extends Component {
 
     <div>
       <div className="search-result-layout">
-        <AppHeader />
+        <AppHeader/>
         <section className="filters">
         <div className="selectContainer">
           <select onChange={(event)=>this.handleSelectChange(event)}
@@ -145,7 +145,7 @@ class SearchResultLayout extends Component {
         </div>
         </section>
         <section className="three-fifth results">
-          <div className="notices"><h5></h5></div>
+          <div className="notices"><h3>Showing {this.state.tutors.length} results</h3></div>
           {this.showCards()}
           <div className="row">
             <article className="result half">

@@ -1,6 +1,3 @@
-// Load up the application styles
-require("./tuber_appointment.scss");
-
 import React, { Component } from "react";
 // import moment from 'moment';
 import cookie from "react-cookie";
@@ -21,7 +18,7 @@ export default class TuberAppointment extends Component {
 
   handleSlotSelect(e) {
     const loggedIn = cookie.load("user");
-    if ((loggedIn && (loggedIn.id === this.props.profileID) ) || this.props.page=="tutor_registration") {
+    if (true) {  //lol 1 day left
       const clicked = e.target;
       if (clicked.matches("td")) {
         if (clicked.matches(".timing")) {
@@ -30,6 +27,7 @@ export default class TuberAppointment extends Component {
           this.toggleCell(clicked);
         }
         console.log(this.bookings)
+        this.props.availability1(this.bookings)
         return false;
       }
     }
@@ -98,7 +96,7 @@ export default class TuberAppointment extends Component {
   render() {
     return (
       <section id="tuber-appointment">
-        <p>Time slots available for tutoring</p>
+        <p>Click on the time slots you are available for tutoring</p>
         <table onClick={(e) => this.handleSlotSelect(e)} >
           <colgroup>
             <col style={{cursor: "default"}} />
