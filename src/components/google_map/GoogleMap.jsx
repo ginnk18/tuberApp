@@ -59,7 +59,7 @@ class GoogleMap extends Component {
       navigator.geolocation.getCurrentPosition((position) => {
         let center = {lat: position.coords.latitude, lng: position.coords.longitude};
         const map = new window.google.maps.Map(ReactDOM.findDOMNode(this.refs["map"]), {
-          zoom: 12,
+          zoom: 11,
           center: center
         });
 
