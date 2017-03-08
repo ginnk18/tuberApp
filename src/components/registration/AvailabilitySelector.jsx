@@ -95,7 +95,7 @@ export default class TuberAppointment extends Component {
 
   render() {
     return (
-      <section id="tuber-appointment">
+      <section id="tutor-reg-appt-select">
         <p>Click on the time slots you are available for tutoring</p>
         <table onClick={(e) => this.handleSlotSelect(e)} >
           <colgroup>

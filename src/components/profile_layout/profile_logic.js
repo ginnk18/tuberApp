@@ -1,5 +1,6 @@
 
 export const transformToProfileState = (obj) => {
+    console.log('obj', obj);
   obj.current_location = JSON.parse(obj.current_location);
   return {
     id: obj.id,

@@ -45,19 +45,20 @@ const errorHandler = function(dispatch, error, type) {
 class TutorRegistrationLayout extends Component {
 
   availability1 (data) {
-    this.setState({availability: data})
+    console.log('data in availability1: ', data);
+    this.setState({hours: JSON.stringify(data)});
   }
 
   constructor(props) {
     super(props);
     this.state = {student_or_tutor: "tutor",
+                  status: 1,
                   subjects: [],
                   password: '',
                   name: '',
-                  city: '',
+                  city: 'Calgary',
                   email: '',
                   education: '',
-                  availability: '',
                   experience: '',
                   phone: '',
                   hours: '',
@@ -119,7 +120,7 @@ class TutorRegistrationLayout extends Component {
         <AppHeader className="z-index3"/>
         <form onSubmit={this.tutFormSubmit} className="tutor-registration-form">
           <div className="row">
-            <div className="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+            <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
               <h3>Become a tutor for Tuber!</h3>
               <div className="form-group">
                 <label htmlFor="tutorRegEmail">Email address</label>
@@ -150,22 +151,10 @@ class TutorRegistrationLayout extends Component {
                 </select>
               </div>
               <div className="form-group">
-                <label htmlFor="tutorRegEducation">Summary of your education</label>
-                <textarea name="education" value={this.state.education} onChange={this.handleInputChange} className="form-control" id="tutorRegEducation" rows="1"></textarea>
-              </div>
-              <div className="form-group">
-                <label htmlFor="tutorFormExperience">Tell students about your tutoring or teaching experience</label>
-                <textarea name="experience" value={this.state.experience} onChange={this.handleInputChange} className="form-control" id="tutorFormExperience" rows="3"></textarea>
-              </div>
-              <div className="form-group">
                 <label htmlFor="tutorRegPhone" className="col-form-label">Phone Number</label>
                   <input name="phone" value={this.state.phone} onChange={this.handleInputChange} className="form-control" type="tel" id="tutorRegPhone"/>
               </div>
-              <div className="form-group">
-                <label htmlFor="tutorRegHours">Hours of availability</label>
-                <textarea name="hours" value={this.state.hours} onChange={this.handleInputChange} className="form-control" id="tutorRegHours" rows="1"></textarea>
-              </div>
-              <div className="form-group">
+            <div className="form-group">
                 <label htmlFor="tutorRegRate">Rate</label>
                 <textarea name="rate_cents" value={this.state.rate_cents} onChange={this.handleInputChange} className="form-control" id="tutorRegRate" rows="1"></textarea>
               </div>
@@ -193,21 +182,34 @@ class TutorRegistrationLayout extends Component {
                   <option value="Medicine">Medicine</option>
                 </select>
               </div>
-              <div className="form-group">
-                <label htmlFor="tutRegAvatar">Profile Picture</label>
-                <input name="avatar"
-                       value={this.state.avatar}
-                       onChange={this.handleInputChange}
-                       type="string"
-                       className="form-control-file"
-                       id="tutRegAvatar"
-                       aria-describedby="fileHelp"/>
-                <small id="fileHelp" className="form-text text-muted"> Enter a URL (defaults to the majestic Sun Bear)</small>
             </div>
-            <div className="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+            <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
               <AvailabilitySelector availability1={(data) => this.availability1(data)}/>
             </div>
-            <button type="submit" className="btn btn-primary">Submit</button>
+          </div>
+          <div className="row">
+            <div className="form-group">
+              <label htmlFor="tutorRegEducation">Summary of your education</label>
+              <textarea name="education" value={this.state.education} onChange={this.handleInputChange} className="form-control" id="tutorRegEducation" rows="2"></textarea>
+            </div>
+            <div className="form-group">
+              <label htmlFor="tutorFormExperience">Tell students about your tutoring or teaching experience</label>
+              <textarea name="experience" value={this.state.experience} onChange={this.handleInputChange} className="form-control" id="tutorFormExperience" rows="2"></textarea>
+            </div>
+            <div className="form-group">
+              <label htmlFor="tutRegAvatar">Profile Picture</label>
+              <input name="avatar"
+                     value={this.state.avatar}
+                     onChange={this.handleInputChange}
+                     size="45"
+                     type="string"
+                     className="form-control-file"
+                     id="tutRegAvatar"
+                     aria-describedby="fileHelp"/>
+              <small id="fileHelp" className="form-text text-muted"> Enter a URL (defaults to the majestic Sun Bear)</small>
+            </div>
+            <button type="submit" className="btn btn-primary btn-lg tutor-reg-submit">Submit</button>
+
           </div>
         </form>
       </div>
