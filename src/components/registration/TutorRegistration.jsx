@@ -211,7 +211,6 @@ class TutorRegistrationLayout extends Component {
             <button type="submit" className="btn btn-primary btn-lg tutor-reg-submit">Submit</button>
 
           </div>
-          </div>
         </form>
       </div>
     )
