@@ -6,7 +6,7 @@ export default class About extends Component {
     super(props)
     this.state = {
       current_location: this.props.profile.current_location,
-      subjects_taught: this.props.profile.subjects
+      subjects: this.props.profile.subjects
     }
     this.SUBJECTS = [
       'Visual Arts', 'Geography', 'History',
@@ -43,14 +43,14 @@ export default class About extends Component {
   selectCell(picked) {
     picked.classList.add("picked");
     const subject = picked.getAttribute("data-subject");
-    const idx = this.state.subjects_taught.indexOf(subject);
-    idx === -1 && this.state.subjects_taught.push(subject)
+    const idx = this.state.subjects.indexOf(subject);
+    idx === -1 && this.state.subjects.push(subject)
   }
 
   unselectCell(picked) {
     const subject = picked.getAttribute("data-subject");
-    const idx = this.state.subjects_taught.indexOf(subject);
-    idx > -1 && this.state.subjects_taught.splice(idx, 1)
+    const idx = this.state.subjects.indexOf(subject);
+    idx > -1 && this.state.subjects.splice(idx, 1)
     picked.classList.remove("picked");
   }
 
@@ -81,11 +81,11 @@ export default class About extends Component {
         </h2>
         <dl onChange={(e) => this.handleInputChange(e)} className="profile-summary">
           <dt>Contact</dt>
-          <dd>Email: <input name="email" type="email" defaultValue={profile.email} /></dd>
-          <dd>Phone: <input name="phone" type="tel" defaultValue={profile.phone} /></dd>
-          <dd>Address:  <input name="address-other" type="text" defaultValue={profile.address} />
-                        <input name="address-city" type="text" defaultValue={profile.city} />
-                        <input name="address-country" type="text" defaultValue={profile.country} />
+          <dd>Email: &nbsp;<span>{profile.email} </span></dd>
+          <dd>Phone: &nbsp;<input name="phone" type="tel" defaultValue={profile.phone} /></dd>
+          <dd>Address: &nbsp;
+            <input name="address-other" type="text" defaultValue={profile.address} /><br/>
+            <span>{profile.city}</span> · <span>{profile.country}</span>
            </dd> 
           <dt>Qualification</dt>
           <dd><input name="education" type="text" defaultValue={profile.education} /></dd>
