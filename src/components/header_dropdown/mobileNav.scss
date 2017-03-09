@@ -1,4 +1,5 @@
 .mNav {
+
   border: 1px solid transparent;
   text-align: -webkit-center;
   border-color: #ddd;
@@ -25,5 +26,8 @@
   width: 100%;
   top: 3.65em;
   padding: 0;
+  a{
+    color: white;
+  }
 
 }
