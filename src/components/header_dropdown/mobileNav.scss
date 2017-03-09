@@ -1,17 +1,28 @@
 .mNav {
+  border: 1px solid transparent;
+  text-align: -webkit-center;
+  border-color: #ddd;
   position: relative;
   top: 0.2em;
   right: 2em;
+  height: 2em;
   width: 4em;
-  background-color: red;
-
+  background-color: transparent;
+  span{
+    margin: 0.188em;
+    display: block;
+    width: 22px;
+    height: 2px;
+    border-radius: 1px;
+    background-color: #888;
+    }
   }
   .container-fluid {
   position: fixed;
   right: 0;
   background-color: rgba(125, 145, 162, 0.52);
   width: 100%;
-  top: 3.5em;
+  top: 3.65em;
   padding: 0;
 
 }

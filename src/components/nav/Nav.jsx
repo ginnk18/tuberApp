@@ -68,8 +68,8 @@ class Nav extends Component {
     return (
     <div>
       <nav className="main-nav">
-        <div className="container-fluid">
-          <div className="collapse navbar-collapse">
+        <div className="container-fluid collapse">
+          <div className="">
           { this.registrationButtons() }
           </div>
         </div>

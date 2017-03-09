@@ -65,9 +65,9 @@ class MNav extends Component {
 
   render() {
     return (
-    <div>
-      <button type="button" className="mNav" data-toggle="collapse" data-target=".container-fluid">
-        <span class="sr-only">N</span>
+    <div className="buttonContainer">
+      <button type="button" className="mNav" data-toggle="collapse" data-target=".container-fluid" >
+        <span class="sr-only"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
