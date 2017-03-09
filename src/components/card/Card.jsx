@@ -23,11 +23,11 @@ class Card extends Component {
                   <a href="#0" onClick={() => store.dispatch(profileActions.loadProfile(this.props.tutor.id)) } >
                     <strong className="name">{this.props.tutor.name}</strong><br/>
                   </a>
-                  <span className="tutor-attr">Subjects:&nbsp;&nbsp;</span><span>{this.props.tutor.subjects}</span><br/>
+                  <span className="tutor-attr">Rate:&nbsp;&nbsp;</span><h2><span>{this.props.tutor.rate}</span></h2><br/>
                   <span className="tutor-attr">Qualification:&nbsp;&nbsp;</span><span>{this.props.tutor.education}</span><br/>
                   <span className="tutor-attr">Experience:&nbsp;&nbsp;</span><span>{this.props.tutor.experience}</span>
                   <div className="card-btn">
-                    <a className="z-index1" href="#0">contact</a>
+                    {/*<a className="z-index1" href="#0">contact</a>*/}
                     <a className="z-index1" href="#0" onClick={() => store.dispatch(profileActions.loadProfile(this.props.tutor.id)) }>see more</a>
                   </div>
                   {/*<blockqoute>
