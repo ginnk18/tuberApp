@@ -10,6 +10,26 @@ export function loadProfile(user_id) {
   }
 }
 
+export function subscribeThenProfile(user, profile_id) {
+  return function(dispatch, getState) {
+    dispatch(subscribeToChat(user, getState()));
+    dispatch(loadProfile(profile_id))
+  }
+}
+
+export function subscribeToChat(user, state) {
+  if (!state.cable.channels['NotificationChannel']) {
+    return {
+      type: Types.SUBSCRIBE_TO_CHAT,
+      payload: user
+    }
+  }
+  return {
+    type: Types.SUBSCRIBE_TO_CHAT,
+    payload: "already subscribed"
+  };
+}
+
 export function postReview(reviewData) {
   console.log(`http://localhost:3000/tutors/${reviewData.tutor_id}/reviews`)
   return {
@@ -22,19 +42,23 @@ export function postReview(reviewData) {
   }
 }
 
-export function sendChat(mssg) {
+export function sendChat(messg) {
+  console.log("message from send chat", messg)
+  // const messg = action.payload;
+  // state.profile.chatSent = true;
+  messg.cable.channels
+  .NotificationChannel.perform(
+    "newNotification",
+    {
+      sender_id: messg.sender_id,
+      receiver_id: messg.receiver_id,
+      message: messg.message,
+      username: messg.username
+    }
+  )
   return {
     type: Types.SEND_CHAT,
-    payload: mssg.cable.channels
-    .NotificationChannel.perform(
-      "newNotification",
-      {
-        sender_id: mssg.sender_id,
-        receiver_id: mssg.receiver_id,
-        message: mssg.message,
-        username: mssg.username
-      }
-    )
+    payload: messg
   }
 }
 
@@ -73,5 +97,7 @@ export default {
   postReview,
   sendChat,
   sendSMS,
+  subscribeToChat,
+  subscribeThenProfile,
   updateProfile
 }

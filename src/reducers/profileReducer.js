@@ -1,7 +1,9 @@
 import { transformToProfileState } from '../components/profile_layout/profile_logic';
 import cookie from 'react-cookie';
+const user = cookie.load('user');
 
 export default function profileReducer(state, action) {
+
   switch (action.type) {
     case "LOAD_PROFILE_FULFILLED":
       return {
@@ -30,13 +32,20 @@ export default function profileReducer(state, action) {
     case "NEW_NOTIFY":
       const loggedIn = cookie.load("user");
       const mssg = action.payload;
+      console.log("message", mssg)
+      console.log("[mssg]", [mssg])
       const chatPatner = (Number(loggedIn.id) === Number(mssg.receiver_id)) ? mssg.sender_id : mssg.receiver_id
+      let temp = state.cable.messages[chatPatner];
+      if (temp) {
+        temp.push(mssg)
+      } else { temp = [mssg] }
 
-      if (state.cable.messages[chatPatner]) {
-        state.cable.messages[chatPatner].push(mssg)
-      } else { state.cable.messages[chatPatner] = [mssg] }
+      console.log("chatPat", chatPatner)
+      console.log("cable.mess", state.cable.messages)
+      console.log("temp",temp)
       return {
         ...state,
+        cable: {...state.cable, messages: {[chatPatner]: temp }},
         status: "MESSAGE APPENDED"
       }
 
@@ -67,24 +76,39 @@ export default function profileReducer(state, action) {
       };
 
     case "SEND_CHAT":
-      state.profile.chatSent = true;
       return {
         ...state,
+        profile: {...state.profile, chatSent: true },
         status: "CHAT SENT"
       };
 
     case "SEND_SMS_FULFILLED":
-      state.profile.offlineSent = true;
       return {
         ...state,
+        profile: {...state.profile, offlineSent: true },
         status: "SMS SENT"
       };
 
     case "SEND_SMS_REJECTED":
-      state.profile.offlineError = true;
       return {
         ...state,
+        profile: {...state.profile, offlineError: true },
         status: "SMS ERROR"
+      }
+
+    case "SUBSCRIBE_TO_CHAT":
+      if (cookie.load("user")) {
+        state.cable.setChannel('NotificationChannel', state.actionCable.subscriptions.create(
+          {
+            channel: 'NotificationChannel',
+            sender_id: cookie.load("user").id
+          },
+          ['newNotification']
+        ));
+      }
+      return {
+        ...state,
+        status: "SUBSCRIBED TO NOTIFICATION"
       }
 
     case "UPDATE_PROFILE_FULFILLED":

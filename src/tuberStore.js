@@ -3,6 +3,7 @@ import promise from 'redux-promise-middleware';
 import logger from 'redux-logger';
 import actions from './actions';
 import reducer from './reducers';
+import thunk from 'redux-thunk';
 
 import { ActionCable, Cable } from 'action-cable-react';
 import cookie from 'react-cookie';
@@ -16,9 +17,6 @@ const cable = new Cable({
   ChatChannel: actionCable.subscriptions.create({
     channel: 'ChatChannel'}, ['newMessage'])
 });
-if (user_id) {
-  
-}
 
 cable["messages"] = {};
 console.log("CABLE",cable)
@@ -30,10 +28,11 @@ const initialState = {
   content: '',
   authenticated: false,
   profile: {},
-  cable
+  cable,
+  actionCable
 };
 
-const middleware = applyMiddleware(promise(), logger());
+const middleware = applyMiddleware(thunk, promise(), logger());
 const store = createStore(reducer, initialState, middleware);
 
 export default store;

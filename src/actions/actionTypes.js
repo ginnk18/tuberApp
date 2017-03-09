@@ -13,6 +13,7 @@ const actionTypes = {
   SEND_CHAT:            'SEND_CHAT',
   SEND_SMS:             'SEND_SMS',
   SHOW_HOME:            'SHOW_HOME',
+  SUBSCRIBE_TO_CHAT:    'SUBSCRIBE_TO_CHAT',
   AUTH_USER:            'AUTH_USER',
   UNAUTH_USER:          'UNAUTH_USER',
   AUTH_ERROR:           'AUTH_ERROR',

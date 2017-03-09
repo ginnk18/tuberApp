@@ -1,11 +1,19 @@
 import Types from './actionTypes';
 import axios from 'axios';
+import { subscribeToChat } from './profileActions';
 // import store from '../tuberStore';
 
 const loadHome = () => {
   return {
     type: Types.LOAD_HOME,
     payload: axios.get("http://localhost:3000/")
+  }
+}
+
+export function subscribeThenHome(user) {
+  return function(dispatch, getState) {
+    dispatch(subscribeToChat(user, getState()));
+    dispatch(loadHome());
   }
 }
 
@@ -71,5 +79,6 @@ export default {
   registerTutor,
   search,
   showHome,
-  showRegisterTutorForm
+  showRegisterTutorForm,
+  subscribeThenHome
 }

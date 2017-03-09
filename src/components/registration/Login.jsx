@@ -58,7 +58,8 @@ class LoginLayout extends Component {
           );
 
         // load home
-        store.dispatch(tutorActions.loadHome());
+        console.log("before load home")
+        return store.dispatch(tutorActions.subscribeThenHome(cookie.load("user")));
         })
         .catch((error) => {
           // errorHandler(store.dispatch, error.response, types.AUTH_ERROR)
@@ -87,7 +88,9 @@ class LoginLayout extends Component {
               ['newNotification']
             )
           );
-        store.dispatch(tutorActions.loadHome());
+        // load home
+        console.log("before load home")
+        return store.dispatch(tutorActions.subscribeThenHome(cookie.load("user")));
         })
         .catch((error) => {
           // errorHandler(store.dispatch, error.response, types.AUTH_ERROR)
