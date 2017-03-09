@@ -23,6 +23,8 @@ body {
   padding-top: 64px;
 
   .filters {
+    position: fixed;
+    z-index: -1;
     border: 1px solid $line-color;
     height: 50px;
     width: 100%;
@@ -41,6 +43,8 @@ body {
   }
 
   .map {
+    position: fixed;
+    z-index: -1;
     left: auto;
     right: 0;
     width: 40%;
