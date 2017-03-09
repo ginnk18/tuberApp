@@ -31,7 +31,6 @@ class LoginLayout extends Component {
     console.log('in login form submit')
     e.preventDefault();
     if (navigator.geolocation) {
-      console.log('in geolocation if')
       navigator.geolocation.getCurrentPosition((position) => {
         console.log('in geolocation get current')
         axios({method: 'post',
@@ -58,13 +57,41 @@ class LoginLayout extends Component {
             )
           );
 
-        // load home 
+        // load home
         store.dispatch(tutorActions.loadHome());
         })
         .catch((error) => {
           // errorHandler(store.dispatch, error.response, types.AUTH_ERROR)
         })
-      })
+      }, () => {
+        console.log('in geolocation error catcher')
+        axios({method: 'post',
+             url: 'http://localhost:3000/sessions',
+             data: {email: this.state.email,
+                    password: this.state.password,
+                    lat: 51.0,
+                    long: -114.0}
+             })
+        .then(response => {
+          console.log('response', response.data);
+          cookie.save('token', response.data.user.token, { path: '/' });
+          cookie.save('user', response.data, { path: '/' });
+          // connecting to ActionCable for Chatting
+          cable.setChannel(
+            'NotificationChannel',
+            actionCable.subscriptions.create(
+              {
+                channel: 'NotificationChannel',
+                sender_id: user_id
+              },
+              ['newNotification']
+            )
+          );
+        store.dispatch(tutorActions.loadHome());
+        })
+        .catch((error) => {
+          // errorHandler(store.dispatch, error.response, types.AUTH_ERROR)
+        })})
     }
   }
 
