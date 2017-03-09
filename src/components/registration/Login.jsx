@@ -46,20 +46,9 @@ class LoginLayout extends Component {
           cookie.save('token', response.data.user.token, { path: '/' });
           cookie.save('user', response.data, { path: '/' });
 
-          // connecting to ActionCable for Chatting
-          cable.setChannel(
-            'NotificationChannel',
-            actionCable.subscriptions.create(
-              {
-                channel: 'NotificationChannel',
-                sender_id: user_id
-              },
-              ['newNotification']
-            )
-          );
-
-        // load home 
-        store.dispatch(tutorActions.loadHome());
+        // load home
+        console.log("before load home")
+        return store.dispatch(tutorActions.subscribeThenHome(cookie.load("user")));
         })
         .catch((error) => {
           // errorHandler(store.dispatch, error.response, types.AUTH_ERROR)

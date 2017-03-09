@@ -1,6 +1,9 @@
-// import actions from '../actions';
+import cookie from 'react-cookie';
+
+const user = cookie.load('user');
 
 const tuberApp = (state, action) => {
+ 
   switch (action.type) {
     case 'LOAD_HOME_REJECTED':
       console.log(action.payload);

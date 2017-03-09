@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import AppHeader from '../app_header/AppHeader.jsx';
 import Card from '../card/Card.jsx';
-import actions from '../../actions';
+import actions, { profileActions, tutorActions } from '../../actions';
 import cookie from 'react-cookie';
 import axios from 'axios';
 import { registerUser } from '../../actions/userActions.js';
@@ -63,7 +63,8 @@ class StudentRegistrationLayout extends Component {
         console.log('response', response);
         cookie.save('token', response.data.user.user.token, { path: '/' });
         cookie.save('user', response.data.user, { path: '/' });
-        store.dispatch({ type: types.AUTH_USER });
+        // load home 
+        return store.dispatch(tutorActions.subscribeThenHome(cookie.load("user")));;
       })
       .catch((error) => {
         // errorHandler(store.dispatch, error.response, types.AUTH_ERROR)

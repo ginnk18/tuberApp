@@ -17,36 +17,36 @@ import actions, { profileActions, tutorActions } from './actions';
 //     this.pages = this.pages.bind(this)
 //   }
 module.exports = React.createClass({
-  mixins: [CableMixin(React), ChannelMixin('NotificationChannel')],
+  // mixins: [CableMixin(React), ChannelMixin('NotificationChannel')],
 
   getInitialState() {
 
-    return { cable: this.props.cable }
+    return {}
   },
 
-  handleConnected() {
-    console.log('Connected! in App')
-  },
+  // handleConnected() {
+  //   console.log('Connected! in App')
+  // },
 
-  handleDisconnected() {
-    console.log('Disconnected! in App')
-  },
+  // handleDisconnected() {
+  //   console.log('Disconnected! in App')
+  // },
 
-  handleNewNotification(data) {
-    console.log('notify message: ' + data);
-    store.dispatch(profileActions.newNotify(data));
-    // this.addMessage(data);
-  },
+  // handleNewNotification(data) {
+  //   console.log('notify message: ' + data);
+  //   store.dispatch(profileActions.newNotify(data));
+  //   // this.addMessage(data);
+  // },
 
-  addMessage(message) {
-    // Append the message to the component state
-    this.props.cable.messages.push(message);
-  },
+  // addMessage(message) {
+  //   // Append the message to the component state
+  //   this.props.cable.messages.push(message);
+  // },
 
   pages() {
     return {
       "home": <HomeLayout tutors={this.props.appState.tutors} />,
-      "profile": <ProfileLayout cable={this.state.cable} profile={this.props.appState.profile} page="profile" />,
+      "profile": <ProfileLayout cable={this.props.cable} profile={this.props.appState.profile} page="profile" />,
       "register_tutor": <TutorRegistrationLayout />,
       "register_student": <StudentRegistrationLayout />,
       "search_result": <SearchResultLayout tutors={this.props.appState.tutors} subject={this.props.appState.subject}/>,
