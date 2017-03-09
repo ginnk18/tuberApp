@@ -86,6 +86,7 @@ class StudentRegistrationLayout extends Component {
               <AppHeader className="z-index3"/>
               { this.renderAlert() }
               <p> {cookie.load('email')} </p>
+              <div className="col-xs-9 col-sm-9 col-md-9 col-lg-9">
               <form onSubmit={this.studFormSubmit} className="student-registration-form">
                 <h3> Sign up for tuber! </h3>
                 <div className="form-group">
@@ -108,6 +109,7 @@ class StudentRegistrationLayout extends Component {
                 </div>
                 <button type="submit" className="btn btn-primary reg-submit">Submit</button>
               </form>
+              </div>
             </div>
     )
   }

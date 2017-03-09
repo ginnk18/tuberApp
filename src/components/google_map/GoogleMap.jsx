@@ -108,8 +108,51 @@ class GoogleMap extends Component {
 
         })
       },
-      ()=>{console.log('in error for gmap')},
-      {timeout:10000});
+      ()=>{
+        console.log('Geolocation did not work. If this is during the presentation, you may now thank me for adding this error catcher.');
+        let center = {lat: 50.2331, lng: -95.844};
+        const map = new window.google.maps.Map(ReactDOM.findDOMNode(this.refs["map"]), {
+          zoom: 5,
+          center: center
+        });
+
+        this.props.tutors.forEach((tutor) => {
+          let location = JSON.parse(tutor.current_location);
+          let marker = new google.maps.Marker({
+            position: {lat: location.lat, lng: location.long},
+            map: map,
+            title: tutor.id.toString()
+          });
+
+          let availabilityStats = availabilityColor[tutor.status_code];
+          let contentString = '<div class="infoWindowContent">'+
+                '<div style="display: inline-block; vertical-align: top;">' +
+                  `<h2 id="info-window-header${tutor.id}">${tutor.name}</h2>`+
+
+                  `<i style="color:${availabilityStats[0]}" class="fa fa-circle" aria-hidden="true"></i>` +
+                  `<span> ${availabilityStats[1]}</span>` +
+                '</div>' +
+                '<div>' +
+                  `<img style="max-width: 50%; max-height: 50%" class="info-window-avatar" src=${tutor.avatar}/>` +
+                  `<p>Phone: ${tutor.phone}</p>` +
+                  `<p>Rate: $${tutor.rate_cents / 100.0}/hr</p>`+
+                '</div>'
+                '</div>';
+
+          let infowindow = new google.maps.InfoWindow({
+            content: contentString
+          });
+
+          marker.addListener('click', function() {
+            infowindow.open(map, marker);
+            document.getElementById(`info-window-header${marker.title}`).addEventListener('click', function(){
+              store.dispatch(profileActions.loadProfile(marker.title));
+            })
+
+          });
+        })
+      },
+      {timeout:5000});
 
     } else {
       // Browser does not support geolocation
