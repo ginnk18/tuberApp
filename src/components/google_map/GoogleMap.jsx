@@ -152,7 +152,7 @@ class GoogleMap extends Component {
     // Connect the initMap() function within this class to the global window context
     window.initMap = this.initMap;
     // Welcome to callback hell
-    loadJS('https://maps.googleapis.com/maps/api/js?key=AIzaSyAHk8BSOFCOmRSS0DF_ibXPoitqZZbbgMI&callback=initMap')
+    loadJS('https://maps.googleapis.com/maps/api/js?key=AIzaSyBzog3EhMlIGbRfV0y9h-bTsA7NQhex_Ug&callback=initMap')
   }
 
   render() {
