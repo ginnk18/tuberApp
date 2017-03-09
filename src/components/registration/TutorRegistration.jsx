@@ -90,28 +90,30 @@ class TutorRegistrationLayout extends Component {
       }
       this.setState({[name]: values})
     } else {
-      this.setState({
-        [name]: value
-      });
+        this.setState({
+          [name]: value
+        });
     }
   }
 
   tutFormSubmit (e) {
     e.preventDefault();
-    axios({method: 'post',
-           url: 'http://localhost:3000/users',
-           data: this.state
-    }).then(response => {
-        console.log('response', response);
-        console.log('token', response.data.user.user.token)
-        cookie.save('token', response.data.user.user.token, { path: '/' });
-        cookie.save('user', response.data.user, { path: '/' });
-        console.log('after cookie save', response.data.user.id)
-        store.dispatch(profileActions.loadProfile(response.data.user.id));
-        // store.dispatch({ type: types.LOAD_PROFILE });
-    }).catch((error) => {
-        // errorHandler(store.dispatch, error.response, types.AUTH_ERROR)
-    });
+    this.setState({rate_cents: this.state.rate_cents*100}, () => {
+      axios({method: 'post',
+             url: 'http://localhost:3000/users',
+             data: this.state
+      }).then(response => {
+          console.log('response', response);
+          console.log('token', response.data.user.user.token)
+          cookie.save('token', response.data.user.user.token, { path: '/' });
+          cookie.save('user', response.data.user, { path: '/' });
+          console.log('after cookie save', response.data.user.id)
+          store.dispatch(profileActions.loadProfile(response.data.user.id));
+          // store.dispatch({ type: types.LOAD_PROFILE });
+      }).catch((error) => {
+          // errorHandler(store.dispatch, error.response, types.AUTH_ERROR)
+      });
+    })
   }
 
   render() {
@@ -154,9 +156,9 @@ class TutorRegistrationLayout extends Component {
                 <label htmlFor="tutorRegPhone" className="col-form-label">Phone Number</label>
                   <input name="phone" value={this.state.phone} onChange={this.handleInputChange} className="form-control" type="tel" id="tutorRegPhone"/>
               </div>
-            <div className="form-group">
-                <label htmlFor="tutorRegRate">Rate</label>
-                <input name="rate_cents" value={this.state.rate_cents} onChange={this.handleInputChange} className="form-control" id="tutorRegRate" type="number"></input>
+              <div className="form-group">
+                <label htmlFor="tutorRegRate">Rate (in dollars/hour)</label>
+                <input name="rate_cents" value={this.state.rate_cents} onChange={this.handleInputChange} className="form-control" id="tutorRegRate" type="number" step="0.01"></input>
               </div>
               <div className="form-group">
                 <label htmlFor="tutorRegSubjects">Subjects you can teach</label>
@@ -198,18 +200,17 @@ class TutorRegistrationLayout extends Component {
             </div>
             <div className="form-group">
               <label htmlFor="tutRegAvatar">Profile Picture</label>
+              <br></br>
+              <small id="fileHelp" className="form-text text-muted"> Enter a URL (defaults to the majestic Sun Bear)</small>
               <input name="avatar"
                      value={this.state.avatar}
                      onChange={this.handleInputChange}
-                     size="45"
-                     type="string"
+                     type="url"
                      className="form-control-file"
                      id="tutRegAvatar"
                      aria-describedby="fileHelp"/>
-              <small id="fileHelp" className="form-text text-muted"> Enter a URL (defaults to the majestic Sun Bear)</small>
             </div>
             <button type="submit" className="btn btn-primary btn-lg tutor-reg-submit">Submit</button>
-
           </div>
         </form>
       </div>
