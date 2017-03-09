@@ -74,8 +74,6 @@ class HomeLayout extends Component {
             <span className="tagline-text">painlessly connects students with
             tutors.<HeaderDropdown /></span>
           </h1>
-
-
           <div className="styleButton">
           </div>
           </section>
