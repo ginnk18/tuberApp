@@ -27,7 +27,7 @@ class App extends React.Component {
         receiver_id: this.props.profile.id,
         sender_id: this.state.loggedIn && this.state.loggedIn.id,
         message: this.state.firstMessage,
-        username: this.state.loggedIn.name,
+        username: this.state.loggedIn.email,
         cable: this.props.cable
       }));
 
@@ -88,7 +88,7 @@ class App extends React.Component {
               onChange={(e) => this.firstMessageHandler(e)}
               placeholder="Initiate conversation with me"
               required
-              autofocus />
+              autoFocus />
           </div>
           {this.decidesButton()}
         </form>

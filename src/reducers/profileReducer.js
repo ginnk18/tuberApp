@@ -1,4 +1,5 @@
 import { transformToProfileState } from '../components/profile_layout/profile_logic';
+import cookie from 'react-cookie';
 
 export default function profileReducer(state, action) {
   switch (action.type) {
@@ -27,7 +28,13 @@ export default function profileReducer(state, action) {
       };
 
     case "NEW_NOTIFY":
-      state.cable.messages.push(action.payload)
+      const loggedIn = cookie.load("user");
+      const mssg = action.payload;
+      const chatPatner = (Number(loggedIn.id) === Number(mssg.receiver_id)) ? mssg.sender_id : mssg.receiver_id
+
+      if (state.cable.messages[chatPatner]) {
+        state.cable.messages[chatPatner].push(mssg)
+      } else { state.cable.messages[chatPatner] = [mssg] }
       return {
         ...state,
         status: "MESSAGE APPENDED"

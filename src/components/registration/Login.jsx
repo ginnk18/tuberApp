@@ -45,6 +45,20 @@ class LoginLayout extends Component {
           console.log('response', response.data);
           cookie.save('token', response.data.user.token, { path: '/' });
           cookie.save('user', response.data, { path: '/' });
+
+          // connecting to ActionCable for Chatting
+          cable.setChannel(
+            'NotificationChannel',
+            actionCable.subscriptions.create(
+              {
+                channel: 'NotificationChannel',
+                sender_id: user_id
+              },
+              ['newNotification']
+            )
+          );
+
+        // load home 
         store.dispatch(tutorActions.loadHome());
         })
         .catch((error) => {
@@ -73,7 +87,7 @@ class LoginLayout extends Component {
                   <label htmlFor="password">Password</label>
                   <input name="password"  value={this.state.password} onChange={this.handleInputChange} type="password" className="form-control" placeholder="Password"/>
                 </div>
-                <button type="submit" className="btn btn-primary">Submit</button>
+                <button type="submit" className="btn btn-primary reg-submit">Submit</button>
               </form>
             </div>
     )
