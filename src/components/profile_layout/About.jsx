@@ -46,9 +46,9 @@ export default class About extends Component {
         </h2>
         <dl className="profile-summary">
           <dt>Contact</dt>
-          <dd>Email: <span>{profile.email}</span></dd>
-          <dd>Phone: <span>{profile.phone}</span></dd>
-          <dd>Address: <span>{profile.address} {profile.city}, {profile.country}</span></dd>
+          <dd>Email: &nbsp;&nbsp;<span>{profile.email}</span></dd>
+          <dd>Phone: &nbsp;&nbsp;<span>{profile.phone}</span></dd>
+          <dd>Address: &nbsp;&nbsp;<span>{profile.address} {profile.city}, {profile.country}</span></dd>
 
           <dt>Qualification</dt>
           <dd>{profile.education}</dd>
