@@ -2,8 +2,8 @@
   border: 1px solid transparent;
   text-align: -webkit-center;
   border-color: #ddd;
-  position: relative;
-  top: 0.2em;
+  position: fixed;
+  top: 0.7em;
   right: 2em;
   height: 2em;
   width: 4em;
@@ -18,7 +18,8 @@
     }
   }
   .container-fluid {
-  position: fixed;
+  z-index: 10;
+  position: absolute;
   right: 0;
   background-color: rgba(125, 145, 162, 0.52);
   width: 100%;

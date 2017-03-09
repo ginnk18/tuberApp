@@ -27,11 +27,12 @@
     width: 60%;
 
     .position{
+      margin-left: 6em;
       position: fixed;
       top: 10em;
     }
     .tagline-text{
-      font-size: 1em;
+      font-size: 0.7em;
       position: relative;
       display: flex;
       .selectContainer{
@@ -119,6 +120,8 @@
     padding-bottom: 50px;
 
     .brand {
+      font-size: 1.5em;
+      margin-left: -0.5em;
       pointer-events: all;
       color: $brand-color;
       position: relative;

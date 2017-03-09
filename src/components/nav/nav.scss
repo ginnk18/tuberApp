@@ -38,7 +38,7 @@
   //position: fixed;
   .menu {
    visibility: collapse;
-   width: 44em;
+   width: auto;
    list-style: none;
    text-align: left;
    line-height: 30px;
@@ -80,7 +80,7 @@
     height: auto;
     width: auto;
   }
-  
+
   .mobile-nav {
     padding-right: 60px;
     padding-top: 20px;
