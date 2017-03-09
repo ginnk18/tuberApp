@@ -72,9 +72,8 @@ class HomeLayout extends Component {
         <section className="tagline">
           <h1><span className="brand">tuber&nbsp;</span>
             <span className="tagline-text">painlessly connects students with
-            tutors.<HeaderDropdown /></span>
+            tutors.{/*<HeaderDropdown />*/}</span>
           </h1>
-
           {/*<HeaderDropdown /> */}
 
           <div className="styleButton">
