@@ -30,6 +30,23 @@ export default class About extends Component {
     }
   }
 
+  showAboutInfo(loggedIn, profile) {
+    console.log('in show about info')
+    if (loggedIn) {
+      console.log('in logged in')
+      return <div>
+               <dt>Contact</dt>
+               <dd>Email: <span>{profile.email}</span></dd>
+               <dd>Phone: <span>{profile.phone}</span></dd>
+               <dd>Address: <span>{profile.address} {profile.city}, {profile.country}</span></dd>
+             </div>
+    } else {
+      return <div>
+               <dt>Please register to see contact details</dt>
+             </div>
+    }
+  }
+
   render() {
     const profile = this.props.profile;
     const loggedIn = cookie.load("user");
@@ -45,11 +62,8 @@ export default class About extends Component {
           {this.showEditButton(loggedIn)}
         </h2>
         <dl className="profile-summary">
-          <dt>Contact</dt>
-          <dd>Email: <span>{profile.email}</span></dd>
-          <dd>Phone: <span>{profile.phone}</span></dd>
-          <dd>Address: <span>{profile.address} {profile.city}, {profile.country}</span></dd>
 
+          {this.showAboutInfo(loggedIn, profile)}
           <dt>Qualification</dt>
           <dd>{profile.education}</dd>
 
