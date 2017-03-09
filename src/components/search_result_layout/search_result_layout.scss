@@ -5,6 +5,7 @@ body {
   display: flex;
   width: 100%;
   img{
+    max-height: 18.750em;
     width: 50%;
     height: auto;
   }
@@ -67,7 +68,7 @@ body {
       padding: $spacing-unit1 $spacing-unit-half;
     }
   }
-  @media screen and (max-device-width: 500px){
+  @media screen and (max-device-width: 500px) and (min-device-height:450px){
     .filters{
       position: absolute;
       z-index: -1;
