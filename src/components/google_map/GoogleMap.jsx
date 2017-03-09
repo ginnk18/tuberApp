@@ -109,10 +109,10 @@ class GoogleMap extends Component {
         })
       },
       ()=>{
-        console.log('in error for gmap');
-        let center = {lat: 51.0486, lng: -114.0708};
+        console.log('Geolocation did not work. If this is during the presentation, you may now thank me for adding this error catcher.');
+        let center = {lat: 50.2331, lng: -95.844};
         const map = new window.google.maps.Map(ReactDOM.findDOMNode(this.refs["map"]), {
-          zoom: 11,
+          zoom: 5,
           center: center
         });
 

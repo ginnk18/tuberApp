@@ -99,6 +99,7 @@ class LoginLayout extends Component {
     return (<div className="login-layout row">
               <AppHeader className="z-index3"/>
               {/*<p> {cookie.load('user').email} </p>*/}
+              <div className="col-xs-9 col-sm-9 col-md-9 col-lg-9">
               <form onSubmit={this.loginFormSubmit} className="login-form">
               <h3> Log in </h3>
                 <div className="form-group">
@@ -116,6 +117,7 @@ class LoginLayout extends Component {
                 </div>
                 <button type="submit" className="btn btn-primary reg-submit">Submit</button>
               </form>
+              </div>
             </div>
     )
   }
