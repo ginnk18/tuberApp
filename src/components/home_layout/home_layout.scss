@@ -41,7 +41,7 @@
         font-size: 0.5em;
         select{
           option{
-            color: white !important;
+           color: white!important;
           }
           background-color: rgba(0, 0, 0, 0.32);
           color: white;
@@ -111,7 +111,7 @@
     }
   }
   #useIdForHome{
-    padding-left: 50px;
+    padding-left: 100px;  //changed here it was 50px
     pointer-events: all;
   }
   .tagline {
@@ -123,9 +123,13 @@
     font-size: 4rem;
     padding-bottom: 50px;
 
+    // h1 {
+    //   margin-left: -103px; //changed here it was nothing
+    // }
+
     .brand {
       font-size: 1.5em;
-      margin-left: -0.5em;
+      // margin-left: -0.5em;
       pointer-events: all;
       color: $brand-color;
       position: relative;

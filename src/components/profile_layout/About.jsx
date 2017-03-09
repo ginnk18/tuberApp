@@ -36,9 +36,9 @@ export default class About extends Component {
       console.log('in logged in')
       return <div>
                <dt>Contact</dt>
-               <dd>Email: <span>{profile.email}</span></dd>
-               <dd>Phone: <span>{profile.phone}</span></dd>
-               <dd>Address: <span>{profile.address} {profile.city}, {profile.country}</span></dd>
+              <dd>Email: &nbsp;&nbsp;<span>{profile.email}</span></dd>
+              <dd>Phone: &nbsp;&nbsp;<span>{profile.phone}</span></dd>
+              <dd>Address: &nbsp;&nbsp;<span>{profile.address} {profile.city}, {profile.country}</span></dd>
              </div>
     } else {
       return <div>
@@ -62,7 +62,7 @@ export default class About extends Component {
           {this.showEditButton(loggedIn)}
         </h2>
         <dl className="profile-summary">
-
+                  
           {this.showAboutInfo(loggedIn, profile)}
           <dt>Qualification</dt>
           <dd>{profile.education}</dd>
