@@ -1,7 +1,7 @@
 .main-header{
   .selectContainer{
     visibility: visible;
-    width: 44em;
+    width: auto;
   }
 }
 body {
@@ -21,11 +21,13 @@ body {
   }
 
   .main-content {
+    margin-left: 5em;
+    margin-right: 5em;
     display: flex;
     flex-direction: column;
     margin: 0 auto;
     // min-width: 600px;
-    padding-top: 200px;
+    padding-top: 4em;
     // width: 66.7%;
 
     .profile-summaries {
@@ -41,6 +43,8 @@ body {
         text-align: center;
       }
       img {
+        border-width: medium;
+        border-style: solid;
         height: 100%;
         width: 100%;
       }

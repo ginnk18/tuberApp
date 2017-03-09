@@ -31,7 +31,6 @@ class LoginLayout extends Component {
     console.log('in login form submit')
     e.preventDefault();
     if (navigator.geolocation) {
-      console.log('in geolocation if')
       navigator.geolocation.getCurrentPosition((position) => {
         console.log('in geolocation get current')
         axios({method: 'post',
@@ -46,6 +45,18 @@ class LoginLayout extends Component {
           cookie.save('token', response.data.user.token, { path: '/' });
           cookie.save('user', response.data, { path: '/' });
 
+          // connecting to ActionCable for Chatting
+          cable.setChannel(
+            'NotificationChannel',
+            actionCable.subscriptions.create(
+              {
+                channel: 'NotificationChannel',
+                sender_id: user_id
+              },
+              ['newNotification']
+            )
+          );
+
         // load home
         console.log("before load home")
         return store.dispatch(tutorActions.subscribeThenHome(cookie.load("user")));
@@ -53,7 +64,37 @@ class LoginLayout extends Component {
         .catch((error) => {
           // errorHandler(store.dispatch, error.response, types.AUTH_ERROR)
         })
-      })
+      }, () => {
+        console.log('in geolocation error catcher')
+        axios({method: 'post',
+             url: 'http://localhost:3000/sessions',
+             data: {email: this.state.email,
+                    password: this.state.password,
+                    lat: 51.0,
+                    long: -114.0}
+             })
+        .then(response => {
+          console.log('response', response.data);
+          cookie.save('token', response.data.user.token, { path: '/' });
+          cookie.save('user', response.data, { path: '/' });
+          // connecting to ActionCable for Chatting
+          cable.setChannel(
+            'NotificationChannel',
+            actionCable.subscriptions.create(
+              {
+                channel: 'NotificationChannel',
+                sender_id: user_id
+              },
+              ['newNotification']
+            )
+          );
+        // load home
+        console.log("before load home")
+        return store.dispatch(tutorActions.subscribeThenHome(cookie.load("user")));
+        })
+        .catch((error) => {
+          // errorHandler(store.dispatch, error.response, types.AUTH_ERROR)
+        })})
     }
   }
 
@@ -76,7 +117,7 @@ class LoginLayout extends Component {
                   <label htmlFor="password">Password</label>
                   <input name="password"  value={this.state.password} onChange={this.handleInputChange} type="password" className="form-control" placeholder="Password"/>
                 </div>
-                <button type="submit" className="btn btn-primary">Submit</button>
+                <button type="submit" className="btn btn-primary reg-submit">Submit</button>
               </form>
             </div>
     )

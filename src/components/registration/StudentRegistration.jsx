@@ -106,7 +106,7 @@ class StudentRegistrationLayout extends Component {
                          type="password" className="form-control"
                          placeholder="Password"/>
                 </div>
-                <button type="submit" className="btn btn-primary">Submit</button>
+                <button type="submit" className="btn btn-primary reg-submit">Submit</button>
               </form>
             </div>
     )

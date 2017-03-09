@@ -6,6 +6,9 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import types from '../../actions/actionTypes';
+import { profileActions } from '../../actions'
+import store from '../../tuberStore';
+
 
 const loadJS = function(src) {
     const ref = window.document.getElementsByTagName("script")[0];
@@ -38,13 +41,18 @@ class GoogleMap extends Component {
     super(props);
     this.componentDidMount = this.componentDidMount.bind(this);
     this.initMap = this.initMap.bind(this);
+    this.linkToProfile = this.linkToProfile.bind(this);
   }
 
-  componentDidMount() {
-    // Connect the initMap() function within this class to the global window context
-    window.initMap = this.initMap;
-    // Welcome to callback hell
-    loadJS('https://maps.googleapis.com/maps/api/js?key=AIzaSyAHk8BSOFCOmRSS0DF_ibXPoitqZZbbgMI&callback=initMap')
+  linkToProfile(tutor){
+    console.log('here we are');
+    // return ()=> {
+    //   store.dispatch(profileActions.loadProfile(tutor.id))
+    // }
+  }
+
+  mapErrorCallback() {
+    console.log('in map error callback')
   }
 
   initMap() {
@@ -68,13 +76,14 @@ class GoogleMap extends Component {
           let marker = new google.maps.Marker({
             position: {lat: location.lat, lng: location.long},
             map: map,
-            title: tutor.name
+            title: tutor.id.toString()
           });
 
           let availabilityStats = availabilityColor[tutor.status_code];
           let contentString = '<div class="infoWindowContent">'+
                 '<div style="display: inline-block; vertical-align: top;">' +
-                  `<h2>${tutor.name}</h2>`+
+                  `<h2 id="info-window-header${tutor.id}">${tutor.name}</h2>`+
+
                   `<i style="color:${availabilityStats[0]}" class="fa fa-circle" aria-hidden="true"></i>` +
                   `<span> ${availabilityStats[1]}</span>` +
                 '</div>' +
@@ -91,9 +100,16 @@ class GoogleMap extends Component {
 
           marker.addListener('click', function() {
             infowindow.open(map, marker);
+            document.getElementById(`info-window-header${marker.title}`).addEventListener('click', function(){
+              store.dispatch(profileActions.loadProfile(marker.title));
+            })
+
           });
+
         })
-      });
+      },
+      ()=>{console.log('in error for gmap')},
+      {timeout:10000});
 
     } else {
       // Browser does not support geolocation
@@ -130,6 +146,13 @@ class GoogleMap extends Component {
     console.log('in componentdidmount for map');
     window.initMap = this.initMap;
     loadJS('https://maps.googleapis.com/maps/api/js?key=AIzaSyBzog3EhMlIGbRfV0y9h-bTsA7NQhex_Ug&callback=initMap');
+  }
+
+  componentDidMount() {
+    // Connect the initMap() function within this class to the global window context
+    window.initMap = this.initMap;
+    // Welcome to callback hell
+    loadJS('https://maps.googleapis.com/maps/api/js?key=AIzaSyBzog3EhMlIGbRfV0y9h-bTsA7NQhex_Ug&callback=initMap')
   }
 
   render() {

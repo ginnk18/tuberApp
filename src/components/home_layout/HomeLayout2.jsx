@@ -74,34 +74,11 @@ class HomeLayout extends Component {
             <span className="tagline-text">painlessly connects students with
             tutors.<HeaderDropdown /></span>
           </h1>
-          <HeaderDropdown />
           <div className="styleButton">
           </div>
           </section>
-          <section className="three-fifth results">
-            <div className="row">
-              <article className="result half">
-                <Card />
-              </article>
-              <article className="result half">
-                <Card />
-              </article>
-              <article className="result half">
-                <Card />
-              </article>
-              <article className="result half">
-                <Card />
-              </article>
-              <article className="result half">
-                <Card />
-              </article>
-              <article className="result half">
-                <Card />
-              </article>
-            </div>
-          </section>
-          </section>
-          </section>
+        </section>
+      </section>
         </div>
         <aside className="mainMap">
         <GoogleMap tutors = {this.props.tutors}/>

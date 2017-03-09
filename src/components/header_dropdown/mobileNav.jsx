@@ -4,13 +4,12 @@ import { tutorActions, profileActions } from '../../actions';
 import { studentActions, userActions } from '../../actions';
 // import { userActions } from '../../actions';
 import Logo from '../logo/Logo.jsx';
-import MNav from '../header_dropdown/mobileNav.jsx'
 import SearchBox from '../search_box/SearchBox.jsx';
 import cookie from 'react-cookie';
 import axios from 'axios';
 import types from '../../actions/actionTypes';
 
-class Nav extends Component {
+class MNav extends Component {
   constructor(props) {
     super(props);
     this.state = {student_or_tutor: "student",
@@ -66,27 +65,17 @@ class Nav extends Component {
 
   render() {
     return (
-    <div>
-      <nav className="main-nav">
-        <div className="container-fluid collapse">
-          <div className="">
-          { this.registrationButtons() }
-          </div>
-        </div>
-      </nav>
-      <MNav />
-      {/*<nav className="mobile-nav">
-        <div className="line"></div>
-        <div className="line" id="menuline">
-          <ul className="menu">
-{ this.registrationButtons() }
-          </ul>
-        </div>
-        <div className="line"></div>
-      </nav>*/}
+    <div className="buttonContainer">
+      <button type="button" className="mNav" data-toggle="collapse" data-target=".container-fluid" >
+        <span class="sr-only"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
     </div>
     )
   }
 }
 
-export default Nav;
+export default MNav;

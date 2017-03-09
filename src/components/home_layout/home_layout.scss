@@ -27,25 +27,29 @@
     width: 60%;
 
     .position{
+      margin-left: 6em;
       position: fixed;
       top: 10em;
     }
     .tagline-text{
+      font-size: 0.7em;
       position: relative;
       display: flex;
       .selectContainer{
         width: 0;
         height: 0;
-        font-size: x-large;
+        font-size: 0.3em;
         select{
           background-color: rgba(0, 0, 0, 0.32);
           color: white;
           margin: 1em;
           margin-top: 4em;
           padding-right: 2.5em;
-          .kart{
-            background-color: red;
-          }
+          border-radius: 0.2em;
+        }
+        select:hover{
+          transition-duration: 0.6s;
+          color: $brand-color;
         }
       }
     }
@@ -117,6 +121,8 @@
     padding-bottom: 50px;
 
     .brand {
+      font-size: 1.5em;
+      margin-left: -0.5em;
       pointer-events: all;
       color: $brand-color;
       position: relative;
@@ -168,7 +174,7 @@
      }
   }
   @media screen and (max-device-width:1070px){
-    
+
   }
   @media screen and (max-device-width: 568px){
     .main-content{
